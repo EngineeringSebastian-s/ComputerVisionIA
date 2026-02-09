@@ -7,7 +7,7 @@ class ColorChallenge:
     """Clase para analizar regiones cromáticas en una imagen."""
 
     def __init__(self, image_name="original.jpg"):
-        self.assets_path = "assets"
+        self.assets_path = "images"
         self.image_path = os.path.join(self.assets_path, image_name)
         self.image = None
         self.output_image = None
