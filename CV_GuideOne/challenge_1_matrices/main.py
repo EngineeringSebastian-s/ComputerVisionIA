@@ -141,9 +141,7 @@ class App:
         plt.show()
 
     def run(self):
-        "
-
-    self.root.mainloop()
+        self.root.mainloop()
 
 
 def main():
