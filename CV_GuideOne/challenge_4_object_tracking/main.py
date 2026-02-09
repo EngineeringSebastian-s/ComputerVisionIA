@@ -1,16 +1,21 @@
+import tkinter as tk
+
 import cv2
 import numpy as np
-import tkinter as tk
-from tkinter import messagebox
 from pygrabber.dshow_graph import FilterGraph
 
 
-class DetectorColor:
-    def __init__(self):
-        self.root = tk.Tk()
-        self.root.title("Configuración de Visión")
-        self.root.geometry("400x200")
+class CameraManager:
 
+    @staticmethod
+    def get_available_cameras():
+        devices = FilterGraph().get_input_devices()
+        return devices if devices else ["0"]
+
+
+class ColorProcessor:
+    def __init__(self):
+        # Definición de rangos HSV para los colores
         self.color_ranges = {
             "Rojo": [
                 (np.array([0, 120, 70]), np.array([10, 255, 255])),
@@ -23,75 +28,96 @@ class DetectorColor:
                 (np.array([100, 150, 0]), np.array([140, 255, 255]))
             ]
         }
+        self.kernel = np.ones((5, 5), np.uint8)
 
-    def obtener_lista_camaras(self):
-        devices = FilterGraph().get_input_devices()
-        return devices if devices else ["0"]
+    def process_frame(self, frame):
+        hsv_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
-    def iniciar_interfaz(self):
-        tk.Label(self.root, text="Seleccione el dispositivo de video:", font=("Arial", 10)).pack(pady=10)
+        for color_name, ranges in self.color_ranges.items():
+            mask = None
+            for lower, upper in ranges:
+                current_mask = cv2.inRange(hsv_frame, lower, upper)
+                mask = current_mask if mask is None else cv2.add(mask, current_mask)
 
-        lista_camaras = self.obtener_lista_camaras()
-        self.seleccion = tk.StringVar(self.root)
-        self.seleccion.set(lista_camaras[0])  # Por defecto la primera
+            mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, self.kernel)
 
-        dropdown = tk.OptionMenu(self.root, self.seleccion, *lista_camaras)
+            contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
+            for cnt in contours:
+                if cv2.contourArea(cnt) > 1500:
+                    x, y, w, h = cv2.boundingRect(cnt)
+                    # Dibujar rectángulo y etiqueta
+                    cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+                    cv2.putText(frame, f"{color_name}", (x, y - 10),
+                                cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
+        return frame
+
+
+class ChallengeFour:
+
+    def __init__(self):
+        self.selected_camera = None
+        self.camera_list = None
+        self.processor = ColorProcessor()
+        self.camera_manager = CameraManager()
+        self.root = tk.Tk()
+        self.setup_gui()
+
+    def setup_gui(self):
+        self.root.title("Configuración de Visión")
+        self.root.geometry("400x220")
+
+        tk.Label(self.root, text="--- Detector de Colores ---", font=("Arial", 12, "bold")).pack(pady=10)
+        tk.Label(self.root, text="Seleccione el dispositivo de video:", font=("Arial", 10)).pack(pady=5)
+
+        self.camera_list = self.camera_manager.get_available_cameras()
+        self.selected_camera = tk.StringVar(self.root)
+        self.selected_camera.set(self.camera_list[0])
+
+        dropdown = tk.OptionMenu(self.root, self.selected_camera, *self.camera_list)
         dropdown.pack(pady=10)
 
-        btn_iniciar = tk.Button(self.root, text="Iniciar Seguimiento",
-                                command=lambda: self.ejecutar_procesamiento(lista_camaras))
-        btn_iniciar.pack(pady=20)
+        btn_start = tk.Button(self.root, text="INICIAR CÁMARA", bg="#2ecc71", fg="white",
+                              command=self.start_vision_loop, font=("Arial", 10, "bold"))
+        btn_start.pack(pady=15)
 
-        self.root.mainloop()
-
-    def ejecutar_procesamiento(self, lista):
-        idx = lista.index(self.seleccion.get())
-        nombre_cam = self.seleccion.get()
+    def start_vision_loop(self):
+        camera_name = self.selected_camera.get()
+        camera_index = self.camera_list.index(camera_name)
 
         self.root.destroy()
-        self.proceso_principal(idx, nombre_cam)
+        self.run_opencv_thread(camera_index, camera_name)
 
-    def proceso_principal(self, index, nombre_cam):
+    def run_opencv_thread(self, index, name):
         cap = cv2.VideoCapture(index)
-        window_name = "Seguimiento - Camara: " + nombre_cam
+        window_title = f"Camara: {name} (ESC para salir)"
 
-        if not cap.isOpened():
-            print("No se pudo abrir la cámara.")
-            return
+        print(f"SISTEMA: Iniciando captura en '{name}'...")
 
         while True:
             ret, frame = cap.read()
-            if not ret: break
+            if not ret:
+                print("ERROR: No se pudo obtener el frame de la cámara.")
+                break
 
-            hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-            for color_name, ranges in self.color_ranges.items():
-                mask = None
-                for lower, upper in ranges:
-                    current_mask = cv2.inRange(hsv, lower, upper)
-                    mask = current_mask if mask is None else cv2.add(mask, current_mask)
+            processed_frame = self.processor.process_frame(frame)
 
-                kernel = np.ones((5, 5), np.uint8)
-                mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
-
-                contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-                for cnt in contours:
-                    if cv2.contourArea(cnt) > 1500:
-                        x, y, w, h = cv2.boundingRect(cnt)
-                        cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
-                        cv2.putText(frame, f"{color_name}", (x, y - 10),
-                                    cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
-
-            cv2.imshow(window_name, frame)
+            cv2.imshow(window_title, processed_frame)
 
             if cv2.waitKey(1) & 0xFF == 27:
                 break
-            if cv2.getWindowProperty(window_name, cv2.WND_PROP_VISIBLE) < 1:
+            if cv2.getWindowProperty(window_title, cv2.WND_PROP_VISIBLE) < 1:
                 break
 
         cap.release()
         cv2.destroyAllWindows()
+        print("SISTEMA: Proceso finalizado por el usuario.")
+
+
+def main():
+    app = ChallengeFour()
+    app.root.mainloop()
 
 
 if __name__ == "__main__":
-    app = DetectorColor()
-    app.iniciar_interfaz()
+    main()
