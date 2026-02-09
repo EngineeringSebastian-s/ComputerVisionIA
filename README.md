@@ -1,1 +1,1 @@
-# vision-computador-ia
+# Visión por Computador e Inteligencia Artificial
