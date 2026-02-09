@@ -135,7 +135,6 @@ class App:
             cmap_name = colormaps[i]
             im = ax.imshow(matrix, cmap=cmap_name)
             ax.set_title(f"Mapa: {cmap_name}")
-            # Añadimos una barra de color individual para cada uno
             fig.colorbar(im, ax=ax, fraction=0.046, pad=0.04)
 
         plt.tight_layout(rect=[0, 0.03, 1, 0.95])
