@@ -11,4 +11,4 @@ if __name__ == "__main__":
     if option == "1":
         run_challenge_1()
     elif option == "4":
-        run_challenge_four
+        run_challenge_four()

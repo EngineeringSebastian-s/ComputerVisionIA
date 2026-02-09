@@ -1,30 +1,32 @@
+import csv
+import math
+import os
 import random
 import time
-import os
-import math
-import csv
+import tkinter as tk
+from tkinter import messagebox
+
 import matplotlib.pyplot as plt
 import numpy as np
 
 
-class RetoMatriz:
+class MatrixProcessor:
+
     def __init__(self, size=1000):
         self.size = size
         self.folder_data = "data"
         self.folder_imgs = "images"
-        self.file_path = os.path.join(self.folder_data, "matriz_datos.csv")
-        self.matriz = []
+        self.file_path = os.path.join(self.folder_data, "matrix_data.csv")
+        self.matrix = []
 
-        # Crear carpetas si no existen
         for folder in [self.folder_data, self.folder_imgs]:
             if not os.path.exists(folder):
                 os.makedirs(folder)
 
-    def fase_1_nativo(self):
-        print(">>> Iniciando Fase 1: Python Nativo")
+    def run_native_processing(self):
         start_time = time.time()
 
-        self.matriz = [[random.randint(0, 255) for _ in range(self.size)] for _ in range(self.size)]
+        self.matrix = [[random.randint(0, 255) for _ in range(self.size)] for _ in range(self.size)]
 
         total_sum = 0
         total_sq_sum = 0
@@ -32,34 +34,34 @@ class RetoMatriz:
         max_val = 0
         n = self.size ** 2
 
-        for fila in self.matriz:
-            for val in fila:
+        # Cálculo manual de estadísticas
+        for row in self.matrix:
+            for val in row:
                 if val < min_val: min_val = val
                 if val > max_val: max_val = val
                 total_sum += val
                 total_sq_sum += val ** 2
 
-        media = total_sum / n
-        varianza = (total_sq_sum / n) - (media ** 2)
-        desv_est = math.sqrt(varianza)
+        mean_val = total_sum / n
+        variance = (total_sq_sum / n) - (mean_val ** 2)
+        std_dev = math.sqrt(variance)
 
-        vector_aplanado = [val for fila in self.matriz for val in fila]
+        # Aplanar y guardar en CSV
+        flat_vector = [val for row in self.matrix for val in row]
         with open(self.file_path, 'w', newline='') as f:
             writer = csv.writer(f)
-            writer.writerow(vector_aplanado)
+            writer.writerow(flat_vector)
 
-        end_time = time.time()
-        duracion = end_time - start_time
+        duration = time.time() - start_time
+        return {"min": min_val, "max": max_val, "media": mean_val, "std": std_dev, "time": duration}
 
-        print(f"Fase 1 completada en: {duracion:.4f} segundos")
-        return {"min": min_val, "max": max_val, "media": media, "std": desv_est, "tiempo": duracion}
-
-    def fase_2_optimizado(self):
-        print("\n>>> Iniciando Fase 2: Librerías Optimizadas (Numpy)")
+    def run_numpy_processing(self):
         start_time = time.time()
 
+        # Leer el archivo generado anteriormente
         data_np = np.genfromtxt(self.file_path, delimiter=',')
 
+        # Cálculos optimizados
         stats = {
             "min": np.min(data_np),
             "max": np.max(data_np),
@@ -67,40 +69,87 @@ class RetoMatriz:
             "std": np.std(data_np)
         }
 
-        matriz_reconstruida = data_np.reshape((self.size, self.size))
+        matrix_reconstructed = data_np.reshape((self.size, self.size))
+        duration = time.time() - start_time
+        stats["time"] = duration
 
-        end_time = time.time()
-        duracion = end_time - start_time
+        return stats, matrix_reconstructed
 
-        print(f"Fase 2 completada en: {duracion:.4f} segundos")
-        stats["tiempo"] = duracion
-        return stats, matriz_reconstruida
 
-    def mostrar_resultados(self, s1, s2, matriz_final):
-        """Genera la imagen y muestra la comparativa."""
-        print("\n" + "=" * 30)
-        print("COMPARATIVA DE RESULTADOS")
-        print("=" * 30)
-        print(f"{'Métrica':<15} | {'Nativo':<12} | {'Numpy':<12}")
+class App:
+
+    def __init__(self):
+        self.processor = MatrixProcessor(size=1000)
+        self.root = tk.Tk()
+        self.setup_window()
+
+    def setup_window(self):
+        self.root.title("Reto: Matrices e Imágenes")
+        self.root.geometry("350x200")
+
+        tk.Label(self.root, text="Procesamiento de Matrices", font=("Arial", 12, "bold")).pack(pady=10)
+        tk.Label(self.root, text="Tamaño: 1000x1000", font=("Arial", 10)).pack()
+
+        self.btn_run = tk.Button(
+            self.root,
+            text="EJECUTAR RETO",
+            command=self.execute_challenge,
+            bg="#3498db",
+            fg="white",
+            font=("Arial", 10, "bold"),
+            padx=20,
+            pady=10
+        )
+        self.btn_run.pack(pady=20)
+
+    def execute_challenge(self):
+        try:
+            print(">>> Iniciando procesamiento nativo...")
+            native_stats = self.processor.run_native_processing()
+
+            print(">>> Iniciando procesamiento optimizado (Numpy)...")
+            numpy_stats, final_matrix = self.processor.run_numpy_processing()
+
+            self.print_comparison(native_stats, numpy_stats)
+            self.display_image(final_matrix)
+
+            messagebox.showinfo("Éxito", "Procesamiento completado. Revisa la consola y la imagen generada.")
+        except Exception as e:
+            messagebox.showerror("Error", f"Ocurrió un error: {e}")
+
+    def print_comparison(self, s1, s2):
+        print("\n" + "=" * 45)
+        print(f"{'METRICA':<15} | {'NATIVO (s)':<12} | {'NUMPY (s)':<12}")
         print("-" * 45)
-        for key in ["min", "max", "media", "std", "tiempo"]:
-            print(f"{key:<15} | {s1[key]:<12.4f} | {s2[key]:<12.4f}")
 
-        plt.figure(figsize=(10, 5))
-        plt.imshow(matriz_final, cmap='viridis')
-        plt.title(f"Imagen Generada ({self.size}x{self.size})")
-        plt.colorbar()
+        metrics = [("Mínimo", "min"), ("Máximo", "max"), ("Media", "media"),
+                   ("Desv. Est.", "std"), ("Tiempo Total", "time")]
 
-        img_out = os.path.join(self.folder_imgs, "matriz_result.png")
-        plt.savefig(img_out)
-        print(f"\nImagen guardada en: {img_out}")
+        for label, key in metrics:
+            print(f"{label:<15} | {s1[key]:<12.4f} | {s2[key]:<12.4f}")
+        print("=" * 45 + "\n")
+
+    def display_image(self, matrix):
+        plt.figure(figsize=(8, 6))
+        plt.imshow(matrix, cmap='magma')
+        plt.title("Visualización de Datos Aleatorios")
+        plt.colorbar(label="Intensidad de Píxel")
+
+        output_path = os.path.join(self.processor.folder_imgs, "matrix_result.png")
+        plt.savefig(output_path)
+        print(f"Imagen guardada en: {output_path}")
         plt.show()
+
+    def run(self):
+        "
+
+    self.root.mainloop()
+
+
+def main():
+    app = App()
+    app.run()
 
 
 if __name__ == "__main__":
-    reto = RetoMatriz(1000)
-
-    stats_nativas = reto.fase_1_nativo()
-    stats_numpy, matriz_img = reto.fase_2_optimizado()
-
-    reto.mostrar_resultados(stats_nativas, stats_numpy, matriz_img)
+    main()
