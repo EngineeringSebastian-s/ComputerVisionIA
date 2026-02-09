@@ -15,7 +15,6 @@ class CameraManager:
 
 class ColorProcessor:
     def __init__(self):
-        # Definición de rangos HSV para los colores
         self.color_ranges = {
             "Rojo": [
                 (np.array([0, 120, 70]), np.array([10, 255, 255])),
@@ -46,7 +45,6 @@ class ColorProcessor:
             for cnt in contours:
                 if cv2.contourArea(cnt) > 1500:
                     x, y, w, h = cv2.boundingRect(cnt)
-                    # Dibujar rectángulo y etiqueta
                     cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
                     cv2.putText(frame, f"{color_name}", (x, y - 10),
                                 cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
