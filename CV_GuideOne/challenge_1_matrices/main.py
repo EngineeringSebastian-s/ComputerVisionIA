@@ -126,14 +126,23 @@ class App:
         print("=" * 45 + "\n")
 
     def display_image(self, matrix):
-        plt.figure(figsize=(8, 6))
-        plt.imshow(matrix, cmap='magma')
-        plt.title("Visualización de Datos Aleatorios")
-        plt.colorbar(label="Intensidad de Píxel")
+        fig, axes = plt.subplots(2, 2, figsize=(12, 10))
+        fig.suptitle("Comparativa de Mapas de Color (1000x1000)", fontsize=16)
 
-        output_path = os.path.join(self.processor.folder_imgs, "matrix_result.png")
+        colormaps = ['magma', 'viridis', 'jet', 'gray']
+
+        for i, ax in enumerate(axes.flat):
+            cmap_name = colormaps[i]
+            im = ax.imshow(matrix, cmap=cmap_name)
+            ax.set_title(f"Mapa: {cmap_name}")
+            # Añadimos una barra de color individual para cada uno
+            fig.colorbar(im, ax=ax, fraction=0.046, pad=0.04)
+
+        plt.tight_layout(rect=[0, 0.03, 1, 0.95])
+
+        output_path = os.path.join(self.processor.folder_imgs, "comparativa_colores.png")
         plt.savefig(output_path)
-        print(f"Imagen guardada en: {output_path}")
+        print(f"SISTEMA: Comparativa guardada en: {output_path}")
         plt.show()
 
     def run(self):
