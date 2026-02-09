@@ -1,10 +1,11 @@
-import requests
-import numpy as np
-import matplotlib.pyplot as plt
-import time
 import os
+import time
 import tkinter as tk
 from tkinter import messagebox
+
+import matplotlib.pyplot as plt
+import numpy as np
+import requests
 
 
 class TrueRandomProcessor:
@@ -108,5 +109,5 @@ class App:
 
 
 if __name__ == "__main__":
-    app = App(n=100, m=100)
+    app = App(n=1000, m=1000)
     app.root.mainloop()
