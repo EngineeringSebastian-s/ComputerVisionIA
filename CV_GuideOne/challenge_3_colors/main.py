@@ -31,12 +31,17 @@ class ColorChallenge:
         Formato de ROI: (x_inicio, y_inicio, ancho, alto)
         """
         rois = {
-            "Region 1 (Rojo)": (100, 50, 30, 30),
-            "Region 2 (Verde)": (150, 50, 30, 30),
-            "Region 3 (Azul)": (250, 50, 30, 30),
-            "Region 4 (Amarillo)": (50, 150, 30, 30),
-            "Region 5 (Blanco)": (150, 150, 30, 30),
-            "Region 6 (Mixta)": (250, 150, 50, 50)
+            "Region 1 (Rojo)": (70, 310, 40, 40),
+
+            "Region 2 (Verde)": (850, 600, 40, 40),
+
+            "Region 3 (Azul)": (440, 415, 40, 40),
+
+            "Region 4 (Amarillo)": (250, 420, 40, 40),
+
+            "Region 5 (Blanco)": (600, 20, 40, 40),
+
+            "Region 6 (Mixta)": (380, 640, 80, 80)
         }
 
         print("\n" + "=" * 60)
