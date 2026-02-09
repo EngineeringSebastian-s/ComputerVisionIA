@@ -51,7 +51,7 @@ class ColorProcessor:
         return frame
 
 
-class ChallengeFour:
+class App:
 
     def __init__(self):
         self.selected_camera = None
@@ -113,7 +113,7 @@ class ChallengeFour:
 
 
 def main():
-    app = ChallengeFour()
+    app = App()
     app.root.mainloop()
 
 
