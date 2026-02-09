@@ -34,7 +34,6 @@ class MatrixProcessor:
         max_val = 0
         n = self.size ** 2
 
-        # Cálculo manual de estadísticas
         for row in self.matrix:
             for val in row:
                 if val < min_val: min_val = val
@@ -46,7 +45,6 @@ class MatrixProcessor:
         variance = (total_sq_sum / n) - (mean_val ** 2)
         std_dev = math.sqrt(variance)
 
-        # Aplanar y guardar en CSV
         flat_vector = [val for row in self.matrix for val in row]
         with open(self.file_path, 'w', newline='') as f:
             writer = csv.writer(f)
@@ -58,10 +56,8 @@ class MatrixProcessor:
     def run_numpy_processing(self):
         start_time = time.time()
 
-        # Leer el archivo generado anteriormente
         data_np = np.genfromtxt(self.file_path, delimiter=',')
 
-        # Cálculos optimizados
         stats = {
             "min": np.min(data_np),
             "max": np.max(data_np),
