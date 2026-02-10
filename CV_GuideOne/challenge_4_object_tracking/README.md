@@ -1,100 +1,55 @@
-## 1. Captura de video
+# Documentación: Reto 4 - Detección de Objetos por Color en Tiempo Real
 
-```python
-cap = cv2.VideoCapture(0)
-```
+1. Análisis de Resultados 
 
-Se inicializa la captura de video usando la cámara por defecto del sistema.
+Basado en las pruebas de ejecución del algoritmo de visión artificial para la identificación de figuras geométricas planas, se presentan las siguientes observaciones generales:
 
----
+## Rendimiento del Algoritmo
 
-## 2. Definición de rangos de color en HSV
-
-```python
-color_ranges = { ... }
-```
-
-Se definen los rangos HSV para cada color:
-
-* **Rojo**: requiere dos rangos debido a la discontinuidad del canal Hue.
-* **Verde** y **Azul**: usan un único rango.
-
-Estos rangos permiten segmentar únicamente la figura del color deseado.
+| Parámetro | Comportamiento Observado | Estado |
+|-----------|--------------------------|--------|
+| **Gama Cromática** | Detección precisa de figuras en color **Rojo**, **Verde** y **Azul**. | Exitoso |
+| **Velocidad de Respuesta** | El recuadro de delimitación (Bounding Box) aparece de forma casi instantánea. | Óptimo |
+| **Consistencia de Etiquetado** | La clasificación del color en pantalla corresponde fielmente al objeto real. | Exitoso |
+| **Estabilidad de Seguimiento** | Seguimiento continuo de la figura mientras se mantiene sobre un fondo neutro. | Estable |
 
 ---
 
-## 3. Conversión de espacio de color
+## 2. Observaciones Técnicas Detalladas
 
-```python
-hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-```
+2.1 Sensibilidad Lumínica y Ruido Ambiental 
 
-Cada frame capturado se convierte de BGR a HSV para facilitar la segmentación por color.
+* 
+**Dependencia de la Iluminación:** Se identificó que la robustez del sistema está directamente ligada a la calidad de la luz ambiental. 
 
----
 
-## 4. Segmentación por color
+* 
+**Impacto de las Sombras:** La presencia de sombras proyectadas sobre la figura altera los valores del espacio de color (probablemente HSV/RGB), lo que provoca que la detección falle o se pierda momentáneamente. 
 
-```python
-mask = cv2.inRange(hsv, lower, upper)
-```
 
-Se genera una máscara binaria donde:
+* 
+**Condiciones Críticas:** En escenarios de baja iluminación, el umbral de segmentación puede no ser alcanzado, resultando en una pérdida de seguimiento del objeto. 
 
-* Blanco → píxeles del color buscado
-* Negro → resto de la imagen
 
-Cuando un color tiene más de un rango (rojo), las máscaras se combinan.
 
----
+2.2 Segmentación sobre Fondo Neutro 
 
-## 5. Limpieza de la máscara
+* 
+**Contraste de Fondo:** El uso de una base blanca facilita la binarización de la imagen, permitiendo que los contornos de las figuras roja, verde y azul se aíslen con mayor claridad del resto de la escena. 
 
-```python
-cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
-cv2.morphologyEx(mask, cv2.MORPH_DILATE, kernel)
-```
 
-Se aplican operaciones morfológicas para:
-
-* Eliminar ruido
-* Rellenar huecos
-* Mejorar la forma del objeto detectado
 
 ---
 
-## 6. Detección de contornos
+## 3. Conclusiones Generales
 
-```python
-contours, _ = cv2.findContours(...)
-```
+1. 
+**Eficacia del Modelo de Color:** El sistema demuestra una alta fiabilidad en la detección de colores primarios bajo condiciones controladas, validando la lógica de filtrado implementada. 
 
-Se detectan los contornos externos de la figura segmentada.
 
-Se filtran por área para evitar falsos positivos pequeños.
+2. 
+**Limitaciones de Visión Tradicional:** Al depender de umbrales fijos o rangos de color específicos, el algoritmo es vulnerable a cambios dinámicos en el entorno (luces/sombras), una característica común en sistemas de visión artificial que no utilizan redes neuronales compensatorias. 
 
----
 
-## 7. Seguimiento y visualización
-
-```python
-cv2.rectangle(...)
-cv2.putText(...)
-```
-
-Para cada figura válida:
-
-* Se dibuja un **recuadro (bounding box)**.
-* Se escribe el nombre del color detectado sobre la imagen original.
-
----
-
-## 8. Visualización en tiempo real
-
-```python
-cv2.imshow(...)
-```
-
-Se muestra el video procesado en tiempo real.
-
-El programa finaliza al presionar la tecla **ESC**.
+3. 
+**Optimización de Procesamiento:** La rapidez con la que aparece el recuadro sugiere un procesamiento eficiente de los frames, lo que permite aplicaciones de seguimiento en tiempo real con baja latencia. 
