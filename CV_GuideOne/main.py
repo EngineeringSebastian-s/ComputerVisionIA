@@ -80,6 +80,16 @@ class MainDashboard:
         )
         btn_exit.pack(side="bottom", fill="x", pady=20, padx=50)
 
+    def launch_challenge_bonus(self):
+        try:
+            print("SISTEMA: Iniciando Reto 0 - PseudoAleatorio y Aleatorio...")
+            from bonus_pseudoaletorie_vs_aleatorie.main import main as start_bonus_pseudoaletorio
+            start_bonus_pseudoaletorio()
+        except ImportError:
+            messagebox.showerror("Error de Importación", "No se encontró el archivo: bonus_pseudoaleatorie_vs_aleatorie/main.py")
+        except Exception as e:
+            messagebox.showerror("Error", f"Ocurrió un error al lanzar el reto: {e}")
+
     def launch_challenge_one(self):
         try:
             print("SISTEMA: Iniciando Reto 1 - Matrices...")
