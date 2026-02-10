@@ -9,11 +9,11 @@ import requests
 
 
 class TrueRandomProcessor:
-
     def __init__(self):
         self.base_url = "https://www.random.org/integers/"
         self.current_dir = os.path.dirname(os.path.abspath(__file__))
         self.folder_imgs = os.path.join(self.current_dir, "images")
+
         if not os.path.exists(self.folder_imgs):
             os.makedirs(self.folder_imgs)
 
@@ -36,9 +36,10 @@ class TrueRandomProcessor:
         print(f"SISTEMA: Solicitando {current_request_size} números a RANDOM.ORG...")
 
         try:
-            response = requests.get(self.base_url, params=params)
+            response = requests.get(self.base_url, params=params, timeout=10)
             response.raise_for_status()
             numbers = [int(n) for n in response.text.split() if n.strip()]
+
             return numbers + self.fetch_true_random_numbers(amount - current_request_size)
         except Exception as e:
             print(f"ERROR: Fallo en la conexión: {e}")
@@ -49,13 +50,12 @@ class TrueRandomProcessor:
         data = self.fetch_true_random_numbers(total_elements)
 
         if len(data) != total_elements:
-            raise ValueError("No se obtuvieron suficientes datos de la API.")
+            raise ValueError("No se obtuvieron suficientes datos de la API para completar la matriz.")
 
         return np.array(data).reshape((rows, cols))
 
 
 class App:
-
     def __init__(self, n=100, m=100):
         self.n = n
         self.m = m
@@ -68,11 +68,17 @@ class App:
         self.root.geometry("400x250")
 
         tk.Label(self.root, text="RANDOM.ORG Visualizer", font=("Arial", 12, "bold")).pack(pady=10)
-        tk.Label(self.root, text=f"Matriz objetivo: {self.n}x{self.m}").pack()
+        tk.Label(self.root, text=f"Matriz objetivo: {self.n}x{self.m}", font=("Arial", 10)).pack()
 
         self.btn_run = tk.Button(
-            self.root, text="GENERAR DESDE RUIDO ATMOSFÉRICO",
-            command=self.execute, bg="#e67e22", fg="white", font=("Arial", 10, "bold")
+            self.root,
+            text="GENERAR DESDE RUIDO ATMOSFÉRICO",
+            command=self.execute,
+            bg="#e67e22",
+            fg="white",
+            font=("Arial", 10, "bold"),
+            padx=10,
+            pady=5
         )
         self.btn_run.pack(pady=20)
 
@@ -82,11 +88,11 @@ class App:
             matrix = self.processor.generate_matrix(self.n, self.m)
             duration = time.time() - start_time
 
-            print(f"SISTEMA: Matriz generada en {duration:.2f}s")
+            print(f"SISTEMA: Matriz generada exitosamente en {duration:.2f}s")
             self.plot_comparison(matrix)
 
         except Exception as e:
-            messagebox.showerror("Error", str(e))
+            messagebox.showerror("Error de Ejecución", str(e))
 
     def plot_comparison(self, matrix):
         fig, axes = plt.subplots(2, 2, figsize=(12, 10))
@@ -102,13 +108,18 @@ class App:
 
         plt.tight_layout(rect=[0, 0.03, 1, 0.95])
 
-        output_path = os.path.join(self.processor.folder_imgs, f"random_org_{self.n}x{self.m}.png")
+        output_filename = f"random_org_{self.n}x{self.m}.png"
+        output_path = os.path.join(self.processor.folder_imgs, output_filename)
         plt.savefig(output_path)
 
         print(f"SISTEMA: Imagen guardada en {output_path}")
         plt.show()
 
 
-if __name__ == "__main__":
+def main():
     app = App(n=100, m=100)
     app.root.mainloop()
+
+
+if __name__ == "__main__":
+    main()
