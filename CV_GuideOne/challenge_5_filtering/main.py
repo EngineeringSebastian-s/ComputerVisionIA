@@ -1,121 +1,121 @@
 import os
 import random
 import time
-
 import cv2
 import numpy as np
 
 
-class ConvolutionChallenge:
+class ImageManager:
 
-    def __init__(self, image_name="original.jpg"):
-        self.current_dir = os.path.dirname(os.path.abspath(__file__))
-        self.assets_path = os.path.join(self.current_dir, "images")
-        self.image_path = os.path.join(self.assets_path, image_name)
-        self.image = None
+    def __init__(self, subfolder="images"):
+        self.base_path = os.path.dirname(os.path.abspath(__file__))
+        self.assets_path = os.path.join(self.base_path, subfolder)
 
         if not os.path.exists(self.assets_path):
             os.makedirs(self.assets_path)
 
-    def load_image(self):
-        self.image = cv2.imread(self.image_path, cv2.IMREAD_GRAYSCALE)
-        if self.image is None:
-            raise FileNotFoundError(f"No se encontró la imagen en {self.image_path}")
-        return self.image
+    def load_grayscale(self, image_name):
+        path = os.path.join(self.assets_path, image_name)
+        image = cv2.imread(path, cv2.IMREAD_GRAYSCALE)
+        if image is None:
+            raise FileNotFoundError(f"No se encontró la imagen en: {path}")
+        return image
 
-    def add_salt_and_pepper(self, image, prob=0.05):
-        noisy = np.copy(image)
-        thres = 1 - prob
-        for i in range(image.shape[0]):
-            for j in range(image.shape[1]):
-                rdn = random.random()
-                if rdn < prob:
-                    noisy[i][j] = 0  # Pimienta
-                elif rdn > thres:
-                    noisy[i][j] = 255  # Sal
-        return noisy
-
-    def manual_median_filter(self, image, kernel_size=3):
-        output = np.zeros_like(image)
-        offset = kernel_size // 2
-        rows, cols = image.shape
-
-        print("SISTEMA: Procesando convolución manual...")
-
-        for i in range(offset, rows - offset):
-            for j in range(offset, cols - offset):
-                window = image[i - offset: i + offset + 1, j - offset: j + offset + 1]
-                output[i, j] = np.median(window)
-
-        return output
-
-    def save_images(self, images_dict):
+    def save_results(self, images_dict):
         for name, img in images_dict.items():
             save_path = os.path.join(self.assets_path, f"{name}.jpg")
             cv2.imwrite(save_path, img)
             print(f"ARCHIVO: Guardado {save_path}")
 
-    def run_comparison(self):
-        img = self.load_image()
 
-        noisy_img = self.add_salt_and_pepper(img, prob=0.02)
+class FilterProcessor:
 
-        start_manual = time.time()
-        manual_denoised = self.manual_median_filter(noisy_img, kernel_size=3)
-        time_manual = time.time() - start_manual
+    @staticmethod
+    def add_salt_and_pepper(image, prob=0.02):
+        noisy = np.copy(image)
+        height, width = image.shape
+        for i in range(height):
+            for j in range(width):
+                rdn = random.random()
+                if rdn < prob:
+                    noisy[i][j] = 0  # Pimienta
+                elif rdn > (1 - prob):
+                    noisy[i][j] = 255  # Sal
+        return noisy
 
-        start_cv2 = time.time()
-        opencv_denoised = cv2.medianBlur(noisy_img, 3)
-        time_cv2 = time.time() - start_cv2
+    @staticmethod
+    def manual_median_filter(image, kernel_size=3):
+        output = np.zeros_like(image)
+        offset = kernel_size // 2
+        rows, cols = image.shape
 
-        results = {
-            "original-gray": img,
-            "ruido-salt-pepper": noisy_img,
-            "filtro-manual": manual_denoised,
-            "filtro-opencv": opencv_denoised
-        }
+        print("SISTEMA: Iniciando convolución manual (Mediana)...")
+        for i in range(offset, rows - offset):
+            for j in range(offset, cols - offset):
+                window = image[i - offset: i + offset + 1, j - offset: j + offset + 1]
+                output[i, j] = np.median(window)
+        return output
 
-        print("\n" + "=" * 40)
-        print(f"{'MÉTODO':<15} | {'TIEMPO (s)':<15}")
-        print("-" * 40)
-        print(f"{'Manual':<15} | {time_manual:<15.4f}")
-        print(f"{'OpenCV':<15} | {time_cv2:<15.4f}")
-        print("=" * 40)
 
-        self.save_images(results)
-        self.show_results_grid(img, noisy_img, manual_denoised, opencv_denoised)
+class App:
+    def __init__(self, target_image="original.jpg"):
+        self.image_manager = ImageManager()
+        self.processor = FilterProcessor()
+        self.target_image = target_image
 
-    def show_results_grid(self, orig, noisy, manual, cv2_res):
-        top_row = np.hstack((orig, noisy))
-        bottom_row = np.hstack((manual, cv2_res))
-
+    def create_mosaic(self, images):
+        top_row = np.hstack((images[0], images[1]))
+        bottom_row = np.hstack((images[2], images[3]))
         grid = np.vstack((top_row, bottom_row))
 
         screen_res = 1280, 720
-        scale_width = screen_res[0] / grid.shape[1]
-        scale_height = screen_res[1] / grid.shape[0]
-        scale = min(scale_width, scale_height)
+        scale = min(screen_res[0] / grid.shape[1], screen_res[1] / grid.shape[0])
 
         if scale < 1.0:
-            window_size = (int(grid.shape[1] * scale), int(grid.shape[0] * scale))
-            grid_display = cv2.resize(grid, window_size)
-        else:
-            grid_display = grid
+            new_size = (int(grid.shape[1] * scale), int(grid.shape[0] * scale))
+            return cv2.resize(grid, new_size)
+        return grid
 
-        window_name = "Mosaico: Original | Ruido | Manual | OpenCV"
-        cv2.imshow(window_name, grid_display)
+    def run(self):
+        try:
+            img_gray = self.image_manager.load_grayscale(self.target_image)
+            noisy_img = self.processor.add_salt_and_pepper(img_gray)
 
-        print("\nSISTEMA: Mostrando cuadrícula. Presione cualquier tecla para cerrar.")
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
+            start = time.time()
+            manual_res = self.processor.manual_median_filter(noisy_img)
+            t_manual = time.time() - start
+
+            start = time.time()
+            opencv_res = cv2.medianBlur(noisy_img, 3)
+            t_opencv = time.time() - start
+
+            results_dict = {
+                "original-gray": img_gray,
+                "ruido-salt-pepper": noisy_img,
+                "filtro-manual": manual_res,
+                "filtro-opencv": opencv_res
+            }
+            self.image_manager.save_results(results_dict)
+
+            print("\n" + "=" * 40)
+            print(f"{'MÉTODO':<15} | {'TIEMPO (s)':<15}")
+            print("-" * 40)
+            print(f"{'Manual':<15} | {t_manual:<15.4f}")
+            print(f"{'OpenCV':<15} | {t_opencv:<15.4f}")
+            print("=" * 40)
+
+            mosaic = self.create_mosaic([img_gray, noisy_img, manual_res, opencv_res])
+            cv2.imshow("Reto Convoluciones: Cuadricula 2x2", mosaic)
+            cv2.waitKey(0)
+            cv2.destroyAllWindows()
+
+        except Exception as e:
+            print(f"ERROR EN LA APLICACIÓN: {e}")
 
 
 def main():
-    try:
-        challenge = ConvolutionChallenge("original.jpg")
-        challenge.run_comparison()
-    except Exception as e:
-        print(f"ERROR: {e}")
+    app = App("original.jpg")
+    app.run()
 
 
 if __name__ == "__main__":
