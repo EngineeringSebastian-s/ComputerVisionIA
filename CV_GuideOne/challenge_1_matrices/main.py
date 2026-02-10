@@ -14,8 +14,9 @@ class MatrixProcessor:
 
     def __init__(self, size=1000):
         self.size = size
-        self.folder_data = "data"
-        self.folder_imgs = "images"
+        self.current_dir = os.path.dirname(os.path.abspath(__file__))
+        self.folder_data = os.path.join(self.current_dir, "data")
+        self.folder_imgs = os.path.join(self.current_dir, "images")
         self.file_path = os.path.join(self.folder_data, "matrix_data.csv")
         self.matrix = []
 

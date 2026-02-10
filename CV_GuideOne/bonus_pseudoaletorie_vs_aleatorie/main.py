@@ -12,7 +12,8 @@ class TrueRandomProcessor:
 
     def __init__(self):
         self.base_url = "https://www.random.org/integers/"
-        self.folder_imgs = "images"
+        self.current_dir = os.path.dirname(os.path.abspath(__file__))
+        self.folder_imgs = os.path.join(self.current_dir, "images")
         if not os.path.exists(self.folder_imgs):
             os.makedirs(self.folder_imgs)
 
