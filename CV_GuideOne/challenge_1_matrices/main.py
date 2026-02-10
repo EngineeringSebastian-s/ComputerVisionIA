@@ -158,6 +158,10 @@ class App:
             fig.colorbar(im, ax=ax, fraction=0.046, pad=0.04)
 
         plt.tight_layout(rect=[0, 0.03, 1, 0.95])
+
+        output_path = os.path.join(self.processor.folder_imgs, "comparativa_colores.png")
+        plt.savefig(output_path)
+        print(f"SISTEMA: Comparativa guardada en: {output_path}")
         plt.show()
 
     def run(self):
