@@ -114,8 +114,8 @@ class MainDashboard:
     def launch_challenge_five(self):
         try:
             print("SISTEMA: Iniciando Reto 5 - Filtro de Ruido...")
-            from challenge_4_object_tracking.main import main as start_tracking_challenge
-            start_tracking_challenge()
+            from challenge_5_filtering.main import main as start_filtering_challenge
+            start_filtering_challenge()
         except ImportError:
             messagebox.showerror("Error de Importación",
                                  "No se encontró el archivo: challenge_5_filtering/main.py")
