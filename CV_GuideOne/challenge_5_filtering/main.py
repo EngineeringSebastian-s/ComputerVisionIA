@@ -1,15 +1,16 @@
-import cv2
-import numpy as np
 import os
 import random
 import time
+
+import cv2
+import numpy as np
 
 
 class ConvolutionChallenge:
 
     def __init__(self, image_name="original.jpg"):
         self.current_dir = os.path.dirname(os.path.abspath(__file__))
-        self.assets_path = os.path.join(self.current_dir,  "images")
+        self.assets_path = os.path.join(self.current_dir, "images")
         self.image_path = os.path.join(self.assets_path, image_name)
         self.image = None
 
