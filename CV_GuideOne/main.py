@@ -37,6 +37,14 @@ class MainDashboard:
         btn_container = tk.Frame(self.root, bg="#f0f2f5")
         btn_container.pack(expand=True, fill="both", padx=50)
 
+        btn_zero = ttk.Button(
+            btn_container,
+            text="0. Comparativa Aletoriedad Atmosferica",
+            style="Challenge.TButton",
+            command=self.launch_challenge_bonus
+        )
+        btn_zero.pack(fill="x", pady=10)
+
         btn_one = ttk.Button(
             btn_container,
             text="1. Matrices a Imágenes",
