@@ -8,7 +8,7 @@ class MainDashboard:
         self.root = tk.Tk()
         self.root.title("Computer Vision - Guía 1")
         self.root.geometry("450x350")
-        self.root.configure(bg="#f0f2f5")  # Color de fondo moderno
+        self.root.configure(bg="#f0f2f5")
 
         self.setup_styles()
         self.create_widgets()
