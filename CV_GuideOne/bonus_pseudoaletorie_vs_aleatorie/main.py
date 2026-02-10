@@ -109,5 +109,5 @@ class App:
 
 
 if __name__ == "__main__":
-    app = App(n=1000, m=1000)
+    app = App(n=100, m=100)
     app.root.mainloop()
