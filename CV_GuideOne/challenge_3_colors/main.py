@@ -4,84 +4,101 @@ import cv2
 import numpy as np
 
 
-class ColorChallenge:
+class ImageHandler:
 
-    def __init__(self, image_name="original.jpg"):
-        self.current_dir = os.path.dirname(os.path.abspath(__file__))
-        self.assets_path = os.path.join(self.current_dir, "images")
-        self.image_path = os.path.join(self.assets_path, image_name)
-        self.image = None
-        self.output_image = None
+    def __init__(self, subfolder="images"):
+        # Ruta dinámica absoluta
+        self.base_path = os.path.dirname(os.path.abspath(__file__))
+        self.assets_path = os.path.join(self.base_path, subfolder)
 
         if not os.path.exists(self.assets_path):
             os.makedirs(self.assets_path)
 
-    def load_image(self):
-        self.image = cv2.imread(self.image_path)
-        if self.image is None:
-            raise FileNotFoundError(f"No se encontró la imagen en {self.image_path}")
+    def load(self, file_name):
+        path = os.path.join(self.assets_path, file_name)
+        image = cv2.imread(path)
+        if image is None:
+            raise FileNotFoundError(f"No se pudo cargar la imagen en: {path}")
+        return image
 
-        print(f"SISTEMA: Imagen cargada con éxito.")
-        print(f"FORMA (Shape) de la imagen: {self.image.shape}")
-        self.output_image = self.image.copy()
+    def draw_roi(self, canvas, name, coords):
+        x, y, w, h = coords
+        label = name.split()[1]  # Extrae el color del nombre
+        cv2.rectangle(canvas, (x, y), (x + w, y + h), (0, 255, 0), 2)
+        cv2.putText(canvas, label, (x, y - 10),
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.4, (0, 255, 0), 1)
 
-    def analyze_regions(self):
-        rois = {
+    def save(self, image, file_name):
+        path = os.path.join(self.assets_path, file_name)
+        cv2.imwrite(path, image)
+        print(f"SISTEMA: Imagen de evidencia guardada en: {path}")
+
+
+class ColorAnalyzer:
+
+    @staticmethod
+    def get_stats(roi):
+        means = np.mean(roi, axis=(0, 1))
+        stds = np.std(roi, axis=(0, 1))
+        return means, stds
+
+
+class App:
+
+    def __init__(self, target_image="original.jpg"):
+        self.handler = ImageHandler()
+        self.analyzer = ColorAnalyzer()
+        self.target_name = target_image
+
+        # Diccionario de regiones de interés (x, y, w, h)
+        self.rois = {
             "Region 1 (Amarillo)": (92, 320, 15, 15),
-
             "Region 2 (Verde)": (965, 635, 15, 15),
-
             "Region 3 (Azul)": (325, 360, 15, 15),
-
             "Region 4 (Blanco)": (140, 580, 15, 15),
-
             "Region 5 (Rojo)": (960, 500, 15, 15),
-
             "Region 6 (Mixta)": (520, 690, 40, 40)
         }
 
-        print("\n" + "=" * 60)
-        print(f"{'REGIÓN':<20} | {'CANAL':<8} | {'MEDIA':<10} | {'DESV. EST':<10}")
-        print("-" * 60)
+    def run(self):
+        try:
+            # 1. Carga
+            original = self.handler.load(self.target_name)
+            canvas = original.copy()
+            print(f"SISTEMA: Imagen cargada con éxito. Shape: {original.shape}")
 
-        for name, (x, y, w, h) in rois.items():
-            # Extraer la región (Recorte de la matriz)
-            roi = self.image[y:y + h, x:x + w]
-
-            # Dibujar el recuadro en la imagen de salida
-            cv2.rectangle(self.output_image, (x, y), (x + w, y + h), (0, 255, 0), 2)
-            cv2.putText(self.output_image, name.split()[1], (x, y - 10),
-                        cv2.FONT_HERSHEY_SIMPLEX, 0.4, (0, 255, 0), 1)
-
-            # Calcular estadísticas por cada canal (B, G, R)
-            # axis=(0,1) calcula sobre los píxeles de la ROI
-            means = np.mean(roi, axis=(0, 1))
-            stds = np.std(roi, axis=(0, 1))
-
-            channels = ['Azul (B)', 'Verde (G)', 'Rojo (R)']
-            for i in range(3):
-                print(f"{name:<20} | {channels[i]:<8} | {means[i]:<10.2f} | {stds[i]:<10.2f}")
+            print("\n" + "=" * 60)
+            print(f"{'REGIÓN':<20} | {'CANAL':<8} | {'MEDIA':<10} | {'DESV. EST':<10}")
             print("-" * 60)
 
-    def show_results(self):
-        output_path = os.path.join(self.assets_path, "resultado_rois.jpg")
-        cv2.imwrite(output_path, self.output_image)
+            for name, coords in self.rois.items():
+                x, y, w, h = coords
+                roi_pixels = original[y:y + h, x:x + w]
 
-        cv2.imshow("Analisis de Colores - ROI", self.output_image)
-        print(f"\nSISTEMA: Imagen de evidencia guardada en: {output_path}")
-        print("Presione cualquier tecla para cerrar...")
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
+                means, stds = self.analyzer.get_stats(roi_pixels)
+
+                self.handler.draw_roi(canvas, name, coords)
+
+                channels = ['Azul (B)', 'Verde (G)', 'Rojo (R)']
+                for i in range(3):
+                    print(f"{name:<20} | {channels[i]:<8} | {means[i]:<10.2f} | {stds[i]:<10.2f}")
+                print("-" * 60)
+
+            # 3. Salida y Visualización
+            self.handler.save(canvas, "resultado_rois.jpg")
+
+            cv2.imshow("Analisis de Colores - ROI", canvas)
+            print("SISTEMA: Presione cualquier tecla para cerrar...")
+            cv2.waitKey(0)
+            cv2.destroyAllWindows()
+
+        except Exception as e:
+            print(f"ERROR: {e}")
 
 
 def main():
-    try:
-        challenge = ColorChallenge("original.jpg")
-        challenge.load_image()
-        challenge.analyze_regions()
-        challenge.show_results()
-    except Exception as e:
-        print(f"ERROR: {e}")
+    app = App("original.jpg")
+    app.run()
 
 
 if __name__ == "__main__":
