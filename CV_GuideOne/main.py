@@ -45,7 +45,14 @@ class MainDashboard:
         )
         btn_one.pack(fill="x", pady=10)
 
-        # Botón Reto 4
+        btn_three = ttk.Button(
+            btn_container,
+            text="3. Colores",
+            style="Challenge.TButton",
+            command=self.launch_challenge_three
+        )
+        btn_three.pack(fill="x", pady=10)
+
         btn_four = ttk.Button(
             btn_container,
             text="4. Seguimiento por Color",
@@ -53,6 +60,14 @@ class MainDashboard:
             command=self.launch_challenge_four
         )
         btn_four.pack(fill="x", pady=10)
+
+        btn_five = ttk.Button(
+            btn_container,
+            text="5. Filtro de Ruido",
+            style="Challenge.TButton",
+            command=self.launch_challenge_five
+        )
+        btn_five.pack(fill="x", pady=10)
 
         btn_exit = tk.Button(
             self.root,
@@ -75,6 +90,16 @@ class MainDashboard:
         except Exception as e:
             messagebox.showerror("Error", f"Ocurrió un error al lanzar el reto: {e}")
 
+    def launch_challenge_three(self):
+        try:
+            print("SISTEMA: Iniciando Reto 3 - Colores...")
+            from challenge_3_colors.main import main as start_color_challenge
+            start_color_challenge()
+        except ImportError:
+            messagebox.showerror("Error de Importación", "No se encontró el archivo: challenge_3_colors/main.py")
+        except Exception as e:
+            messagebox.showerror("Error", f"Ocurrió un error al lanzar el reto: {e}")
+
     def launch_challenge_four(self):
         try:
             print("SISTEMA: Iniciando Reto 4 - Seguimiento por Color...")
@@ -83,6 +108,17 @@ class MainDashboard:
         except ImportError:
             messagebox.showerror("Error de Importación",
                                  "No se encontró el archivo: challenge_4_object_tracking/main.py")
+        except Exception as e:
+            messagebox.showerror("Error", f"Ocurrió un error al lanzar el reto: {e}")
+
+    def launch_challenge_five(self):
+        try:
+            print("SISTEMA: Iniciando Reto 5 - Filtro de Ruido...")
+            from challenge_4_object_tracking.main import main as start_tracking_challenge
+            start_tracking_challenge()
+        except ImportError:
+            messagebox.showerror("Error de Importación",
+                                 "No se encontró el archivo: challenge_5_filtering/main.py")
         except Exception as e:
             messagebox.showerror("Error", f"Ocurrió un error al lanzar el reto: {e}")
 
