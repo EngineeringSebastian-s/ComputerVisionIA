@@ -4,3 +4,5 @@ matplotlib
 jupyter
 pygrabber
 requests
+pandas
+openpyxl
