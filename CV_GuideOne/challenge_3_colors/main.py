@@ -5,7 +5,6 @@ import numpy as np
 
 
 class ColorChallenge:
-    """Clase para analizar regiones cromáticas en una imagen."""
 
     def __init__(self, image_name="original.jpg"):
         self.current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -18,7 +17,6 @@ class ColorChallenge:
             os.makedirs(self.assets_path)
 
     def load_image(self):
-        """Carga la imagen y muestra sus dimensiones."""
         self.image = cv2.imread(self.image_path)
         if self.image is None:
             raise FileNotFoundError(f"No se encontró la imagen en {self.image_path}")
@@ -28,22 +26,18 @@ class ColorChallenge:
         self.output_image = self.image.copy()
 
     def analyze_regions(self):
-        """
-        Define, analiza y dibuja las 6 regiones de interés (ROI).
-        Formato de ROI: (x_inicio, y_inicio, ancho, alto)
-        """
         rois = {
-            "Region 1 (Rojo)": (70, 310, 40, 40),
+            "Region 1 (Amarillo)": (92, 320, 15, 15),
 
-            "Region 2 (Verde)": (850, 600, 40, 40),
+            "Region 2 (Verde)": (965, 635, 15, 15),
 
-            "Region 3 (Azul)": (440, 415, 40, 40),
+            "Region 3 (Azul)": (325, 360, 15, 15),
 
-            "Region 4 (Amarillo)": (250, 420, 40, 40),
+            "Region 4 (Blanco)": (140, 580, 15, 15),
 
-            "Region 5 (Blanco)": (600, 20, 40, 40),
+            "Region 5 (Rojo)": (960, 500, 15, 15),
 
-            "Region 6 (Mixta)": (380, 640, 80, 80)
+            "Region 6 (Mixta)": (520, 690, 40, 40)
         }
 
         print("\n" + "=" * 60)
