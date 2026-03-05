@@ -1,0 +1,30 @@
+services:
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: guia2-ia-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./api/app/output:/app/app/output
+    restart: unless-stopped
+    networks:
+      - guia2-ia-network
+
+  frontend:
+    build:
+      context: ./frontend/guia2-vision-ia
+      dockerfile: Dockerfile
+    container_name: guia2-ia-frontend
+    ports:
+      - "4200:80"
+    depends_on:
+      - api
+    restart: unless-stopped
+    networks:
+      - guia2-ia-network
+
+networks:
+  guia2-ia-network:
+    driver: bridge

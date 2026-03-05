@@ -1,0 +1,12 @@
+FEATURE SET: RGB
+Mejor modelo: SVM-RBF
+
+              precision    recall  f1-score   support
+
+       coast       0.80      0.88      0.84       108
+      forest       0.91      0.86      0.89        99
+     highway       0.79      0.74      0.76        81
+
+    accuracy                           0.83       288
+   macro avg       0.83      0.83      0.83       288
+weighted avg       0.84      0.83      0.83       288

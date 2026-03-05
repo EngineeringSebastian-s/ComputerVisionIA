@@ -1,0 +1,75 @@
+<section class="response-page">
+  <header class="response-header">
+    <a routerLink="/" class="back-link">← Volver al menu</a>
+
+    @if (response(); as data) {
+      <h1>{{ data.type | titlecase }}</h1>
+    } @else {
+      <h1>Respuesta del ejercicio</h1>
+    }
+
+    @if (renderedAt(); as timestamp) {
+      <p class="meta">Ultima ejecucion: {{ timestamp | date: 'medium' }}</p>
+    }
+  </header>
+
+  @if (loading()) {
+    <section class="state state--loading">
+      <div class="pulse"></div>
+      <p>Ejecutando ejercicio en la API...</p>
+    </section>
+  }
+
+  @if (error(); as errorMessage) {
+    <section class="state state--error">
+      <h2>Fallo de ejecucion</h2>
+      <p>{{ errorMessage }}</p>
+    </section>
+  }
+
+  @if (!loading() && !error() && response(); as data) {
+    <section class="panel">
+      <h2>Resultados estructurados</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Campo</th>
+              <th>Valor</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (row of summaryRows(); track row.key) {
+              <tr>
+                <td>{{ row.key }}</td>
+                <td>{{ row.value }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Imagenes de evidencia</h2>
+      <div class="image-grid">
+        @for (image of data.images; track image.name) {
+          <article class="image-card">
+            <header>
+              <h3>{{ image.name }}</h3>
+              @if (image.url) {
+                <a [href]="toImageUrl(image)" target="_blank" rel="noreferrer">Abrir recurso</a>
+              }
+            </header>
+            <img [src]="toImageUrl(image)" [alt]="image.name" loading="lazy" />
+          </article>
+        }
+      </div>
+    </section>
+
+    <section class="panel panel--json">
+      <h2>JSON completo</h2>
+      <pre>{{ data | json }}</pre>
+    </section>
+  }
+</section>

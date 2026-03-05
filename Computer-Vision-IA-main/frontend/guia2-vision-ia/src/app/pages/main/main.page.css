@@ -1,0 +1,175 @@
+:host {
+  display: block;
+}
+
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 1.5rem;
+  padding: 2rem;
+  border: 1px solid var(--line);
+  border-radius: 1.25rem;
+  background: linear-gradient(125deg, rgba(8, 22, 28, 0.9), rgba(16, 41, 41, 0.78));
+  overflow: hidden;
+}
+
+.hero__copy {
+  position: relative;
+  z-index: 2;
+}
+
+.eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.74rem;
+  color: var(--muted);
+}
+
+h1 {
+  margin: 0.65rem 0 0;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  line-height: 1.05;
+  color: var(--text);
+}
+
+.lead {
+  margin: 0.8rem 0 0;
+  max-width: 46ch;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.hero__mesh {
+  position: relative;
+  min-height: 190px;
+  border-radius: 1rem;
+  border: 1px solid rgba(112, 255, 224, 0.22);
+  background:
+    radial-gradient(circle at 18% 26%, rgba(112, 255, 224, 0.28), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(255, 189, 89, 0.3), transparent 40%),
+    linear-gradient(145deg, rgba(7, 25, 32, 0.9), rgba(10, 15, 19, 0.82));
+}
+
+.hero__mesh::before,
+.hero__mesh::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.hero__mesh::before {
+  background-image: linear-gradient(rgba(110, 255, 224, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(110, 255, 224, 0.12) 1px, transparent 1px);
+  background-size: 18px 18px;
+  mix-blend-mode: screen;
+}
+
+.hero__mesh::after {
+  background: radial-gradient(circle at 50% 60%, rgba(255, 169, 76, 0.45), transparent 32%);
+}
+
+.menu {
+  margin-top: 1.4rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.menu__header h2 {
+  margin: 0;
+  color: var(--text);
+  font-size: 1.3rem;
+}
+
+.menu__header p {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+}
+
+.menu__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.exercise-card {
+  border-radius: 1rem;
+  border: 1px solid var(--line);
+  background: linear-gradient(170deg, rgba(18, 44, 45, 0.82), rgba(12, 25, 31, 0.84));
+  padding: 1rem;
+  display: grid;
+  gap: 0.9rem;
+  min-height: 180px;
+  transform: translateY(0);
+  transition: transform 0.24s ease, border-color 0.24s ease;
+}
+
+.exercise-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(112, 255, 224, 0.46);
+}
+
+.exercise-card--disabled {
+  opacity: 0.72;
+}
+
+.exercise-card__badge {
+  width: fit-content;
+  font-size: 0.79rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: #08312f;
+  background: linear-gradient(120deg, #6ffff0, #ffd678);
+  border-radius: 999px;
+  padding: 0.26rem 0.62rem;
+}
+
+.exercise-card__description {
+  margin: 0;
+  color: var(--text);
+  line-height: 1.5;
+  font-size: 0.94rem;
+}
+
+.exercise-card__button {
+  margin-top: auto;
+  border: 0;
+  border-radius: 0.7rem;
+  padding: 0.62rem 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: #082f2c;
+  background: linear-gradient(120deg, #6ffff0, #ffc96f);
+}
+
+.exercise-card__soon {
+  margin-top: auto;
+  width: fit-content;
+  padding: 0.3rem 0.62rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  font-size: 0.74rem;
+  letter-spacing: 0.03em;
+  color: var(--muted);
+}
+
+@media (max-width: 950px) {
+  .menu__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .menu__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding: 1.25rem;
+  }
+}

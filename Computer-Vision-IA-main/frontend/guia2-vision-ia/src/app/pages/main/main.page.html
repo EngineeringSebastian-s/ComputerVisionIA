@@ -1,0 +1,35 @@
+<section class="hero">
+  <div class="hero__copy">
+    <p class="eyebrow">Vision por Computadora + Machine Learning</p>
+    <h1>Laboratorio IA</h1>
+    <p class="lead">
+      Selecciona un ejercicio para ejecutar la API de FastAPI y visualizar resultados, metricas y
+      evidencias graficas.
+    </p>
+  </div>
+  <div class="hero__mesh" aria-hidden="true"></div>
+</section>
+
+<section class="menu">
+  <header class="menu__header">
+    <h2>Ejercicios</h2>
+    <p>6 opciones preparadas para escalar tu plataforma.</p>
+  </header>
+
+  <div class="menu__grid">
+    @for (item of menuItems; track item.type) {
+      <article class="exercise-card" [class.exercise-card--disabled]="!item.enabled">
+        <div class="exercise-card__badge">{{ item.label }}</div>
+        <p class="exercise-card__description">{{ item.description }}</p>
+
+        @if (item.enabled) {
+          <button type="button" class="exercise-card__button" (click)="openExercise(item.type, item.enabled)">
+            Ejecutar
+          </button>
+        } @else {
+          <span class="exercise-card__soon">Proximamente</span>
+        }
+      </article>
+    }
+  </div>
+</section>
