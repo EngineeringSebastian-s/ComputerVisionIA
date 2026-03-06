@@ -28,27 +28,197 @@
   }
 
   @if (!loading() && !error() && response(); as data) {
-    <section class="panel">
-      <h2>Resultados estructurados</h2>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Campo</th>
-              <th>Valor</th>
-            </tr>
-          </thead>
-          <tbody>
-            @for (row of summaryRows(); track row.key) {
+    @if (isType('ejercicio1')) {
+      <section class="panel">
+        <h2>Resumen general</h2>
+        <div class="group-grid group-grid--2">
+          <article class="data-card">
+            <h3>Mejor modelo</h3>
+            <p class="kpi-value">{{ exercise1BestModel() }}</p>
+            <p class="kpi-label">Accuracy: {{ formatMetric(exercise1BestAccuracy()) }}</p>
+          </article>
+
+          <article class="data-card">
+            <h3>Accuracy por modelo</h3>
+            <div class="table-wrap">
+              <table class="compact-table">
+                <thead>
+                  <tr>
+                    <th>Modelo</th>
+                    <th>Accuracy</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (row of exercise1Scores(); track row.model) {
+                    <tr>
+                      <td>{{ row.model }}</td>
+                      <td>{{ formatMetric(row.accuracy) }}</td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Metricas de clasificacion por modelo</h2>
+        <div class="group-grid group-grid--3">
+          @for (report of exercise1Reports(); track report.model) {
+            <article class="data-card">
+              <header class="card-header">
+                <h3>{{ report.model }}</h3>
+                <span class="chip">acc {{ formatMetric(report.accuracy, 3) }}</span>
+              </header>
+
+              <div class="table-wrap">
+                <table class="compact-table">
+                  <thead>
+                    <tr>
+                      <th>Clase</th>
+                      <th>Prec</th>
+                      <th>Rec</th>
+                      <th>F1</th>
+                      <th>Sup</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (metric of report.rows; track metric.label) {
+                      <tr>
+                        <td>{{ metric.label }}</td>
+                        <td>{{ formatMetric(metric.precision, 3) }}</td>
+                        <td>{{ formatMetric(metric.recall, 3) }}</td>
+                        <td>{{ formatMetric(metric.f1, 3) }}</td>
+                        <td>{{ metric.support }}</td>
+                      </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </article>
+          }
+        </div>
+      </section>
+    } @else if (isType('ejercicio3')) {
+      <section class="panel">
+        <h2>Resumen de modelos (KMeans y MLP)</h2>
+        <div class="group-grid group-grid--2">
+          <article class="data-card">
+            <h3>KMeans</h3>
+            <p class="kpi-label">K optimo: <strong>{{ kmeansBestK() }}</strong></p>
+            <p class="kpi-label">Accuracy test: <strong>{{ formatMetric(kmeansAccuracy()) }}</strong></p>
+
+            <div class="table-wrap">
+              <table class="compact-table">
+                <thead>
+                  <tr>
+                    <th>K</th>
+                    <th>Inercia</th>
+                    <th>Silhouette</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (row of kmeansSeries(); track row.k) {
+                    <tr>
+                      <td>{{ row.k }}</td>
+                      <td>{{ formatMetric(row.inertia, 2) }}</td>
+                      <td>
+                        @if (row.silhouette === null) {
+                          -
+                        } @else {
+                          {{ formatMetric(row.silhouette, 3) }}
+                        }
+                      </td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="data-card">
+            <h3>MLP</h3>
+            <p class="kpi-label">Best CV accuracy: <strong>{{ formatMetric(mlpBestCvAccuracy()) }}</strong></p>
+            <p class="kpi-label">Test accuracy: <strong>{{ formatMetric(mlpTestAccuracy()) }}</strong></p>
+
+            <h4 class="subheading">Mejores hiperparametros</h4>
+            <ul class="kv-list">
+              @for (param of mlpBestParams(); track param.key) {
+                <li>
+                  <span>{{ param.key }}</span>
+                  <strong>{{ param.value }}</strong>
+                </li>
+              }
+            </ul>
+          </article>
+        </div>
+      </section>
+    } @else if (isType('ejercicio5')) {
+      <section class="panel">
+        <h2>Resultados por conjunto de caracteristicas</h2>
+        <div class="group-grid group-grid--1">
+          @for (mode of exercise5Modes(); track mode.featureSet) {
+            <article class="data-card mode-card">
+              <header class="card-header">
+                <h3>{{ mode.featureSet }}</h3>
+                <div class="chips">
+                  <span class="chip">best {{ mode.bestModel }}</span>
+                  <span class="chip">f1 {{ formatMetric(mode.bestF1, 3) }}</span>
+                </div>
+              </header>
+
+              <div class="table-wrap">
+                <table class="compact-table">
+                  <thead>
+                    <tr>
+                      <th>Modelo</th>
+                      <th>CV F1 mean</th>
+                      <th>CV F1 std</th>
+                      <th>Test acc</th>
+                      <th>Test F1</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (row of mode.table; track row.model) {
+                      <tr>
+                        <td>{{ row.model }}</td>
+                        <td>{{ formatMetric(row.cvF1Mean, 3) }}</td>
+                        <td>{{ formatMetric(row.cvF1Std, 3) }}</td>
+                        <td>{{ formatMetric(row.testAccuracy, 3) }}</td>
+                        <td>{{ formatMetric(row.testF1, 3) }}</td>
+                      </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </article>
+          }
+        </div>
+      </section>
+    } @else {
+      <section class="panel">
+        <h2>Resultados estructurados</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
               <tr>
-                <td>{{ row.key }}</td>
-                <td>{{ row.value }}</td>
+                <th>Campo</th>
+                <th>Valor</th>
               </tr>
-            }
-          </tbody>
-        </table>
-      </div>
-    </section>
+            </thead>
+            <tbody>
+              @for (row of summaryRows(); track row.key) {
+                <tr>
+                  <td>{{ row.key }}</td>
+                  <td>{{ row.value }}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </section>
+    }
 
     <section class="panel">
       <h2>Imagenes de evidencia</h2>
