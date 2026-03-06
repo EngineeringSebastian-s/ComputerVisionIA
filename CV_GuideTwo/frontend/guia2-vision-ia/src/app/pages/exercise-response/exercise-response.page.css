@@ -72,7 +72,7 @@
 .data-card {
   border: 1px solid var(--line);
   border-radius: 0.85rem;
-  padding: 0.85rem;
+  padding: 0.09rem;
   background: rgba(10, 20, 25, 0.72);
   min-width: 0;
 }
@@ -156,6 +156,26 @@
 
 .mode-card {
   width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.mode-card .table-wrap {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.mode-card .compact-table {
+  width: 100%;
+  min-width: 760px;
+  table-layout: fixed;
+}
+
+.mode-card .compact-table th,
+.mode-card .compact-table td {
+  white-space: nowrap;
 }
 
 .table-wrap {
@@ -315,6 +335,10 @@ td {
 }
 
 @media (max-width: 920px) {
+  .mode-card .compact-table {
+    min-width: 620px;
+  }
+
   .group-grid--2,
   .group-grid--3 {
     grid-template-columns: 1fr;
