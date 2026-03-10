@@ -6,6 +6,7 @@ from app.services.exercise2_service import Exercise2Service
 from app.services.exercise3_service import Exercise3Service
 from app.services.exercise4_service import Exercise4Service
 from app.services.exercise5_service import Exercise5Service
+from app.services.exercise6_service import Exercise6Service
 
 
 class ExerciseRunnerService:
@@ -16,6 +17,7 @@ class ExerciseRunnerService:
             "ejercicio3": Exercise3Service(),
             "ejercicio4": Exercise4Service(),
             "ejercicio5": Exercise5Service(),
+            "ejercicio6": Exercise6Service(),
         }
 
     def execute(self, request: ExerciseRequest) -> ExerciseResponse:
