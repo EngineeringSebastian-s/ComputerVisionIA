@@ -16,7 +16,7 @@ services:
     build:
       context: ./guia2-vision-ia-web
       dockerfile: Dockerfile
-    container_name: guia2-vision-ia-frontend
+    container_name: guia2-vision-ia-web
     ports:
       - "8007:80" 
     depends_on:
