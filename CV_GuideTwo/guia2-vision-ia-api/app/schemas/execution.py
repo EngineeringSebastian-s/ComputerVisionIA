@@ -12,6 +12,7 @@ class ExerciseType(str, Enum):
     ejercicio3 = "ejercicio3"
     ejercicio4 = "ejercicio4"
     ejercicio5 = "ejercicio5"
+    ejercicio6 = "ejercicio6"
 
 
 class ExerciseRequest(BaseModel):
