@@ -28,14 +28,14 @@
   }
 
   @if (!loading() && !error() && response(); as data) {
-    @if (isType('ejercicio1')) {
+    @if (isGroupedClassifierExercise()) {
       <section class="panel">
         <h2>Resumen general</h2>
         <div class="group-grid group-grid--2">
           <article class="data-card">
             <h3>Mejor modelo</h3>
-            <p class="kpi-value">{{ exercise1BestModel() }}</p>
-            <p class="kpi-label">Accuracy: {{ formatMetric(exercise1BestAccuracy()) }}</p>
+            <p class="kpi-value">{{ groupedBestModel() }}</p>
+            <p class="kpi-label">Accuracy: {{ formatMetric(groupedBestAccuracy()) }}</p>
           </article>
 
           <article class="data-card">
@@ -49,7 +49,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @for (row of exercise1Scores(); track row.model) {
+                  @for (row of groupedScores(); track row.model) {
                     <tr>
                       <td>{{ row.model }}</td>
                       <td>{{ formatMetric(row.accuracy) }}</td>
@@ -62,10 +62,35 @@
         </div>
       </section>
 
+      @if (supportsBestParams()) {
+        <section class="panel">
+          <h2>Mejores hiperparametros</h2>
+          <div class="group-grid group-grid--2">
+            @for (block of groupedBestParams(); track block.model) {
+              <article class="data-card data-card--params">
+                <header class="card-header">
+                  <h3>{{ block.model }}</h3>
+                  <span class="chip">ajuste optimo</span>
+                </header>
+
+                <ul class="kv-list">
+                  @for (param of block.params; track param.key) {
+                    <li>
+                      <span>{{ param.key }}</span>
+                      <strong>{{ param.value }}</strong>
+                    </li>
+                  }
+                </ul>
+              </article>
+            }
+          </div>
+        </section>
+      }
+
       <section class="panel">
         <h2>Metricas de clasificacion por modelo</h2>
         <div class="group-grid group-grid--3">
-          @for (report of exercise1Reports(); track report.model) {
+          @for (report of groupedReports(); track report.model) {
             <article class="data-card">
               <header class="card-header">
                 <h3>{{ report.model }}</h3>
@@ -187,6 +212,80 @@
                         <td>{{ formatMetric(row.cvF1Std, 3) }}</td>
                         <td>{{ formatMetric(row.testAccuracy, 3) }}</td>
                         <td>{{ formatMetric(row.testF1, 3) }}</td>
+                      </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </article>
+          }
+        </div>
+      </section>
+    } @else if (isType('ejercicio6')) {
+      <section class="panel">
+        <h2>Comparacion de configuraciones</h2>
+        <div class="group-grid group-grid--2">
+          <article class="data-card">
+            <h3>Mejor modelo</h3>
+            <p class="kpi-value">{{ exercise6BestModel() }}</p>
+            <p class="kpi-label">Accuracy: {{ formatMetric(exercise6BestAccuracy()) }}</p>
+          </article>
+
+          <article class="data-card">
+            <h3>Resumen comparativo</h3>
+            <div class="table-wrap">
+              <table class="compact-table">
+                <thead>
+                  <tr>
+                    <th>Modelo</th>
+                    <th>Accuracy</th>
+                    <th>F1 macro</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (row of exercise6ComparisonRows(); track row.model) {
+                    <tr>
+                      <td>{{ row.model }}</td>
+                      <td>{{ formatMetric(row.accuracy, 3) }}</td>
+                      <td>{{ formatMetric(row.f1Macro, 3) }}</td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Metricas de clasificacion por modelo</h2>
+        <div class="group-grid group-grid--3">
+          @for (report of groupedReports(); track report.model) {
+            <article class="data-card">
+              <header class="card-header">
+                <h3>{{ report.model }}</h3>
+                <span class="chip">acc {{ formatMetric(report.accuracy, 3) }}</span>
+              </header>
+
+              <div class="table-wrap">
+                <table class="compact-table">
+                  <thead>
+                    <tr>
+                      <th>Clase</th>
+                      <th>Prec</th>
+                      <th>Rec</th>
+                      <th>F1</th>
+                      <th>Sup</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (metric of report.rows; track metric.label) {
+                      <tr>
+                        <td>{{ metric.label }}</td>
+                        <td>{{ formatMetric(metric.precision, 3) }}</td>
+                        <td>{{ formatMetric(metric.recall, 3) }}</td>
+                        <td>{{ formatMetric(metric.f1, 3) }}</td>
+                        <td>{{ metric.support }}</td>
                       </tr>
                     }
                   </tbody>

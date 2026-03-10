@@ -11,7 +11,7 @@ interface SummaryRow {
   value: string;
 }
 
-interface Exercise1ScoreRow {
+interface ExerciseScoreRow {
   model: string;
   accuracy: number;
 }
@@ -24,10 +24,20 @@ interface ReportMetricRow {
   support: number;
 }
 
-interface Exercise1ReportBlock {
+interface ExerciseReportBlock {
   model: string;
   accuracy: number;
   rows: ReportMetricRow[];
+}
+
+interface ParamItem {
+  key: string;
+  value: string;
+}
+
+interface ModelParamBlock {
+  model: string;
+  params: ParamItem[];
 }
 
 interface KmeansSeriesRow {
@@ -49,6 +59,12 @@ interface Exercise5ModeBlock {
   bestModel: string;
   bestF1: number;
   table: Exercise5ModelRow[];
+}
+
+interface Exercise6ComparisonRow {
+  model: string;
+  accuracy: number;
+  f1Macro: number;
 }
 
 @Component({
@@ -132,20 +148,30 @@ export class ExerciseResponsePageComponent implements OnInit {
     return this.response()?.type === type;
   }
 
+  protected isGroupedClassifierExercise(): boolean {
+    const type = this.response()?.type;
+    return type === 'ejercicio1' || type === 'ejercicio2' || type === 'ejercicio4';
+  }
+
+  protected supportsBestParams(): boolean {
+    const type = this.response()?.type;
+    return type === 'ejercicio2' || type === 'ejercicio4';
+  }
+
   protected formatMetric(value: unknown, decimals = 4): string {
     const n = this.toNumber(value);
     return Number.isFinite(n) ? n.toFixed(decimals) : '-';
   }
 
-  protected exercise1BestModel(): string {
+  protected groupedBestModel(): string {
     return String(this.response()?.summary?.['best_model'] ?? '-');
   }
 
-  protected exercise1BestAccuracy(): number {
+  protected groupedBestAccuracy(): number {
     return this.toNumber(this.response()?.summary?.['best_accuracy']);
   }
 
-  protected exercise1Scores(): Exercise1ScoreRow[] {
+  protected groupedScores(): ExerciseScoreRow[] {
     const summary = this.response()?.summary;
     if (!summary) {
       return [];
@@ -158,7 +184,7 @@ export class ExerciseResponsePageComponent implements OnInit {
     }));
   }
 
-  protected exercise1Reports(): Exercise1ReportBlock[] {
+  protected groupedReports(): ExerciseReportBlock[] {
     const summary = this.response()?.summary;
     if (!summary) {
       return [];
@@ -184,6 +210,25 @@ export class ExerciseResponsePageComponent implements OnInit {
         model,
         accuracy: this.toNumber(report['accuracy']),
         rows,
+      };
+    });
+  }
+
+  protected groupedBestParams(): ModelParamBlock[] {
+    const summary = this.response()?.summary;
+    if (!summary) {
+      return [];
+    }
+
+    const bestParams = this.toRecord(summary['best_params']);
+    return Object.entries(bestParams).map(([model, paramsRaw]) => {
+      const params = this.toRecord(paramsRaw);
+      return {
+        model,
+        params: Object.entries(params).map(([key, value]) => ({
+          key,
+          value: this.stringifyValue(value),
+        })),
       };
     });
   }
@@ -253,6 +298,30 @@ export class ExerciseResponsePageComponent implements OnInit {
         bestModel: String(mode['best_model'] ?? '-'),
         bestF1: this.toNumber(mode['best_test_f1_macro']),
         table,
+      };
+    });
+  }
+
+  protected exercise6BestModel(): string {
+    return String(this.response()?.summary?.['best_model'] ?? '-');
+  }
+
+  protected exercise6BestAccuracy(): number {
+    return this.toNumber(this.response()?.summary?.['best_accuracy']);
+  }
+
+  protected exercise6ComparisonRows(): Exercise6ComparisonRow[] {
+    const rows = this.response()?.summary?.['comparison_table'];
+    if (!Array.isArray(rows)) {
+      return [];
+    }
+
+    return rows.map((rowRaw) => {
+      const row = this.toRecord(rowRaw);
+      return {
+        model: String(row['model'] ?? '-'),
+        accuracy: this.toNumber(row['accuracy']),
+        f1Macro: this.toNumber(row['f1_macro']),
       };
     });
   }

@@ -72,9 +72,14 @@
 .data-card {
   border: 1px solid var(--line);
   border-radius: 0.85rem;
-  padding: 0.09rem;
+  padding: 0.9rem;
   background: rgba(10, 20, 25, 0.72);
   min-width: 0;
+}
+
+.data-card--params {
+  display: grid;
+  align-content: start;
 }
 
 .data-card h3 {
