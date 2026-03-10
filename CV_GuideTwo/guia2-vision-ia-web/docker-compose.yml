@@ -1,0 +1,7 @@
+services:
+  frontend:
+    build: .
+    container_name: vision_ia_frontend
+    ports:
+      - "8007:4200"
+    restart: unless-stopped
