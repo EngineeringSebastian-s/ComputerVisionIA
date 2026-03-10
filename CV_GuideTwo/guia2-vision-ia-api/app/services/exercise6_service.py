@@ -75,7 +75,7 @@ class Exercise6Service(ExerciseContract):
     def execute(self, request: ExerciseRequest) -> ExerciseResponse:
         # Ajusta la ruta según la estructura real de tu proyecto
         project_root = Path(__file__).resolve().parents[2]
-        dataset_dir = project_root / "dataset" / "Cats&Dogs"
+        dataset_dir = project_root / "datasets" / "Cats&Dogs"
 
         if not dataset_dir.exists():
             raise FileNotFoundError(f"No existe el dataset en {dataset_dir}")
