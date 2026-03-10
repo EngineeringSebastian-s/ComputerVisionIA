@@ -24,7 +24,6 @@ from app.utils.static_url import build_static_url
 class Exercise4Service(ExerciseContract):
     @property
     def exercise_type(self) -> str:
-        # Asegúrate de agregar 'ejercicio4' a tu Enum ExerciseType en app/schemas/execution.py
         return ExerciseType.ejercicio4.value
 
     def execute(self, request: ExerciseRequest) -> ExerciseResponse:
