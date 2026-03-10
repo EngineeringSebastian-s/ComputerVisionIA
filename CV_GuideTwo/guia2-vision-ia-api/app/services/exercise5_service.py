@@ -87,10 +87,10 @@ class Exercise5Service(ExerciseContract):
         return np.concatenate(parts)
 
     def _load_3scenes(
-        self,
-        root_dir: Path,
-        mode: str,
-        resize: tuple[int, int],
+            self,
+            root_dir: Path,
+            mode: str,
+            resize: tuple[int, int],
     ) -> tuple[np.ndarray, np.ndarray]:
         x, y = [], []
         classes = sorted([p.name for p in root_dir.iterdir() if p.is_dir()])
@@ -143,11 +143,11 @@ class Exercise5Service(ExerciseContract):
         }
 
     def _evaluate_mode(
-        self,
-        x: np.ndarray,
-        y: np.ndarray,
-        mode_tag: str,
-        out_dir: Path,
+            self,
+            x: np.ndarray,
+            y: np.ndarray,
+            mode_tag: str,
+            out_dir: Path,
     ) -> tuple[dict, Path, Path]:
         le = LabelEncoder()
         y_enc = le.fit_transform(y)

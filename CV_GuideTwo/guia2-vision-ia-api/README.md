@@ -23,6 +23,7 @@ Body base:
 ```
 
 Tipos soportados:
+
 - `ejercicio1`
 - `ejercicio2`
 - `ejercicio3`
@@ -36,13 +37,19 @@ Body con opciones:
 {
   "type": "ejercicio5",
   "options": {
-    "feature_modes": ["rgb+hsv+texture"],
-    "resize": [128, 128]
+    "feature_modes": [
+      "rgb+hsv+texture"
+    ],
+    "resize": [
+      128,
+      128
+    ]
   }
 }
 ```
 
 La respuesta devuelve:
+
 - `summary`: resultados numéricos/reportes.
 - `images`: imágenes generadas con ruta y contenido en base64.
 

@@ -5,13 +5,13 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 from sklearn.datasets import load_iris
 from sklearn.ensemble import GradientBoostingClassifier
-from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import (
     ConfusionMatrixDisplay,
     accuracy_score,
     classification_report,
 )
 from sklearn.model_selection import GridSearchCV, StratifiedKFold, train_test_split
+from sklearn.neighbors import KNeighborsClassifier
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 

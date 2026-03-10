@@ -4,16 +4,16 @@ from pathlib import Path
 
 import matplotlib.pyplot as plt
 from sklearn.datasets import load_iris
-from sklearn.naive_bayes import GaussianNB
-from sklearn.svm import SVC
 from sklearn.metrics import (
     ConfusionMatrixDisplay,
     accuracy_score,
     classification_report,
 )
 from sklearn.model_selection import GridSearchCV, StratifiedKFold, train_test_split
+from sklearn.naive_bayes import GaussianNB
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
+from sklearn.svm import SVC
 
 from app.contracts.exercise_contract import ExerciseContract
 from app.schemas.execution import ExerciseRequest, ExerciseResponse, ExerciseType, ImageArtifact
