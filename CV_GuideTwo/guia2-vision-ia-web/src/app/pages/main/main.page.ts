@@ -19,7 +19,7 @@ export class MainPageComponent {
     {
       type: 'ejercicio2',
       label: 'Ejercicio 2',
-      description: 'Reservado para nuevo flujo IA.',
+      description: 'Clasificación Iris con Bayes y SVM.',
       enabled: true,
     },
     {
@@ -31,7 +31,7 @@ export class MainPageComponent {
     {
       type: 'ejercicio4',
       label: 'Ejercicio 4',
-      description: 'Reservado para nuevo flujo IA.',
+      description: 'KNN + Gradient Boosting en dataset Iris.',
       enabled: true,
     },
     {
@@ -43,7 +43,7 @@ export class MainPageComponent {
     {
       type: 'ejercicio6',
       label: 'Ejercicio 6',
-      description: 'Reservado para nuevo flujo IA.',
+      description: 'Clasificación Cats & Dogs usando SVM.',
       enabled: true,
     },
   ];
