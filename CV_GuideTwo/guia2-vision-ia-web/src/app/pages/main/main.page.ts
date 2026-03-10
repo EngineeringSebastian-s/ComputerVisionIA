@@ -20,7 +20,7 @@ export class MainPageComponent {
       type: 'ejercicio2',
       label: 'Ejercicio 2',
       description: 'Reservado para nuevo flujo IA.',
-      enabled: false,
+      enabled: true,
     },
     {
       type: 'ejercicio3',
@@ -32,7 +32,7 @@ export class MainPageComponent {
       type: 'ejercicio4',
       label: 'Ejercicio 4',
       description: 'Reservado para nuevo flujo IA.',
-      enabled: false,
+      enabled: true,
     },
     {
       type: 'ejercicio5',
@@ -44,7 +44,7 @@ export class MainPageComponent {
       type: 'ejercicio6',
       label: 'Ejercicio 6',
       description: 'Reservado para nuevo flujo IA.',
-      enabled: false,
+      enabled: true,
     },
   ];
 
