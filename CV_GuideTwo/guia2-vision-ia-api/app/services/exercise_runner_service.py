@@ -4,6 +4,7 @@ from app.schemas.execution import ExerciseRequest, ExerciseResponse
 from app.services.exercise1_service import Exercise1Service
 from app.services.exercise2_service import Exercise2Service
 from app.services.exercise3_service import Exercise3Service
+from app.services.exercise4_service import Exercise4Service
 from app.services.exercise5_service import Exercise5Service
 
 
@@ -13,6 +14,7 @@ class ExerciseRunnerService:
             "ejercicio1": Exercise1Service(),
             "ejercicio2": Exercise2Service(),
             "ejercicio3": Exercise3Service(),
+            "ejercicio4": Exercise4Service(),
             "ejercicio5": Exercise5Service(),
         }
 
