@@ -1,12 +1,12 @@
 FEATURE SET: TEXTURE
-Mejor modelo: RandomForest
+Mejor modelo: GradBoost
 
               precision    recall  f1-score   support
 
-       coast       0.84      0.86      0.85       108
-      forest       1.00      0.99      0.99        99
-     highway       0.80      0.78      0.79        81
+       coast       0.84      0.81      0.82       108
+      forest       0.98      0.99      0.98        99
+     highway       0.77      0.80      0.79        81
 
-    accuracy                           0.88       288
-   macro avg       0.88      0.88      0.88       288
-weighted avg       0.88      0.88      0.88       288
+    accuracy                           0.87       288
+   macro avg       0.86      0.87      0.86       288
+weighted avg       0.87      0.87      0.87       288
