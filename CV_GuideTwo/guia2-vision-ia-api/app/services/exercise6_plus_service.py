@@ -159,7 +159,7 @@ class Exercise6PlusService(ExerciseContract):
                 plt.close()
 
                 comparison_table.append({
-                    "model_or_features": full_name,
+                    "model": full_name,
                     "accuracy": acc
                 })
 
@@ -197,7 +197,7 @@ class Exercise6PlusService(ExerciseContract):
         # Gráfico Comparativo Final de todos los enfoques
         # ==========================================
         plt.figure(figsize=(12, 6))
-        names = [item["model_or_features"] for item in comparison_table]
+        names = [item["model"] for item in comparison_table]
         accs = [item["accuracy"] for item in comparison_table]
         bars = plt.barh(names, accs, color='skyblue')
         plt.xlabel("Accuracy")
@@ -228,7 +228,7 @@ class Exercise6PlusService(ExerciseContract):
         return ExerciseResponse(
             type=ExerciseType.ejercicio6,
             summary={
-                "best_approach": best_result["model_or_features"],
+                "best_approach": best_result["model"],
                 "best_accuracy": best_result["accuracy"],
                 "comparison_table": comparison_table,
                 "reports": reports,
