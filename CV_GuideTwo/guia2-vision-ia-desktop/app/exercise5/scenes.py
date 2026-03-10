@@ -1,15 +1,14 @@
 # scenes.py
-import os
 from pathlib import Path
 
-import numpy as np
-import pandas as pd
 import cv2
 import matplotlib.pyplot as plt
-
-from sklearn.model_selection import train_test_split, StratifiedKFold, cross_val_score
-from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import StandardScaler, LabelEncoder
+import numpy as np
+import pandas as pd
+from skimage.feature import graycomatrix, graycoprops
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
+from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
+from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import (
     accuracy_score,
     f1_score,
@@ -17,17 +16,14 @@ from sklearn.metrics import (
     confusion_matrix,
     ConfusionMatrixDisplay,
 )
-
-from sklearn.linear_model import LogisticRegression
-from sklearn.svm import SVC
-from sklearn.neighbors import KNeighborsClassifier
+from sklearn.model_selection import train_test_split, StratifiedKFold, cross_val_score
 from sklearn.naive_bayes import GaussianNB
-from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
+from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neural_network import MLPClassifier
-
-from skimage.feature import graycomatrix, graycoprops
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler, LabelEncoder
+from sklearn.svm import SVC
+from sklearn.tree import DecisionTreeClassifier
 
 RANDOM_STATE = 42
 
@@ -304,6 +300,7 @@ def evaluate_models(X, y, class_names, out_prefix: str):
     print(f"  - CSV: {csv_path.name}")
     print(f"  - PNG: {png_path.name}")
     print(f"  - TXT: {txt_path.name}")
+
 
 def main():
     BASE_DIR = Path(__file__).resolve().parent

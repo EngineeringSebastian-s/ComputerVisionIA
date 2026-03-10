@@ -1,15 +1,16 @@
+import os
+
+import matplotlib.pyplot as plt
 from sklearn.datasets import load_iris
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import ConfusionMatrixDisplay
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 from sklearn.model_selection import train_test_split, GridSearchCV, StratifiedKFold
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score, classification_report, confusion_matrix, ConfusionMatrixDisplay
-import matplotlib.pyplot as plt
-import os
-import matplotlib.pyplot as plt
-from sklearn.metrics import ConfusionMatrixDisplay
+
 
 def main():
     iris = load_iris()
@@ -70,7 +71,7 @@ def main():
         acc = accuracy_score(y_test, y_pred)
         resultados[nombre] = acc
 
-        print("\n" + "="*60)
+        print("\n" + "=" * 60)
         print(f"MODELO: {nombre}")
         print(f"Accuracy (test): {acc:.4f}")
 
@@ -101,10 +102,11 @@ def main():
 
         print(f"Imagen guardada en: {ruta}")
 
-    print("\n" + "="*60)
+    print("\n" + "=" * 60)
     print("Resumen Accuracy (test):")
     for k, v in sorted(resultados.items(), key=lambda x: x[1], reverse=True):
         print(f"- {k}: {v:.4f}")
+
 
 if __name__ == "__main__":
     main()

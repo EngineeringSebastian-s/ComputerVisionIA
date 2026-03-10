@@ -1,13 +1,10 @@
 import os
-import numpy as np
-import matplotlib.pyplot as plt
 
-from sklearn.datasets import load_iris
-from sklearn.model_selection import train_test_split, StratifiedKFold, GridSearchCV
-from sklearn.preprocessing import StandardScaler
-from sklearn.pipeline import Pipeline
+import matplotlib.pyplot as plt
+import numpy as np
+from scipy.optimize import linear_sum_assignment
 from sklearn.cluster import KMeans
-from sklearn.neural_network import MLPClassifier
+from sklearn.datasets import load_iris
 from sklearn.metrics import (
     accuracy_score,
     classification_report,
@@ -15,9 +12,10 @@ from sklearn.metrics import (
     silhouette_score,
     ConfusionMatrixDisplay
 )
-
-from scipy.optimize import linear_sum_assignment
-
+from sklearn.model_selection import train_test_split, StratifiedKFold, GridSearchCV
+from sklearn.neural_network import MLPClassifier
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler
 
 RANDOM_STATE = 42
 
@@ -97,8 +95,8 @@ def run_kmeans_elbow_and_eval(X_train_s, y_train, X_test_s, y_test, target_names
     km_final = KMeans(
         n_clusters=k_opt,
         init="k-means++",
-        n_init=50,     # hiperparámetro ajustado
-        max_iter=1000, # hiperparámetro ajustado
+        n_init=50,  # hiperparámetro ajustado
+        max_iter=1000,  # hiperparámetro ajustado
         random_state=RANDOM_STATE
     )
 
