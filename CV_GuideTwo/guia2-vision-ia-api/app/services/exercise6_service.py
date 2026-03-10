@@ -73,7 +73,6 @@ class Exercise6Service(ExerciseContract):
         return np.array(x, dtype=np.float32), np.array(y, dtype=object)
 
     def execute(self, request: ExerciseRequest) -> ExerciseResponse:
-        # Ajusta la ruta según la estructura real de tu proyecto
         project_root = Path(__file__).resolve().parents[2]
         dataset_dir = project_root / "app" / "datasets" / "Cats&Dogs"
 
