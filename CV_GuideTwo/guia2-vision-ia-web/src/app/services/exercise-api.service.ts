@@ -3,13 +3,14 @@ import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { ExerciseRequest, ExerciseResponse } from '../models/exercise.models';
+import { environment } from '../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ExerciseApiService {
   private readonly http = inject(HttpClient);
-  private readonly apiBaseUrl = 'http://localhost:8000';
+  private readonly apiBaseUrl = environment.apiUrl;
 
   executeExercise(payload: ExerciseRequest): Observable<ExerciseResponse> {
     return this.http.post<ExerciseResponse>(
