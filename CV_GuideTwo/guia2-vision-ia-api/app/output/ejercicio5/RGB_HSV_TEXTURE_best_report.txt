@@ -1,0 +1,12 @@
+FEATURE SET: RGB_HSV_TEXTURE
+Mejor modelo: GradBoost
+
+              precision    recall  f1-score   support
+
+       coast       0.88      0.85      0.87       108
+      forest       0.99      1.00      0.99        99
+     highway       0.82      0.85      0.84        81
+
+    accuracy                           0.90       288
+   macro avg       0.90      0.90      0.90       288
+weighted avg       0.90      0.90      0.90       288
