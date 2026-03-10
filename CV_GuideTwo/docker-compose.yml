@@ -1,24 +1,24 @@
 services:
   api:
     build:
-      context: ./api
+      context: ./guia2-vision-ia-api
       dockerfile: Dockerfile
-    container_name: guia2-ia-api
+    container_name: guia2-vision-ia-api
     ports:
-      - "8000:8000"
+      - "8006:8000"
     volumes:
-      - ./api/app/output:/app/app/output
+      - ./guia2-vision-ia-api/app/output:/app/app/output
     restart: unless-stopped
     networks:
       - guia2-ia-network
 
   frontend:
     build:
-      context: ./frontend/guia2-vision-ia
+      context: ./guia2-vision-ia-web
       dockerfile: Dockerfile
     container_name: guia2-ia-frontend
     ports:
-      - "4200:80"
+      - "8007:4200" 
     depends_on:
       - api
     restart: unless-stopped
