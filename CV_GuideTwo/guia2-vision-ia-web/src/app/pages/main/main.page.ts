@@ -46,6 +46,12 @@ export class MainPageComponent {
       description: 'Clasificación Cats & Dogs usando SVM.',
       enabled: true,
     },
+    {
+      type: 'ejercicio6_plus',
+      label: 'Ejercicio 6 Plus',
+      description: 'Clasificación Cats & Dogs usando Avanzado.',
+      enabled: true,
+    }
   ];
 
   constructor(private readonly router: Router) {}

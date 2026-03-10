@@ -4,7 +4,8 @@ export type ExerciseType =
   | 'ejercicio3'
   | 'ejercicio4'
   | 'ejercicio5'
-  | 'ejercicio6';
+  | 'ejercicio6'
+  | 'ejercicio6_plus';
 
 export interface ExerciseRequest {
   type: string;
