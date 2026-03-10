@@ -1,105 +1,265 @@
 # Informe de Resultados: Aprendizaje Automático y Visión por Computador
 
-## 1. Reto “Clasificación de Flores parte 1”
+Este documento resume los resultados obtenidos en los ejercicios de la guía. El informe se apoya en:
 
-**Implementación y Resultados:**
-Se utilizó el dataset Iris original. Se dividieron los datos (70% entrenamiento, 30% prueba) y se entrenaron tres modelos:
+- Los archivos `.json` de [`app/results`](app/results)
+- Las matrices de confusión generadas en cada ejercicio
+- La evidencia gráfica incluida en el proyecto
 
-* **Regresión Logística:** Exactitud de 0.9111
-* **Árbol de Decisión:** Exactitud de 0.9778
-* **Random Forest:** Exactitud de 0.9111
+## Resumen
 
-**Optimización y Fundamentación Matemática:**
-Para mejorar los resultados, se utilizó validación cruzada (`GridSearchCV`). El Árbol de Decisión destacó seleccionando hiperparámetros óptimos que evitaron el sobreajuste. Matemáticamente, el árbol de decisión utiliza la ganancia de información (basada en la entropía) o el índice Gini para realizar las divisiones de las características. La pureza de los nodos (Gini) se calcula como: $Gini = 1 - \sum (p_i)^2$, donde $p_i$ es la probabilidad de un elemento perteneciente a una clase específica.
+| Ejercicio | Problema | Mejor enfoque | Métrica principal |
+| --- | --- | --- | --- |
+| 1 | Iris parte 1 | Decision Tree | Accuracy = **0.9778** |
+| 2 | Iris parte 2 | SVM lineal | Accuracy = **0.9333** |
+| 3 | Iris parte 3 | MLP | Accuracy = **0.8444** |
+| 4 | Iris parte 4 | Gradient Boosting | Accuracy = **0.9778** |
+| 5 | Escenas 3Scenes | RGB + Textura con SVM-RBF | F1-macro = **0.9163** |
+| 6 | Cats vs Dogs | SVM baseline | Accuracy = **0.6111** |
 
-**Conclusiones:**
-El **Árbol de Decisión** obtuvo el mejor rendimiento (cerca del 98%). En este dataset, que posee características muy bien definidas espacialmente para la clase *Setosa* y algo mezcladas para *Versicolor* y *Virginica*, las reglas ortogonales del árbol fueron suficientes para trazar límites de decisión casi perfectos, sin necesidad de usar ensambles más complejos como Random Forest.
-
----
-
-## 2. Reto “Clasificación de Flores parte 2”
-
-**Implementación y Resultados:**
-Se exploraron métodos estadísticos y basados en márgenes espaciales:
-
-* **Naive Bayes:** Exactitud de 0.9111
-* **Máquinas de Soporte Vectorial (SVM):** Exactitud de 0.9333
-
-**Optimización y Fundamentación Matemática:**
-Se realizó una búsqueda en malla para la SVM, encontrando como mejores parámetros un parámetro de penalización de error $C=100$, un `gamma=scale` y un kernel `linear`. La fundamentación de la SVM se basa en encontrar el hiperplano óptimo que maximiza el margen entre las clases de flores. La minimización principal obedece a $\frac{1}{2} ||w||^2 + C \sum \xi_i$, donde $w$ es el vector normal al hiperplano y $\xi_i$ representa la variable de holgura. Para Naive Bayes, se optimizó el parámetro de suavizado de varianza (`var_smoothing = 1e-09`), apoyándose en el Teorema de Bayes asumiendo distribuciones gaussianas e independencia entre los sépalos y pétalos.
-
-**Conclusiones:**
-El **SVM lineal** fue superior porque el algoritmo determinó que, penalizando severamente el error ($C=100$), las fronteras de decisión de este conjunto de datos se pueden resolver linealmente en el espacio de características, sin necesidad de proyectar a múltiples dimensiones usando un kernel RBF.
+La tendencia general es clara: en Iris, varios modelos clásicos alcanzan desempeños altos; en escenas, la calidad sube cuando se combinan color y textura; y en perros vs gatos el aplanado de píxeles limita fuertemente el rendimiento.
 
 ---
 
-## 3. Reto “Clasificación de Flores parte 3”
+## 1. Clasificación de Flores Parte 1
 
-**Implementación y Resultados:**
-Se comparó un enfoque de aprendizaje no supervisado frente a uno supervisado:
+Dataset: `Iris` con partición 70/30.
 
-* **K-Means (No Supervisado):** Exactitud aproximada de 0.7556
-* **Perceptrón Multicapa (MLP) (Supervisado):** Exactitud de 0.8444
+### Resultados
 
-**Optimización y Fundamentación Matemática:**
-Para K-Means, se analizó la inercia utilizando el "Método del Codo". K-Means minimiza la varianza intra-cluster iterando sobre los centroides $\mu_j$ de la ecuación: $\sum_{i=1}^n \min_{\mu_j} ||x_i - \mu_j||^2$. El codo mostró el punto óptimo en $K=3$. Para la red neuronal artificial (MLP), la optimización con propagación hacia atrás actualiza los pesos de las capas ocultas utilizando el descenso de gradiente.
+| Modelo | Accuracy | Comentario |
+| --- | ---: | --- |
+| Logistic Regression | 0.9111 | Buen baseline, confunde parte de `versicolor` y `virginica` |
+| Decision Tree | **0.9778** | Mejor resultado global |
+| Random Forest | 0.9111 | No mejora frente al baseline en esta corrida |
 
-**Conclusiones:**
-Al ser K-Means un algoritmo de agrupamiento aglomerativo espacial que no conoce las etiquetas reales (solo mide la distancia geométrica), tiende a confundir fuertemente las flores Versicolor y Virginica. El Perceptrón Multicapa **supera el rendimiento**, validando la teoría de que proporcionar etiquetas durante el entrenamiento (supervisión) guía el descenso del gradiente para capturar relaciones no lineales complejas.
+El árbol de decisión fue el más consistente. Según el reporte en `ejercicio1.json`, logró `precision = 1.00` y `recall = 1.00` en `setosa`, y solo cometió un error entre `versicolor` y `virginica`.
+
+### Interpretación
+
+- `setosa` queda perfectamente separada.
+- La frontera difícil sigue estando entre `versicolor` y `virginica`.
+- En este problema, un árbol bien ajustado fue suficiente; el ensamble no aportó mejora real.
+
+### Evidencia
+
+#### Logistic Regression
+
+![Matriz de confusión Logistic Regression](app/exercise1/confusion_matrix_LogisticRegression.png)
+
+#### Decision Tree
+
+![Matriz de confusión Decision Tree](app/exercise1/confusion_matrix_DecisionTree_GridSearch.png)
+
+#### Random Forest
+
+![Matriz de confusión Random Forest](app/exercise1/confusion_matrix_RandomForest_GridSearch.png)
+
+### Conclusión
+
+Para Iris parte 1, el mejor modelo fue **Decision Tree**, con una clasificación casi perfecta y una matriz de confusión muy limpia.
 
 ---
 
-## 4. Reto “Clasificación de Flores parte 4”
+## 2. Clasificación de Flores Parte 2
 
-**Implementación y Resultados:**
-Se introdujeron dos nuevos algoritmos:
+Se compararon dos enfoques: **Naive Bayes** y **SVM**.
 
-* **K-Nearest Neighbors (KNN):** Exactitud de 0.9333
-* **Gradient Boosting Classifier:** Exactitud de 0.9778
+### Resultados
 
-**Optimización y Fundamentación Matemática:**
-El mejor KNN usó 7 vecinos (`n_neighbors=7`), peso por distancia y métrica euclidiana. Matemáticamente, evalúa la distancia espacial: $d(p, q) = \sqrt{\sum (p_i - q_i)^2}$ y da mayor poder de voto a los puntos más cercanos. El **Gradient Boosting** alcanzó la mejor exactitud con una tasa de aprendizaje de 0.01 y 50 estimadores. Su fundamento radica en entrenar árboles de decisión iterativos donde cada nuevo árbol minimiza la función de pérdida residual del modelo anterior.
+| Modelo | Accuracy | Configuración destacada |
+| --- | ---: | --- |
+| Naive Bayes | 0.9111 | `var_smoothing = 1e-09` |
+| SVM | **0.9333** | `C = 100`, `gamma = scale`, `kernel = linear` |
 
-**Conclusiones:**
-El método de ensamble **Gradient Boosting** demuestra que construir modelos secuenciales que corrigen los errores de sus predecesores es una de las estrategias de aprendizaje automático clásico más poderosas, igualando el récord más alto de la práctica (98%).
+El `json` muestra que SVM mejora ligeramente el accuracy y también el F1 macro (`0.9327`), manteniendo separación perfecta para `setosa`.
+
+### Interpretación
+
+- Naive Bayes sigue siendo competitivo, pero asume independencia condicional entre variables.
+- SVM lineal aprovecha mejor la separación geométrica del dataset.
+- El error vuelve a concentrarse en la clase `virginica`.
+
+### Evidencia
+
+#### Naive Bayes
+
+![Matriz de confusión Naive Bayes](app/exercise2/confusion_matrix_NaiveBayes.png)
+
+#### SVM
+
+![Matriz de confusión SVM](app/exercise2/confusion_matrix_SVM.png)
+
+### Conclusión
+
+El mejor resultado fue para **SVM**, confirmando que el dataset Iris puede resolverse con fronteras lineales bien definidas cuando el margen se ajusta adecuadamente.
 
 ---
 
-## 5. Reto “Clasificación de escenas: costas, bosques y autopistas”
+## 3. Clasificación de Flores Parte 3
 
-**Implementación y Resultados:**
-Se usó el dataset de 3Scenes y se construyeron 5 espacios de características. Se evaluaron con F1-Score (macro) debido a la naturaleza multiclase del problema:
+Se enfrentó un método **no supervisado** contra uno **supervisado**.
 
-1. **RGB:** Mejor modelo SVM-RBF (F1: 0.8289)
-2. **RGB + HSV:** Mejor modelo SVM-RBF (F1: 0.8274)
-3. **Textura (Descriptores Haralick GLCM):** Mejor modelo Random Forest (F1: 0.8772)
-4. **RGB + Textura:** Mejor modelo SVM-RBF (F1: 0.9163)
-5. **RGB + HSV + Textura:** Mejor modelo MLP (F1: 0.9137)
+### Resultados
 
-**Análisis y Fundamentación:**
-Las estadísticas de color puros (RGB y HSV) extraen simplemente medias y varianzas de la luz. Las texturas mediante GLCM (*Gray Level Co-occurrence Matrix*) aportan la matriz matemática de contraste, disimilitud y homogeneidad.
+| Modelo | Tipo | Accuracy |
+| --- | --- | ---: |
+| K-Means | No supervisado | 0.7556 |
+| MLP | Supervisado | **0.8444** |
 
-* **RGB + Textura con SVM-RBF:** Fue la combinación más efectiva. El kernel RBF $\exp(-\gamma ||x - y||^2)$ logró proyectar estas características combinadas a un espacio infinito donde son perfectamente separables.
+Además, el script del ejercicio ajusta:
 
-**Conclusiones:**
-Las características de color solas confunden fuertemente la escena del cielo de las costas con el cielo de las autopistas. Los mejores modelos fueron aquellos que utilizaron la **fusión de características (Color + Texturas)**, lo cual demuestra empíricamente que la visión computacional tradicional requiere que le digamos a la máquina explícitamente qué atributos geométricos y frecuenciales buscar.
+- `K = 3` para K-Means, apoyado por el método del codo
+- Un `MLPClassifier` con búsqueda de hiperparámetros sobre capas ocultas, activación y regularización
 
+### Interpretación
 
-## 6. Reto “Clasificación de perros y gatos”
+- K-Means necesita mapear clusters a clases y por eso sufre más en la frontera entre `versicolor` y `virginica`.
+- MLP mejora porque aprende directamente desde etiquetas.
+- La diferencia entre ambos valida el valor de la supervisión incluso en un dataset relativamente pequeño.
 
-**Implementación y Resultados (Baseline vs Optimización):**
-Se trabajó procesando una muestra de 1200 imágenes (600 por clase) directamente a escala de grises, redimensionándolas a 64x64 píxeles y transformándolas (aplanadas) en vectores numéricos continuos de 4096 características. Se dividieron los datos (70% entrenamiento, 30% prueba) y se evaluaron tres enfoques:
+### Evidencia
 
-* **SVM por defecto (Baseline):** Exactitud de 0.6111 (61.11%).
-* **SVM Optimizado (GridSearch):** Exactitud de 0.5944 (59.44%). Los mejores hiperparámetros encontrados fueron `C=1` y `kernel='rbf'`.
-* **Random Forest (Alternativo):** Exactitud de 0.5944 (59.44%) con 200 estimadores.
+#### Método del codo
 
-**Análisis Teórico y Fundamentación Conceptual:**
-Al aplanar una imagen, cada píxel se convierte en una característica (Feature).
+![Método del codo K-Means](app/exercise3/elbow_kmeans.png)
 
-* **Dimensionalidad y Ruido:** Una exactitud cercana al 60% en un problema binario (donde adivinar al azar da el 50%) indica que los modelos clásicos tienen serias dificultades con estas imágenes. Al aplanar la imagen, se pierde por completo la relación espacial 2D (formas de las orejas, ojos, hocico).
-* **El comportamiento de SVM:** Sorprendentemente, el SVM por defecto (Baseline) obtuvo un rendimiento ligeramente superior (61.11%) a la versión optimizada con GridSearch (59.44%). La optimización determinó que el mejor kernel era RBF con $C=1$ (que irónicamente es casi el comportamiento por defecto de la librería Scikit-Learn), pero la validación cruzada ($k=3$) del GridSearchCV seleccionó pesos que resultaron en un ligero *overfitting* sobre el set de prueba en comparación con el modelo entrenado sin la penalización cruzada.
-* **Bosques Aleatorios (Random Forest):** A pesar de usar 200 árboles de decisión, su rendimiento fue idéntico al SVM optimizado (59.44%). Los árboles sufren con vectores tan largos (4096 variables) donde no hay características fuertemente discriminantes por sí solas (un solo píxel gris no define si es perro o gato).
+#### K-Means
 
-**Conclusiones:**
-En el dataset *Cats&Dogs* se evidencia el verdadero límite del aprendizaje automático clásico para problemas de visión por computadora puros. Aunque se intentó optimizar el parámetro $C$ y los `kernels` del SVM o usar ensambles como Random Forest, el rendimiento se estancó en torno al 60%. Esto fundamenta teóricamente que, para lograr mejoras verdaderamente significativas en clasificación de imágenes complejas, es obligatorio abandonar el enfoque de aplanado de píxeles y transitar hacia técnicas de extracción de características jerárquicas y espaciales en 2D, como las Redes Neuronales Convolucionales (CNN) del Deep Learning.
+![Matriz de confusión K-Means](app/exercise3/confusion_kmeans.png)
+
+#### MLP
+
+![Matriz de confusión MLP](app/exercise3/confusion_mlp.png)
+
+### Conclusión
+
+El mejor modelo fue **MLP**, con mejora clara sobre K-Means. El ejercicio muestra bien la diferencia entre agrupar por similitud geométrica y clasificar con aprendizaje supervisado.
+
+---
+
+## 4. Clasificación de Flores Parte 4
+
+En esta sección se incorporaron **KNN** y **Gradient Boosting**.
+
+### Resultados
+
+| Modelo | Accuracy | Configuración |
+| --- | ---: | --- |
+| KNN | 0.9333 | `n_neighbors = 7`, `weights = distance`, `metric = euclidean` |
+| Gradient Boosting | **0.9778** | `learning_rate = 0.01`, `max_depth = 4`, `n_estimators = 50` |
+
+El comportamiento de `GradientBoosting` es prácticamente idéntico al mejor árbol del ejercicio 1, con F1 macro de `0.9778`.
+
+### Interpretación
+
+- KNN funciona bien porque las muestras similares permanecen cerca en el espacio de características.
+- Gradient Boosting corrige errores de forma iterativa y logra una frontera más robusta.
+- Otra vez, el único punto delicado está entre `versicolor` y `virginica`, pero el ensamble lo maneja casi perfecto.
+
+### Evidencia
+
+#### KNN
+
+![Matriz de confusión KNN](app/exercise4/confusion_matrix_KNN.png)
+
+#### Gradient Boosting
+
+![Matriz de confusión Gradient Boosting](app/exercise4/confusion_matrix_GradientBoosting.png)
+
+### Conclusión
+
+El mejor desempeño lo obtuvo **Gradient Boosting**, consolidándose como uno de los enfoques clásicos más sólidos sobre Iris.
+
+---
+
+## 5. Clasificación de Escenas: Costas, Bosques y Autopistas
+
+Se evaluaron cinco espacios de características sobre el dataset `3Scenes`. En este ejercicio la métrica más representativa es **F1-macro**.
+
+### Comparativa principal
+
+| Espacio de características | Mejor modelo | Accuracy test | F1-macro test |
+| --- | --- | ---: | ---: |
+| RGB | SVM-RBF | 0.8333 | 0.8289 |
+| RGB + HSV | SVM-RBF | 0.8299 | 0.8274 |
+| Textura | Random Forest | 0.8819 | 0.8772 |
+| RGB + Textura | **SVM-RBF** | **0.9201** | **0.9163** |
+| RGB + HSV + Textura | MLP | 0.9167 | 0.9137 |
+
+### Lectura de resultados
+
+- El color por sí solo funciona razonablemente bien, pero no alcanza el mejor nivel.
+- La textura aporta una ganancia clara: con `TEXTURE`, `forest` alcanza un F1 de `0.9949`.
+- La mejor combinación global fue **RGB + Textura**, con `SVM-RBF`, lo que sugiere que color y patrón espacial son complementarios.
+- Añadir HSV sobre color + textura no mejora el mejor resultado; incluso queda ligeramente por debajo.
+
+### Conclusión
+
+En escenas, la información de textura fue decisiva. El mejor pipeline fue **RGB + Textura con SVM-RBF**, con `F1-macro = 0.9163`, el valor más alto de todo el ejercicio.
+
+---
+
+## 6. Clasificación de Perros y Gatos
+
+Se trabajó con una muestra balanceada de `1200` imágenes (`600` por clase), transformadas a escala de grises y luego a vectores de `64 x 64 = 4096` características.
+
+### Resultados
+
+| Modelo | Accuracy | F1-macro | Observación |
+| --- | ---: | ---: | --- |
+| SVM Baseline | **0.6111** | **0.6094** | Mejor resultado de los tres |
+| SVM Optimized | 0.5944 | 0.5926 | `C = 1`, kernel `rbf` |
+| Random Forest Alternative | 0.5944 | 0.5938 | Similar al SVM optimizado |
+
+### Lectura por clase
+
+#### SVM Baseline
+
+- `Cat`: precision `0.6282`, recall `0.5444`
+- `Dog`: precision `0.5980`, recall `0.6778`
+
+#### SVM Optimized
+
+- `Cat`: recall mejora a `0.6611`
+- `Dog`: recall cae a `0.5278`
+
+#### Random Forest Alternative
+
+- Rendimiento más equilibrado que SVM optimizado
+- Pero sin superar el baseline
+
+### Interpretación
+
+- La representación por píxeles aplanados destruye relaciones espaciales importantes.
+- Los tres modelos quedan apenas por encima del azar, lo que confirma que el problema es más complejo que Iris o 3Scenes.
+- El ajuste de hiperparámetros no compensó la debilidad de la representación.
+
+### Evidencia
+
+#### SVM Baseline
+
+![Matriz de confusión SVM Baseline](app/exercise6/confusion_matrix_SVM_Baseline.png)
+
+#### SVM Optimized
+
+![Matriz de confusión SVM Optimized](app/exercise6/confusion_matrix_SVM_Optimized.png)
+
+#### Random Forest Alternative
+
+![Matriz de confusión Random Forest Alternative](app/exercise6/confusion_matrix_RandomForest_Alternative.png)
+
+### Conclusión
+
+El mejor modelo fue **SVM Baseline**, pero con un accuracy de solo `0.6111`. El ejercicio deja claro que, para clasificación de imágenes reales, los modelos clásicos sobre píxeles crudos se quedan cortos frente a enfoques con extracción espacial de características, como CNN.
+
+---
+
+## Conclusiones Globales
+
+1. En `Iris`, los modelos clásicos supervisados alcanzan resultados muy altos, con picos de `0.9778`.
+2. En problemas visuales más ricos, la ingeniería de características importa mucho: en `3Scenes`, combinar color y textura fue determinante.
+3. En `Cats vs Dogs`, el límite principal no fue el clasificador sino la representación de entrada.
+4. Las matrices de confusión muestran un patrón consistente: cuando las clases comparten rasgos visuales o geométricos, el error se concentra en esas fronteras.
+
+En conjunto, la guía muestra una progresión clara desde clasificación tabular simple hasta problemas de visión donde ya se vuelve necesario usar representaciones más potentes.
