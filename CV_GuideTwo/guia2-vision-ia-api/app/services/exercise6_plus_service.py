@@ -228,7 +228,7 @@ class Exercise6PlusService(ExerciseContract):
         return ExerciseResponse(
             type=ExerciseType.ejercicio6,
             summary={
-                "best_approach": best_result["model"],
+                "best_model": best_result["model"],
                 "best_accuracy": best_result["accuracy"],
                 "comparison_table": comparison_table,
                 "reports": reports,

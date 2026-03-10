@@ -1,39 +1,39 @@
 {
   "type": "ejercicio6",
   "summary": {
-    "best_approach": "EXTRA_RGB_HSV_TEXTURE_SVM",
+    "best_model": "EXTRA_RGB_HSV_TEXTURE_SVM",
     "best_accuracy": 0.6333333333333333,
     "comparison_table": [
       {
-        "model_or_features": "FLAT_SVM_Baseline",
+        "model": "FLAT_SVM_Baseline",
         "accuracy": 0.5791666666666667
       },
       {
-        "model_or_features": "FLAT_SVM_Optimized",
+        "model": "FLAT_SVM_Optimized",
         "accuracy": 0.5791666666666667
       },
       {
-        "model_or_features": "FLAT_RandomForest",
+        "model": "FLAT_RandomForest",
         "accuracy": 0.5625
       },
       {
-        "model_or_features": "EXTRA_RGB_SVM",
+        "model": "EXTRA_RGB_SVM",
         "accuracy": 0.5708333333333333
       },
       {
-        "model_or_features": "EXTRA_RGB_HSV_SVM",
+        "model": "EXTRA_RGB_HSV_SVM",
         "accuracy": 0.55
       },
       {
-        "model_or_features": "EXTRA_TEXTURE_SVM",
+        "model": "EXTRA_TEXTURE_SVM",
         "accuracy": 0.5875
       },
       {
-        "model_or_features": "EXTRA_RGB_TEXTURE_SVM",
+        "model": "EXTRA_RGB_TEXTURE_SVM",
         "accuracy": 0.6208333333333333
       },
       {
-        "model_or_features": "EXTRA_RGB_HSV_TEXTURE_SVM",
+        "model": "EXTRA_RGB_HSV_TEXTURE_SVM",
         "accuracy": 0.6333333333333333
       }
     ],
