@@ -242,7 +242,7 @@ class Exercise5Service(ExerciseContract):
 
     def execute(self, request: ExerciseRequest) -> ExerciseResponse:
         project_root = Path(__file__).resolve().parents[2]
-        dataset_dir = project_root / "datasets" / "3scenes"
+        dataset_dir = project_root / "app" / "datasets" / "3scenes"
         if not dataset_dir.exists():
             raise FileNotFoundError(f"No existe dataset en {dataset_dir}")
 
