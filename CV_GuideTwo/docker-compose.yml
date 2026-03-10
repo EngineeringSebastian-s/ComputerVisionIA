@@ -12,13 +12,13 @@ services:
     networks:
       - guia2-ia-network
 
-  frontend:
+  web:
     build:
       context: ./guia2-vision-ia-web
       dockerfile: Dockerfile
-    container_name: guia2-ia-frontend
+    container_name: guia2-vision-ia-frontend
     ports:
-      - "8007:4200" 
+      - "8007:80" 
     depends_on:
       - api
     restart: unless-stopped
