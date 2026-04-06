@@ -1,0 +1,13 @@
+archivo_noisy,archivo_gtruth
+0_0.tiff,0_0.tiff
+0_1024.tiff,0_1024.tiff
+0_512.tiff,0_512.tiff
+1024_0.tiff,1024_0.tiff
+1024_1024.tiff,1024_1024.tiff
+1024_512.tiff,1024_512.tiff
+1536_0.tiff,1536_0.tiff
+1536_1024.tiff,1536_1024.tiff
+1536_512.tiff,1536_512.tiff
+512_0.tiff,512_0.tiff
+512_1024.tiff,512_1024.tiff
+512_512.tiff,512_512.tiff
