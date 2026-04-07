@@ -254,6 +254,14 @@ contundente:
     * La línea costera y las estructuras portuarias/geográficas que se adentran en el mar quedan perfectamente
       perfiladas, demostrando que el filtro suavizó las áreas homogéneas pero respetó las fronteras morfológicas.
 
+### Resultados Cuantitativos (Porcentaje de Agua)
+Al ejecutar la función de medición sobre la imagen completa (un total de **6.247.500 píxeles**), se obtuvieron los siguientes resultados:
+
+* **Área de agua (Imagen sin filtrar):** **73.60%** (4.598.241 píxeles). *(Dato distorsionado inflado por falsos positivos de ruido en tierra firme).*
+* **Área de agua (Imagen filtrada con Lee):** **72.98%** (4.559.601 píxeles). *(Dato real y consolidado de la superficie hídrica).*
+
+Esto demuestra numéricamente cómo el ruido *speckle* infla erróneamente el cálculo de superficies en teledetección si no se mitiga adecuadamente. En este caso específico, el ruido provocó que **38.640 píxeles** de tierra firme fueran clasificados incorrectamente como agua en la imagen cruda.
+
 ### Conclusiones de la Extracción
 
 * **Impacto en las métricas cuantitativas:** El cálculo del porcentaje del área cubierta por agua arrojó valores muy
@@ -326,6 +334,8 @@ introducidos en tensores de Machine Learning.
 | **1536_1024** |    ![GT 1536_1024](./gtruth/1536_1024.png)     |  ![N 1536_1024](./noisy/1536_1024.png)  |
 | **1536_1536** |    ![GT 1536_1536](./gtruth/1536_1536.png)     |  ![N 1536_1536](./noisy/1536_1536.png)  |
 
+* **Validación de la Alineación:** Todo el proceso de corregistro sub-píxel quedó documentado en los archivos `registro_resumen_ecc.csv`. En ellos se evidencia la matriz de transformación y el coeficiente de correlación alcanzado para cada imagen respecto a la base, garantizando la fidelidad geométrica del "Ground Truth" promediado.
+
 ### Conclusiones de la Ingeniería de Datos
 
 * El proceso automatizado ha logrado ensamblar un dataset limpio y emparejado a nivel de píxel (`dataset_resumen.csv`).
@@ -360,3 +370,22 @@ analizada sobre la Base General Alemán Ramírez, se extraen las siguientes conc
   parches emparejados de 512x512 demuestra que es posible generar un "Ground Truth" sintético coherente y sin pérdida de
   bordes, proporcionando la estructura ideal para entrenar futuras arquitecturas de aprendizaje supervisado enfocadas en
   el *denoising* de imágenes satelitales.
+
+## 7. Estructura del Repositorio e Instrucciones de Ejecución
+
+Este proyecto ha sido modularizado en cuadernos de Jupyter (*Notebooks*) para facilitar la evaluación paso a paso de cada reto.
+
+### Estructura de Archivos Principal
+* `exercise_one.ipynb`: Código para el rescalizado y filtrado espacial (Filtro de Lee).
+* `exercise_two.ipynb`: Implementación del algoritmo K-Means no supervisado.
+* `exercise_three.ipynb`: Extracción de la máscara binaria y cálculo de área hídrica.
+* `exercise_four.ipynb`: Corregistro ECC multitemporal y generación del dataset de parches.
+* Directorios de Salida: Las carpetas `/filtered`, `/cluster`, `/water_mask`, `/noisy` y `/gtruth` contienen los resultados de cada etapa de procesamiento.
+
+### ¿Cómo ejecutar este proyecto?
+
+1. Clonar este repositorio.
+2. Crear un entorno virtual de Python (recomendado 3.9+).
+3. Instalar las dependencias necesarias mediante el archivo provisto:
+   ```bash
+   pip install -r requirements.txt
