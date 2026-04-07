@@ -25,23 +25,23 @@ A continuación, se define el área de estudio y las Regiones de Interés (ROIs)
 **Comparativa General Base:**
 | Imagen Reescalada (Sin Filtrar) | Imagen Filtrada (Lee) |
 | :---: | :---: |
-| ![Sin Filtrar](./analysis/imagen_base_sin_filtrar.tiff) | ![Filtrada](./analysis/imagen_base_filtrada.tiff) |
+| ![Sin Filtrar](./analysis/imagen_base_sin_filtrar.png) | ![Filtrada](./analysis/imagen_base_filtrada.png) |
 
 ### Secuencia Temporal (Imágenes Reescaladas y Filtradas)
 Se procesaron 10 imágenes correspondientes a distintas fechas. A continuación se muestran todas las imágenes resultantes en sus respectivas carpetas:
 
 | Fecha / Archivo | Original Rescalada (`/scaled/`) | Filtrada con Lee (`/filtered/`) |
 | :--- | :---: | :---: |
-| **2016-06-14** | ![S1](./scaled/2016-06-14-00_00_2016-06-14-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled.tiff) | ![F1](./filtered/2016-06-14-00_00_2016-06-14-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled_lee.tiff) |
-| **2016-07-08** | ![S2](./scaled/2016-07-08-00_00_2016-07-08-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled.tiff) | ![F2](./filtered/2016-07-08-00_00_2016-07-08-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled_lee.tiff) |
-| **2016-07-20** | ![S3](./scaled/2016-07-20-00_00_2016-07-20-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled.tiff) | ![F3](./filtered/2016-07-20-00_00_2016-07-20-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled_lee.tiff) |
-| **2016-07-26** | ![S4](./scaled/2016-07-26-00_00_2016-07-26-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled.tiff) | ![F4](./filtered/2016-07-26-00_00_2016-07-26-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled_lee.tiff) |
-| **2016-08-01** | ![S5](./scaled/2016-08-01-00_00_2016-08-01-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled.tiff) | ![F5](./filtered/2016-08-01-00_00_2016-08-01-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled_lee.tiff) |
-| **2016-08-13** | ![S6](./scaled/2016-08-13-00_00_2016-08-13-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled.tiff) | ![F6](./filtered/2016-08-13-00_00_2016-08-13-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled_lee.tiff) |
-| **2016-08-19** | ![S7](./scaled/2016-08-19-00_00_2016-08-19-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled.tiff) | ![F7](./filtered/2016-08-19-00_00_2016-08-19-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled_lee.tiff) |
-| **2016-08-25** | ![S8](./scaled/2016-08-25-00_00_2016-08-25-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled.tiff) | ![F8](./filtered/2016-08-25-00_00_2016-08-25-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled_lee.tiff) |
-| **2016-09-06** | ![S9](./scaled/2016-09-06-00_00_2016-09-06-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled.tiff) | ![F9](./filtered/2016-09-06-00_00_2016-09-06-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled_lee.tiff) |
-| **2016-09-12** | ![S10](./scaled/2016-09-12-00_00_2016-09-12-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled.tiff) | ![F10](./filtered/2016-09-12-00_00_2016-09-12-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled_lee.tiff) |
+| **2016-06-14** | ![S1](./scaled/2016-06-14-00_00_2016-06-14-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled.png) | ![F1](./filtered/2016-06-14-00_00_2016-06-14-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled_lee.png) |
+| **2016-07-08** | ![S2](./scaled/2016-07-08-00_00_2016-07-08-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled.png) | ![F2](./filtered/2016-07-08-00_00_2016-07-08-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled_lee.png) |
+| **2016-07-20** | ![S3](./scaled/2016-07-20-00_00_2016-07-20-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled.png) | ![F3](./filtered/2016-07-20-00_00_2016-07-20-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled_lee.png) |
+| **2016-07-26** | ![S4](./scaled/2016-07-26-00_00_2016-07-26-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled.png) | ![F4](./filtered/2016-07-26-00_00_2016-07-26-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled_lee.png) |
+| **2016-08-01** | ![S5](./scaled/2016-08-01-00_00_2016-08-01-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled.png) | ![F5](./filtered/2016-08-01-00_00_2016-08-01-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled_lee.png) |
+| **2016-08-13** | ![S6](./scaled/2016-08-13-00_00_2016-08-13-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled.png) | ![F6](./filtered/2016-08-13-00_00_2016-08-13-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled_lee.png) |
+| **2016-08-19** | ![S7](./scaled/2016-08-19-00_00_2016-08-19-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled.png) | ![F7](./filtered/2016-08-19-00_00_2016-08-19-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled_lee.png) |
+| **2016-08-25** | ![S8](./scaled/2016-08-25-00_00_2016-08-25-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled.png) | ![F8](./filtered/2016-08-25-00_00_2016-08-25-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled_lee.png) |
+| **2016-09-06** | ![S9](./scaled/2016-09-06-00_00_2016-09-06-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled.png) | ![F9](./filtered/2016-09-06-00_00_2016-09-06-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled_lee.png) |
+| **2016-09-12** | ![S10](./scaled/2016-09-12-00_00_2016-09-12-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled.png) | ![F10](./filtered/2016-09-12-00_00_2016-09-12-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled_lee.png) |
 
 ### Conclusiones del Filtrado
 El código comprobó matemáticamente la efectividad del filtro al evaluar la desviación estándar de las regiones de interés antes y después. El Filtro de Lee reduce drásticamente la varianza local (suaviza el ruido de sal y pimienta) sin destruir los contornos geográficos relevantes.
@@ -57,8 +57,8 @@ Una parte vital del código consistió en **ordenar los centroides** de menor a 
 ### Resultados de Agrupamiento
 | K-Means | Imagen Sin Filtrar | Imagen Filtrada (Lee) |
 | :---: | :---: | :---: |
-| **k = 3** | ![Unf K3](./cluster/cluster_unfiltered_k3.tiff) | ![Flt K3](./cluster/cluster_filtered_k3.tiff) |
-| **k = 4** | ![Unf K4](./cluster/cluster_unfiltered_k4.tiff) | ![Flt K4](./cluster/cluster_filtered_k4.tiff) |
+| **k = 3** | ![Unf K3](./cluster/cluster_unfiltered_k3.png) | ![Flt K3](./cluster/cluster_filtered_k3.png) |
+| **k = 4** | ![Unf K4](./cluster/cluster_unfiltered_k4.png) | ![Flt K4](./cluster/cluster_filtered_k4.png) |
 
 ### Conclusiones de la Clasificación
 * **El efecto del ruido en la clasificación:** Aplicar algoritmos de segmentación sobre imágenes SAR sin filtrar resulta en máscaras ruidosas sin utilidad práctica. Los píxeles afectados por speckle constructivo/destructivo se clasifican como falsos positivos en zonas terrestres y acuáticas.
@@ -74,7 +74,7 @@ Utilizando los resultados de K-Means con $k=3$, se binarizó la imagen usando la
 ### Evidencias Visuales
 | Máscara a partir de imagen sin filtrar | Máscara a partir de imagen filtrada |
 | :---: | :---: |
-| ![Mask Unf](./water_mask/water_mask_unfiltered_k3.tiff) | ![Mask Flt](./water_mask/water_mask_filtered_k3.tiff) |
+| ![Mask Unf](./water_mask/water_mask_unfiltered_k3.png) | ![Mask Flt](./water_mask/water_mask_filtered_k3.png) |
 
 *Vista completa de la comparativa generada en el código:*
 ![Comparación General Agua vs No Agua](./water_mask/comparacion_agua_no_agua_k3.png)
@@ -93,27 +93,27 @@ Para generar un dataset pareado que sirva para entrenar redes de reducción de r
 3. **Generación de Parches:** Ambas imágenes base (Noisy Reference y AverageGT) se recortaron en cuadrículas (*crops*) de $512 \times 512$ píxeles con un *step* de 512, poblado los directorios finales.
 
 ### Imágenes Base del Dataset
-| Imagen Base con Ruido (`NoisyBase.tiff`) | Ground Truth Promediado (`AverageGT.tiff`) |
+| Imagen Base con Ruido (`NoisyBase.png`) | Ground Truth Promediado (`AverageGT.png`) |
 | :---: | :---: |
-| ![Noisy Base](./gt/NoisyBase.tiff) | ![Average GT](./gt/AverageGT.tiff) |
+| ![Noisy Base](./gt/NoisyBase.png) | ![Average GT](./gt/AverageGT.png) |
 
 ### Parches Generados ($512 \times 512$)
 A continuación se muestran los 12 pares coincidentes extraídos de las imágenes generadoras. 
 
 | Coordenada Y_X | Ground Truth (Limpias) - Directorio `/gtruth/` | Noisy (Ruidosas) - Directorio `/noisy/` |
 | :---: | :---: | :---: |
-| **0_0** | ![GT 0_0](./gtruth/0_0.tiff) | ![N 0_0](./noisy/0_0.tiff) |
-| **0_512** | ![GT 0_512](./gtruth/0_512.tiff) | ![N 0_512](./noisy/0_512.tiff) |
-| **0_1024** | ![GT 0_1024](./gtruth/0_1024.tiff) | ![N 0_1024](./noisy/0_1024.tiff) |
-| **512_0** | ![GT 512_0](./gtruth/512_0.tiff) | ![N 512_0](./noisy/512_0.tiff) |
-| **512_512** | ![GT 512_512](./gtruth/512_512.tiff) | ![N 512_512](./noisy/512_512.tiff) |
-| **512_1024** | ![GT 512_1024](./gtruth/512_1024.tiff) | ![N 512_1024](./noisy/512_1024.tiff) |
-| **1024_0** | ![GT 1024_0](./gtruth/1024_0.tiff) | ![N 1024_0](./noisy/1024_0.tiff) |
-| **1024_512** | ![GT 1024_512](./gtruth/1024_512.tiff) | ![N 1024_512](./noisy/1024_512.tiff) |
-| **1024_1024** | ![GT 1024_1024](./gtruth/1024_1024.tiff) | ![N 1024_1024](./noisy/1024_1024.tiff) |
-| **1536_0** | ![GT 1536_0](./gtruth/1536_0.tiff) | ![N 1536_0](./noisy/1536_0.tiff) |
-| **1536_512** | ![GT 1536_512](./gtruth/1536_512.tiff) | ![N 1536_512](./noisy/1536_512.tiff) |
-| **1536_1024** | ![GT 1536_1024](./gtruth/1536_1024.tiff) | ![N 1536_1024](./noisy/1536_1024.tiff) |
+| **0_0** | ![GT 0_0](./gtruth/0_0.png) | ![N 0_0](./noisy/0_0.png) |
+| **0_512** | ![GT 0_512](./gtruth/0_512.png) | ![N 0_512](./noisy/0_512.png) |
+| **0_1024** | ![GT 0_1024](./gtruth/0_1024.png) | ![N 0_1024](./noisy/0_1024.png) |
+| **512_0** | ![GT 512_0](./gtruth/512_0.png) | ![N 512_0](./noisy/512_0.png) |
+| **512_512** | ![GT 512_512](./gtruth/512_512.png) | ![N 512_512](./noisy/512_512.png) |
+| **512_1024** | ![GT 512_1024](./gtruth/512_1024.png) | ![N 512_1024](./noisy/512_1024.png) |
+| **1024_0** | ![GT 1024_0](./gtruth/1024_0.png) | ![N 1024_0](./noisy/1024_0.png) |
+| **1024_512** | ![GT 1024_512](./gtruth/1024_512.png) | ![N 1024_512](./noisy/1024_512.png) |
+| **1024_1024** | ![GT 1024_1024](./gtruth/1024_1024.png) | ![N 1024_1024](./noisy/1024_1024.png) |
+| **1536_0** | ![GT 1536_0](./gtruth/1536_0.png) | ![N 1536_0](./noisy/1536_0.png) |
+| **1536_512** | ![GT 1536_512](./gtruth/1536_512.png) | ![N 1536_512](./noisy/1536_512.png) |
+| **1536_1024** | ![GT 1536_1024](./gtruth/1536_1024.png) | ![N 1536_1024](./noisy/1536_1024.png) |
 
 ### Conclusiones del Dataset
 El proceso automatizado ha logrado ensamblar un dataset limpio y emparejado a nivel de píxel (`dataset_resumen.csv`). El registro ECC fue vital, ya que si las capturas temporales presentaban mínimos desajustes geométricos, el promedio final habría resultado en una imagen borrosa (con "efecto fantasma"). El resultado obtenido es estructuralmente coherente, conservando los detalles espaciales del área mientras suprime exitosamente el ruido speckle, ideal para arquitecturas de aprendizaje supervisado en tareas de denoising de imágenes SAR.
