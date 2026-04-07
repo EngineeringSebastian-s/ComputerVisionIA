@@ -24,12 +24,25 @@ General Alemán Ramírez (Base GAR)** y sus cuerpos hídricos adyacentes. Esta u
 análisis espacial con radar, ya que ofrece un alto contraste dieléctrico y morfológico entre el océano, la accidentada
 línea costera y las densas estructuras urbanas/militares contiguas.
 
-A continuación, se presenta una imagen óptica de referencia de la región seleccionada para facilitar la interpretación
-de las coberturas terrestres durante el análisis de las imágenes de radar:
+A continuación, se presenta la imagen óptica (Color Verdadero) de la región seleccionada, capturada por el satélite
+Sentinel-2, para facilitar la interpretación de las coberturas terrestres durante el análisis de las imágenes de radar:
 
-![Imagen óptica de referencia - Zona Base GAR](./real/imagen_maps.png)
-*Figura 1: Vista óptica (Google Maps/Earth) de la región de interés, destacando el cuerpo de agua y el entorno urbano de
-la Base GAR.*
+![Sentinel-2 True Color](./real/2025-12-30-00_00_2025-12-30-23_59_Sentinel-2_L1C_True_color.jpg)
+*Figura 1: Vista óptica en Color Verdadero (Sentinel-2 L1C) de la región de interés, destacando el cuerpo de agua y el
+entorno urbano de la Base GAR.*
+
+#### Análisis Óptico Complementario (Índices Multiespectrales)
+
+Para complementar la validación del terreno (Ground Truth) y comprender mejor las firmas de las coberturas presentes
+antes de aplicar los algoritmos de agrupamiento (*Clustering*), se extrajeron diversos índices y composiciones
+multiespectrales de la misma fecha:
+
+|                                                            Composición / Índice                                                             |                                                      Composición / Índice                                                      |
+|:-------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------:|
+| **Color Natural Optimizado** <br> ![Natural](./real/2025-12-30-00_00_2025-12-30-23_59_Sentinel-2_L1C_Highlight_Optimized_Natural_Color.jpg) | **Falso Color (Urbano)** <br> ![Falso Urbano](./real/2025-12-30-00_00_2025-12-30-23_59_Sentinel-2_L1C_False_color_(urban).jpg) |
+|                **Falso Color** <br> ![Falso Color](./real/2025-12-30-00_00_2025-12-30-23_59_Sentinel-2_L1C_False_color.jpg)                 |       **SWIR (Infrarrojo de Onda Corta)** <br> ![SWIR](./real/2025-12-30-00_00_2025-12-30-23_59_Sentinel-2_L1C_SWIR.jpg)       |
+|                    **NDVI (Vegetación)** <br> ![NDVI](./real/2025-12-30-00_00_2025-12-30-23_59_Sentinel-2_L1C_NDVI.jpg)                     |                 **NDWI (Agua)** <br> ![NDWI](./real/2025-12-30-00_00_2025-12-30-23_59_Sentinel-2_L1C_NDWI.jpg)                 |
+|             **Índice de Humedad** <br> ![Moisture](./real/2025-12-30-00_00_2025-12-30-23_59_Sentinel-2_L1C_Moisture_index.jpg)              |             **NDSI (Nieve/Hielo)** <br> ![NDSI](./real/2025-12-30-00_00_2025-12-30-23_59_Sentinel-2_L1C_NDSI.jpg)              |
 
 ### Objetivos y Retos del Proyecto
 
@@ -78,29 +91,36 @@ dinámico de las intensidades de retrodispersión y la presencia de ruido interf
 
 ### Evidencias Visuales y Análisis de Regiones de Interés (ROIs)
 
-Para evaluar el impacto real del filtro matemático, se definieron tres Regiones de Interés (ROIs) sobre la imagen base (
-`2016-08-01`), cubriendo diferentes tipos de coberturas terrestres:
+Para evaluar el impacto real del filtro matemático, se definieron tres Regiones de Interés (ROIs) sobre la imagen base
+seleccionada, cubriendo deliberadamente diferentes tipos de coberturas y firmas radáricas:
 
 ![ROIs Marcadas](./analysis/imagen_base_rois_marcadas.png)
 
-* **ROI Superior (Zona Urbana/Base GAR):** Contiene alta densidad de edificaciones. Aquí, la varianza natural es alta
-  debido a las estructuras antrópicas.
-* **ROI Central (Línea Costera):** Contiene el límite abrupto entre el continente y el océano. Es una zona crítica para
-  evaluar si el filtro destruye o preserva los bordes.
-* **ROI Inferior (Cuerpo de Agua):** Es una zona naturalmente homogénea donde la retrodispersión debería ser
-  uniformemente baja, pero que se ve fuertemente afectada por el *speckle*.
+* **ROI 1 (Centro-Derecha | Puerto y Península):** Contiene alta densidad de edificaciones, la costa de La Isleta y la
+  infraestructura portuaria de la Base GAR. Presenta una altísima varianza natural debido al efecto de "doble rebote" de
+  la señal en las estructuras metálicas y geométricas.
+* **ROI 2 (Inferior-Derecha | Mar Abierto y Zona de Fondeo):** Abarca principalmente el océano (zona naturalmente
+  homogénea de baja retrodispersión), pero está salpicada por objetivos puntuales extremadamente brillantes (barcos
+  fondeados). Es una zona crítica para evaluar si el filtro suaviza el mar sin "borrar" objetos pequeños.
+* **ROI 3 (Inferior-Izquierda | Relieve Continental):** Abarca tierra firme con topografía accidentada y texturas
+  geomorfológicas complejas (montañas y valles). Sirve para comprobar la preservación de la textura del terreno.
 
-**Comparativa General Base (Zoom en ROIs):**
+**Comparativa General Base:**
 
-|            Imagen Reescalada (Sin Filtrar)             |            Imagen Filtrada (Lee 7x7)             |
+|            Imagen Reescalada (Sin Filtrar)             |              Imagen Filtrada (Lee)               |
 |:------------------------------------------------------:|:------------------------------------------------:|
 | ![Sin Filtrar](./analysis/imagen_base_sin_filtrar.png) | ![Filtrada](./analysis/imagen_base_filtrada.png) |
 
-**Análisis del resultado visual:** Al comparar ambas imágenes, el efecto del Filtro de Lee es evidente. En la zona del
-mar (mitad izquierda), la textura altamente granulada de la imagen original desaparece casi por completo, resultando en
-un parche oscuro y uniforme. Al mismo tiempo, en la costa (centro de la imagen) y en la zona urbana de la Base GAR (
-parte superior derecha), las siluetas, calles y estructuras mantienen su nitidez, confirmando que el filtro logró
-suprimir el ruido sin comprometer la resolución espacial de los elementos clave de la escena.
+**Análisis del resultado visual:** Al comparar ambas imágenes, el efecto adaptativo del Filtro de Lee es evidente y
+exitoso. En la **ROI 2** y el resto del océano, la textura altamente granulada (*ruido de sal y pimienta*) típica del
+*speckle* disminuye notablemente, resultando en un fondo mucho más oscuro y uniforme. Sin embargo, el filtro logra
+preservar la firma de los barcos fondeados sin difuminarlos excesivamente contra el mar.
+
+Simultáneamente, en la **ROI 1**, las siluetas de los muelles y las estructuras portuarias mantienen sus bordes
+definidos. En la **ROI 3**, aunque se observa una ligera reducción en la nitidez general propia del ventaneo espacial
+del filtro, las crestas y valles del relieve conservan su textura estructural. Esto confirma que el filtro de Lee
+cumplió su propósito: suprimir estadísticamente el ruido en áreas homogéneas mientras respeta los gradientes fuertes y
+los bordes de la escena original.
 
 ### Secuencia Temporal (Imágenes Reescaladas y Filtradas)
 
