@@ -107,18 +107,18 @@ suprimir el ruido sin comprometer la resolución espacial de los elementos clave
 Se procesaron 10 imágenes correspondientes a distintas fechas para observar el área bajo diferentes condiciones
 temporales. A continuación, se muestran las imágenes resultantes organizadas en sus respectivas carpetas:
 
-| Fecha / Archivo |                                  Original Rescalada (`/scaled/`)                                  |                                     Filtrada con Lee (`/filtered/`)                                     |
-|:----------------|:-------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------:|
-| **2016-06-14**  | ![S1](./scaled/2016-06-14-00_00_2016-06-14-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled.png)  | ![F1](./filtered/2016-06-14-00_00_2016-06-14-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled_lee.png)  |
-| **2016-07-08**  | ![S2](./scaled/2016-07-08-00_00_2016-07-08-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled.png)  | ![F2](./filtered/2016-07-08-00_00_2016-07-08-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled_lee.png)  |
-| **2016-07-20**  | ![S3](./scaled/2016-07-20-00_00_2016-07-20-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled.png)  | ![F3](./filtered/2016-07-20-00_00_2016-07-20-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled_lee.png)  |
-| **2016-07-26**  | ![S4](./scaled/2016-07-26-00_00_2016-07-26-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled.png)  | ![F4](./filtered/2016-07-26-00_00_2016-07-26-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled_lee.png)  |
-| **2016-08-01**  | ![S5](./scaled/2016-08-01-00_00_2016-08-01-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled.png)  | ![F5](./filtered/2016-08-01-00_00_2016-08-01-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled_lee.png)  |
-| **2016-08-13**  | ![S6](./scaled/2016-08-13-00_00_2016-08-13-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled.png)  | ![F6](./filtered/2016-08-13-00_00_2016-08-13-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled_lee.png)  |
-| **2016-08-19**  | ![S7](./scaled/2016-08-19-00_00_2016-08-19-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled.png)  | ![F7](./filtered/2016-08-19-00_00_2016-08-19-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled_lee.png)  |
-| **2016-08-25**  | ![S8](./scaled/2016-08-25-00_00_2016-08-25-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled.png)  | ![F8](./filtered/2016-08-25-00_00_2016-08-25-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled_lee.png)  |
-| **2016-09-06**  | ![S9](./scaled/2016-09-06-00_00_2016-09-06-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled.png)  | ![F9](./filtered/2016-09-06-00_00_2016-09-06-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled_lee.png)  |
-| **2016-09-12**  | ![S10](./scaled/2016-09-12-00_00_2016-09-12-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled.png) | ![F10](./filtered/2016-09-12-00_00_2016-09-12-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled_lee.png) |
+| Fecha / Archivo | Original Rescalada (`/scaled/`) | Filtrada con Lee (`/filtered/`) |
+| :--- | :---: | :---: |
+| **2025-05-01** | ![S1](./scaled/2025-05-01-00_00_2025-05-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled.png) | ![F1](./filtered/2025-05-01-00_00_2025-05-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled_lee.png) |
+| **2025-06-01** | ![S2](./scaled/2025-06-01-00_00_2025-06-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled.png) | ![F2](./filtered/2025-06-01-00_00_2025-06-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled_lee.png) |
+| **2025-07-01** | ![S3](./scaled/2025-07-01-00_00_2025-07-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled.png) | ![F3](./filtered/2025-07-01-00_00_2025-07-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled_lee.png) |
+| **2025-08-01** | ![S4](./scaled/2025-08-01-00_00_2025-08-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled.png) | ![F4](./filtered/2025-08-01-00_00_2025-08-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled_lee.png) |
+| **2025-09-01** | ![S5](./scaled/2025-09-01-00_00_2025-09-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled.png) | ![F5](./filtered/2025-09-01-00_00_2025-09-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled_lee.png) |
+| **2025-10-01** | ![S6](./scaled/2025-10-01-00_00_2025-10-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled.png) | ![F6](./filtered/2025-10-01-00_00_2025-10-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled_lee.png) |
+| **2025-11-01** | ![S7](./scaled/2025-11-01-00_00_2025-11-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled.png) | ![F7](./filtered/2025-11-01-00_00_2025-11-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled_lee.png) |
+| **2025-12-01** | ![S8](./scaled/2025-12-01-00_00_2025-12-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled.png) | ![F8](./filtered/2025-12-01-00_00_2025-12-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled_lee.png) |
+| **2026-01-01** | ![S9](./scaled/2026-01-01-00_00_2026-01-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled.png) | ![F9](./filtered/2026-01-01-00_00_2026-01-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled_lee.png) |
+| **2026-02-01** | ![S10](./scaled/2026-02-01-00_00_2026-02-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled.png) | ![F10](./filtered/2026-02-01-00_00_2026-02-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled_lee.png) |
 
 *(Nota: En la secuencia temporal se puede observar que mientras las estructuras urbanas de la Base GAR mantienen una
 firma de retrodispersión constantemente alta y brillante a lo largo de los meses, la intensidad del océano presenta
