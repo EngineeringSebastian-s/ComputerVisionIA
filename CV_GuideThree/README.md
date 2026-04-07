@@ -6,10 +6,27 @@
 
 ---
 
-## 1. Introducción
-Este documento presenta la resolución de los retos propuestos en la Guía 3 de Visión por Computador. El objetivo principal es el procesamiento de una secuencia temporal de 10 imágenes de radar de apertura sintética (SAR) Sentinel-1 en banda VV. El flujo de trabajo documentado aquí incluye el rescalizado de intensidades, la reducción del ruido *speckle* mediante filtros locales (Filtro de Lee), clasificación no supervisada mediante K-Means, y la consolidación de un dataset de imágenes limpias (Ground Truth) vs. ruidosas (Noisy) para futuros entrenamientos de modelos de Deep Learning.
+## 1. Introducción y Contexto de Estudio
 
-![Imagen Google Maps](./real/imagen_maps.png)
+La teledetección mediante Radar de Apertura Sintética (SAR) es una herramienta poderosa que permite observar la superficie terrestre independientemente de las condiciones climáticas o la iluminación solar. Sin embargo, el procesamiento de estas imágenes presenta un desafío inherente: la presencia de un ruido multiplicativo conocido como *speckle*, el cual dificulta la interpretación visual y la segmentación automática.
+
+Este documento presenta el desarrollo y los resultados de la **Guía Práctica 3** de la asignatura Visión por Computador e Inteligencia Artificial. El objetivo del proyecto es implementar un *pipeline* completo de visión por computador sobre una secuencia temporal de 10 imágenes satelitales SAR (misión Sentinel-1, polarización VV).
+
+### Zona de Estudio: Base General Alemán Ramírez (Base GAR)
+Para cumplir con el criterio principal de la práctica, se seleccionó como área de interés la zona costera de la **Base General Alemán Ramírez (Base GAR)** y sus cuerpos hídricos adyacentes. Esta ubicación geográfica es ideal para el análisis espacial con radar, ya que ofrece un alto contraste dieléctrico y morfológico entre el océano, la accidentada línea costera y las densas estructuras urbanas/militares contiguas.
+
+A continuación, se presenta una imagen óptica de referencia de la región seleccionada para facilitar la interpretación de las coberturas terrestres durante el análisis de las imágenes de radar:
+
+![Imagen óptica de referencia - Zona Base GAR](./real/imagen_maps.png)
+*Figura 1: Vista óptica (Google Maps/Earth) de la región de interés, destacando el cuerpo de agua y el entorno urbano de la Base GAR.*
+
+### Objetivos y Retos del Proyecto
+Para abordar el procesamiento de esta escena, el informe documenta la solución de los siguientes cuatro retos secuenciales:
+
+1. **Reto de Imágenes y Filtrado:** Rescalizado de las intensidades del radar para su correcta visualización y aplicación del Filtro local de Lee para la mitigación del ruido *speckle*.
+2. **Reto de Clasificación No Supervisada:** Segmentación de las coberturas de la escena (agua, vegetación, edificaciones) utilizando el algoritmo de agrupamiento K-Means, evaluando el impacto directo del filtrado previo en la calidad de los clústeres.
+3. **Reto de Clasificación Agua/No Agua:** Binarización de los resultados del *clustering* para aislar exclusivamente los cuerpos hídricos y cuantificar su porcentaje de área en la imagen.
+4. **Reto de Creación de Dataset:** Construcción de un conjunto de datos estructurado en parches de $512 \times 512$ píxeles. Esto se logra mediante el registro espacial (alineación) de las 10 imágenes temporales y su promediado para generar un "Ground Truth" libre de ruido, creando así pares de imágenes (Noisy vs. Ground Truth) listos para entrenar futuros modelos de Deep Learning.
 
 ---
 
