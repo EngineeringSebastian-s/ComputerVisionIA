@@ -251,23 +251,23 @@ contundente:
 ### Fundamento Teórico y Procedimiento Implementado (basado en `exercise_four.ipynb`)
 
 El desarrollo de modelos avanzados de Inteligencia Artificial (como Redes Neuronales Convolucionales o GANs) para la
-restauración de imágenes requiere grandes volúmenes de datos emparejados. [cite_start]Para generar un dataset pareado
-que sirva para entrenar redes de reducción de ruido, se ejecutó un pipeline riguroso[cite: 255]:
+restauración de imágenes requiere grandes volúmenes de datos emparejados. Para generar un dataset pareado
+que sirva para entrenar redes de reducción de ruido, se ejecutó un pipeline riguroso:
 
 1. **Registro Espacial (Alineación Sub-píxel):** Aunque las imágenes provienen del mismo satélite, la órbita no es
-   perfectamente idéntica en cada pasada. [cite_start]Usando la imagen del 2016-08-01 como plantilla (referencia
+   perfectamente idéntica en cada pasada. Usando la imagen del 2016-08-01 como plantilla (referencia
    ruidosa), las demás imágenes rescaladas fueron alineadas utilizando Maximización del Coeficiente de Correlación (ECC
-   de OpenCV con MOTION_AFFINE)[cite: 256]. [cite_start]Esto compensa leves desplazamientos orbitales entre las
-   tomas[cite: 257], asegurando que un píxel en la coordenada $(x, y)$ represente exactamente la misma porción de tierra
+   de OpenCV con MOTION_AFFINE). Esto compensa leves desplazamientos orbitales entre las
+   tomas, asegurando que un píxel en la coordenada $(x, y)$ represente exactamente la misma porción de tierra
    en todas las fechas.
 2. **Generación del Ground Truth (Promedio Multitemporal):** A diferencia de la fotografía óptica, en el radar rara vez
-   existe una imagen "limpia" absoluta. [cite_start]Las imágenes exitosamente alineadas se apilaron y promediaron (
-   `np.mean(stack, axis=0)`)[cite: 258]. [cite_start]Debido a que el speckle es aleatorio e independiente en el tiempo,
-   promediar las imágenes cancela el ruido, obteniendo un Ground Truth sintético de alta calidad temporal[cite: 259].
+   existe una imagen "limpia" absoluta. Las imágenes exitosamente alineadas se apilaron y promediaron (
+   `np.mean(stack, axis=0)`). Debido a que el speckle es aleatorio e independiente en el tiempo,
+   promediar las imágenes cancela el ruido, obteniendo un Ground Truth sintético de alta calidad temporal.
    Matemáticamente, la varianza del ruido se reduce en un factor de $N$ (donde $N$ es el número de imágenes
    promediadas), preservando la resolución espacial. 3. **Generación de Parches (Patching):** Las redes neuronales
-   requieren entradas de tamaño fijo y manejable. [cite_start]Ambas imágenes base (Noisy Reference y AverageGT) se
-   recortaron en cuadrículas (crops) de 512x512 píxeles con un step de 512, poblado los directorios finales[cite: 260].
+   requieren entradas de tamaño fijo y manejable. Ambas imágenes base (Noisy Reference y AverageGT) se
+   recortaron en cuadrículas (crops) de 512x512 píxeles con un step de 512, poblado los directorios finales.
 
 ### Análisis Visual de las Imágenes Base del Dataset
 
@@ -335,4 +335,4 @@ analizada sobre la Base General Alemán Ramírez, se extraen las siguientes conc
   exitosamente combinando el registro espacial sub-píxel (ECC) con el promediado multitemporal. El dataset final de
   parches emparejados de 512x512 demuestra que es posible generar un "Ground Truth" sintético coherente y sin pérdida de
   bordes, proporcionando la estructura ideal para entrenar futuras arquitecturas de aprendizaje supervisado enfocadas en
-  el *denoising* de imágenes satelitales[cite: 364, 404, 405].
+  el *denoising* de imágenes satelitales.
