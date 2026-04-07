@@ -33,22 +33,36 @@ Para abordar el procesamiento de esta escena, el informe documenta la solución 
 
 ## 2. Reto 1: Imágenes y Filtrado
 
-### Procedimiento Implementado (basado en `exercise_one.ipynb`)
-1. **Rescalizado:** Las imágenes SAR originales (`/raw/`) poseen valores de intensidad con un rango dinámico muy amplio. Se implementó una función que limita los valores máximos a 3 veces la media de la imagen original (`escala_display = np.mean(img2) * 3.0`), asignando los valores superiores a este umbral y normalizando el resultado a 8 bits (0-255) tipo `uint8`.
-2. **Filtrado:** Se aplicó un **Filtro de Lee** con un tamaño de ventana de $7 \times 7$. Este filtro calcula la media y varianza local para determinar si un píxel corresponde a un área homogénea (donde aplica un suavizado fuerte) o a un borde (donde preserva el valor original). 
+### Fundamento y Procedimiento Implementado (basado en `exercise_one.ipynb`)
 
-### Evidencias Visuales
-A continuación, se define el área de estudio y las Regiones de Interés (ROIs) marcadas para analizar el impacto del filtro:
+El procesamiento de imágenes SAR de la misión Sentinel-1 requiere un acondicionamiento previo antes de que cualquier algoritmo de Machine Learning pueda extraer información útil. Esto se debe a dos factores principales: el inmenso rango dinámico de las intensidades de retrodispersión y la presencia de ruido interferométrico.
+
+1. **Rescalizado de Intensidades:** Las imágenes SAR originales (`/raw/`) en formato *linear gamma0* poseen valores de intensidad con un rango dinámico muy amplio (desde valores cercanos a 0 en el agua hasta picos extremos en los reflectores metálicos de la base militar). Si se visualizan directamente, la imagen se vería casi completamente negra. 
+   * *Solución:* Se implementó una función que calcula la media de la imagen original y establece un límite máximo (`escala_display = np.mean(img2) * 3.0`). Los píxeles que superan este umbral se saturan (clipping), y el resultado se normaliza a una escala de 8 bits (0-255) de tipo `uint8`. Esto permite un contraste óptimo para el análisis visual y computacional.
+
+2. **Filtrado de Speckle:** Las imágenes de radar no son fotografías ópticas; se forman por la emisión y recepción de pulsos de microondas. La interacción de estas ondas con múltiples dispersores dentro de un mismo píxel genera interferencias constructivas y destructivas, creando un ruido multiplicativo y determinista conocido como *speckle* (aspecto de "sal y pimienta").    * *Solución:* Se aplicó un **Filtro Espacial de Lee** con una ventana móvil de 7x7 píxeles. A diferencia de un filtro de media tradicional que desenfoca toda la imagen, el Filtro de Lee es adaptativo: calcula la media y la varianza local en cada ventana. Si la varianza es baja (área homogénea como el mar), el filtro promedia agresivamente para eliminar el ruido. Si la varianza es alta (un borde costero o una zona urbana), el filtro conserva el valor original del píxel para no perder detalles topográficos.
+
+### Evidencias Visuales y Análisis de Regiones de Interés (ROIs)
+
+Para evaluar el impacto real del filtro matemático, se definieron tres Regiones de Interés (ROIs) sobre la imagen base (`2016-08-01`), cubriendo diferentes tipos de coberturas terrestres:
 
 ![ROIs Marcadas](./analysis/imagen_base_rois_marcadas.png)
 
-**Comparativa General Base:**
-| Imagen Reescalada (Sin Filtrar) | Imagen Filtrada (Lee) |
+* **ROI Superior (Zona Urbana/Base GAR):** Contiene alta densidad de edificaciones. Aquí, la varianza natural es alta debido a las estructuras antrópicas.
+* **ROI Central (Línea Costera):** Contiene el límite abrupto entre el continente y el océano. Es una zona crítica para evaluar si el filtro destruye o preserva los bordes.
+* **ROI Inferior (Cuerpo de Agua):** Es una zona naturalmente homogénea donde la retrodispersión debería ser uniformemente baja, pero que se ve fuertemente afectada por el *speckle*.
+
+**Comparativa General Base (Zoom en ROIs):**
+
+| Imagen Reescalada (Sin Filtrar) | Imagen Filtrada (Lee 7x7) |
 | :---: | :---: |
 | ![Sin Filtrar](./analysis/imagen_base_sin_filtrar.png) | ![Filtrada](./analysis/imagen_base_filtrada.png) |
 
+**Análisis del resultado visual:** Al comparar ambas imágenes, el efecto del Filtro de Lee es evidente. En la zona del mar (mitad izquierda), la textura altamente granulada de la imagen original desaparece casi por completo, resultando en un parche oscuro y uniforme. Al mismo tiempo, en la costa (centro de la imagen) y en la zona urbana de la Base GAR (parte superior derecha), las siluetas, calles y estructuras mantienen su nitidez, confirmando que el filtro logró suprimir el ruido sin comprometer la resolución espacial de los elementos clave de la escena.
+
 ### Secuencia Temporal (Imágenes Reescaladas y Filtradas)
-Se procesaron 10 imágenes correspondientes a distintas fechas. A continuación se muestran todas las imágenes resultantes en sus respectivas carpetas:
+
+Se procesaron 10 imágenes correspondientes a distintas fechas para observar el área bajo diferentes condiciones temporales. A continuación, se muestran las imágenes resultantes organizadas en sus respectivas carpetas:
 
 | Fecha / Archivo | Original Rescalada (`/scaled/`) | Filtrada con Lee (`/filtered/`) |
 | :--- | :---: | :---: |
@@ -63,8 +77,10 @@ Se procesaron 10 imágenes correspondientes a distintas fechas. A continuación 
 | **2016-09-06** | ![S9](./scaled/2016-09-06-00_00_2016-09-06-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled.png) | ![F9](./filtered/2016-09-06-00_00_2016-09-06-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled_lee.png) |
 | **2016-09-12** | ![S10](./scaled/2016-09-12-00_00_2016-09-12-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled.png) | ![F10](./filtered/2016-09-12-00_00_2016-09-12-23_59_Sentinel-1_EW_VV_VV_-_linear_gamma0_scaled_lee.png) |
 
+*(Nota: En la secuencia temporal se puede observar que mientras las estructuras urbanas de la Base GAR mantienen una firma de retrodispersión constantemente alta y brillante a lo largo de los meses, la intensidad del océano presenta ligeras variaciones de gris, lo cual obedece a los cambios en la rugosidad superficial del agua provocados por el viento y el oleaje en las distintas fechas).*
+
 ### Conclusiones del Filtrado
-El código comprobó matemáticamente la efectividad del filtro al evaluar la desviación estándar de las regiones de interés antes y después. El Filtro de Lee reduce drásticamente la varianza local (suaviza el ruido de sal y pimienta) sin destruir los contornos geográficos relevantes.
+El código ejecutado comprobó matemáticamente la efectividad del filtro al evaluar la desviación estándar de las regiones de interés antes y después. El Filtro de Lee cumplió satisfactoriamente su función dual: redujo drásticamente la varianza estadística en los cuerpos hídricos (suavizando el ruido multiplicativo de radar) y conservó intactos los altos gradientes de los contornos geográficos y urbanos. Este paso demostró ser estrictamente necesario para garantizar la viabilidad de los algoritmos de clasificación de las siguientes etapas.
 
 ---
 
