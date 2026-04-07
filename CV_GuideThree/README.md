@@ -121,19 +121,38 @@ Al observar los resultados sobre las imágenes filtradas, se puede realizar una 
 ## 4. Reto 3: Clasificación de Agua / No Agua
 
 ### Procedimiento Implementado (basado en `exercise_three.ipynb`)
-Utilizando los resultados de K-Means con $k=3$, se binarizó la imagen usando la instrucción `np.where(cluster == 0, 255, 0)`. Dado que previamente forzamos a que el centroide de menor intensidad fuera el valor 0, esta máscara extrae el agua pintándola de blanco (255) y oscureciendo (0) el resto.
 
-### Evidencias Visuales
-| Máscara a partir de imagen sin filtrar | Máscara a partir de imagen filtrada |
+El objetivo de este reto fue extraer una máscara binaria que delimitara exclusivamente las superficies acuáticas de la escena. Para lograrlo, se aprovechó la segmentación generada en el paso anterior con el modelo K-Means ($k=3$). 
+
+Físicamente, los cuerpos de agua tranquilos actúan como espejos frente a las microondas emitidas por el satélite Sentinel-1. Este fenómeno, conocido como *reflexión especular*, desvía la mayor parte de la energía lejos del sensor, haciendo que el agua sea la cobertura con menor intensidad de retrodispersión de toda la imagen. 
+Basado en este principio, y sabiendo que los centroides fueron ordenados previamente, el algoritmo simplemente aísla la "Clase 0" (la de menor valor) mediante la instrucción binarizadora `np.where(cluster == 0, 255, 0)`. Esto pinta los píxeles de agua de blanco puro (255) y oscurece por completo cualquier otra cobertura terrestre (0). Finalmente, se implementó una función (`porcentaje_agua`) para cuantificar la proporción de píxeles blancos sobre el total de la imagen.
+
+### Evidencias Visuales y Análisis Comparativo
+
+| Máscara Binaria (Imagen Sin Filtrar) | Máscara Binaria (Imagen Filtrada con Lee) |
 | :---: | :---: |
 | ![Mask Unf](./water_mask/water_mask_unfiltered_k3.png) | ![Mask Flt](./water_mask/water_mask_filtered_k3.png) |
 
-*Vista completa de la comparativa generada en el código:*
+Para comprender la evolución completa del proceso (desde la imagen segmentada hasta la máscara binaria final), el algoritmo generó la siguiente comparativa global:
+
 ![Comparación General Agua vs No Agua](./water_mask/comparacion_agua_no_agua_k3.png)
 
-### Conclusiones
-La medición del porcentaje de área cubierta por agua (`porcentaje_agua(mask)`) se ve severamente alterada por el ruido si no se filtra la imagen. La máscara generada a partir de la imagen filtrada con Lee permite delinear perfectamente las riberas y las costas, consolidándose como una herramienta viable para monitoreos automáticos de inundaciones o cuerpos hídricos.
+### Análisis Visual de las Máscaras
 
+Al observar las máscaras binarias extraídas, la diferencia entre el uso de la imagen cruda y la preprocesada es contundente:
+
+1. **Máscara sin filtrar (Cruda):**
+   * **Falsos Positivos en Tierra:** Se observan miles de puntos blancos dispersos sobre la masa continental negra. Estos corresponden a valles profundos de ruido *speckle* destructivo que el algoritmo confundió con agua debido a su baja intensidad aleatoria.
+   * **Falsos Negativos en Agua:** El cuerpo de agua (blanco) presenta "agujeros" negros. Son picos de ruido constructivo que elevaron artificialmente la intensidad del píxel, haciendo que K-Means los clasificara erróneamente como tierra.
+2. **Máscara filtrada (Lee):**
+   * El cuerpo de agua se consolida como un bloque denso y continuo.
+   * La masa continental terrestre se muestra sólida y libre de falsos positivos acuáticos.
+   * La línea costera y las estructuras portuarias/geográficas que se adentran en el mar quedan perfectamente perfiladas, demostrando que el filtro suavizó las áreas homogéneas pero respetó las fronteras morfológicas.
+
+### Conclusiones de la Extracción
+
+* **Impacto en las métricas cuantitativas:** El cálculo del porcentaje del área cubierta por agua arrojó valores muy distintos al usar la imagen sin filtrar frente a la filtrada. Al no aplicar un filtro, los falsos positivos y negativos alteran severamente la métrica, generando un cálculo de área totalmente irreal.
+* **Aplicabilidad:** La máscara generada a partir de la imagen filtrada con Lee demuestra que un *pipeline* clásico de visión por computador (Filtrado Espacial + K-Means + Binarización) es altamente robusto para perfilar riberas y costas. Esta metodología es directamente aplicable a sistemas de alerta temprana, monitoreo de inundaciones o delimitación automática de cuencas hidrográficas utilizando teledetección SAR.
 
 ---
 
