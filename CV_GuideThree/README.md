@@ -9,7 +9,9 @@
 ## 1. Introducción
 Este documento presenta la resolución de los retos propuestos en la Guía 3 de Visión por Computador. El objetivo principal es el procesamiento de una secuencia temporal de 10 imágenes de radar de apertura sintética (SAR) Sentinel-1 en banda VV. El flujo de trabajo documentado aquí incluye el rescalizado de intensidades, la reducción del ruido *speckle* mediante filtros locales (Filtro de Lee), clasificación no supervisada mediante K-Means, y la consolidación de un dataset de imágenes limpias (Ground Truth) vs. ruidosas (Noisy) para futuros entrenamientos de modelos de Deep Learning.
 
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13553.862807117022!2d-15.44051238718398!3d28.153329668578042!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xc4095b55a6dee57%3A0x7a2a56a9699360bf!2sBase%20General%20Alem%C3%A1n%20Ram%C3%ADrez%20(Base%20GAR)!5e1!3m2!1ses!2sco!4v1775538853033!5m2!1ses!2sco" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 ---
+
 
 ## 2. Reto 1: Imágenes y Filtrado
 
