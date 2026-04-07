@@ -188,6 +188,9 @@ A continuación se muestran algunos de los pares coincidentes extraídos de las 
 | **1024_0** | ![GT 1024_0](./gtruth/1024_0.png) | ![N 1024_0](./noisy/1024_0.png) |
 | **1024_512** | ![GT 1024_512](./gtruth/1024_512.png) | ![N 1024_512](./noisy/1024_512.png) |
 | **1024_1024** | ![GT 1024_1024](./gtruth/1024_1024.png) | ![N 1024_1024](./noisy/1024_1024.png) |
+| **1536_0** | ![GT 1536_0](./gtruth/1536_0.png) | ![N 1536_0](./noisy/1536_0.png) |
+| **1536_512** | ![GT 1536_512](./gtruth/1536_512.png) | ![N 1536_512](./noisy/1536_512.png) |
+| **1536_1024** | ![GT 1536_1024](./gtruth/1536_1024.png) | ![N 1536_1024](./noisy/1536_1024.png) |
 
 ### Conclusiones de la Ingeniería de Datos
 
