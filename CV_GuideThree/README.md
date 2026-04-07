@@ -158,19 +158,24 @@ Al observar las máscaras binarias extraídas, la diferencia entre el uso de la 
 
 ## 5. Reto 4: Creación del Dataset
 
-### Procedimiento Implementado (basado en `exercise_four.ipynb`)
-Para generar un dataset pareado que sirva para entrenar redes de reducción de ruido, se ejecutó un pipeline riguroso:
-1. **Registro Espacial:** Usando la imagen del `2016-08-01` como plantilla (referencia ruidosa), las demás imágenes rescaladas fueron alineadas utilizando Maximización del Coeficiente de Correlación (**ECC** de OpenCV con `MOTION_AFFINE`). Esto compensa leves desplazamientos orbitales entre las tomas.
-2. **Promedio Multitemporal (Ground Truth):** Las imágenes exitosamente alineadas se apilaron y promediaron (`np.mean(stack, axis=0)`). Debido a que el speckle es aleatorio e independiente en el tiempo, promediar las imágenes cancela el ruido, obteniendo un *Ground Truth* sintético de alta calidad temporal.
-3. **Generación de Parches:** Ambas imágenes base (Noisy Reference y AverageGT) se recortaron en cuadrículas (*crops*) de $512 \times 512$ píxeles con un *step* de 512, poblado los directorios finales.
+### Fundamento Teórico y Procedimiento Implementado (basado en `exercise_four.ipynb`)
 
-### Imágenes Base del Dataset
+El desarrollo de modelos avanzados de Inteligencia Artificial (como Redes Neuronales Convolucionales o GANs) para la restauración de imágenes requiere grandes volúmenes de datos emparejados. [cite_start]Para generar un dataset pareado que sirva para entrenar redes de reducción de ruido, se ejecutó un pipeline riguroso[cite: 255]:
+
+1. **Registro Espacial (Alineación Sub-píxel):** Aunque las imágenes provienen del mismo satélite, la órbita no es perfectamente idéntica en cada pasada. [cite_start]Usando la imagen del 2016-08-01 como plantilla (referencia ruidosa), las demás imágenes rescaladas fueron alineadas utilizando Maximización del Coeficiente de Correlación (ECC de OpenCV con MOTION_AFFINE)[cite: 256]. [cite_start]Esto compensa leves desplazamientos orbitales entre las tomas[cite: 257], asegurando que un píxel en la coordenada $(x, y)$ represente exactamente la misma porción de tierra en todas las fechas.
+2. **Generación del Ground Truth (Promedio Multitemporal):** A diferencia de la fotografía óptica, en el radar rara vez existe una imagen "limpia" absoluta. [cite_start]Las imágenes exitosamente alineadas se apilaron y promediaron (`np.mean(stack, axis=0)`)[cite: 258]. [cite_start]Debido a que el speckle es aleatorio e independiente en el tiempo, promediar las imágenes cancela el ruido, obteniendo un Ground Truth sintético de alta calidad temporal[cite: 259]. Matemáticamente, la varianza del ruido se reduce en un factor de $N$ (donde $N$ es el número de imágenes promediadas), preservando la resolución espacial. 3. **Generación de Parches (Patching):** Las redes neuronales requieren entradas de tamaño fijo y manejable. [cite_start]Ambas imágenes base (Noisy Reference y AverageGT) se recortaron en cuadrículas (crops) de 512x512 píxeles con un step de 512, poblado los directorios finales[cite: 260].
+
+### Análisis Visual de las Imágenes Base del Dataset
+
 | Imagen Base con Ruido (`NoisyBase.png`) | Ground Truth Promediado (`AverageGT.png`) |
 | :---: | :---: |
 | ![Noisy Base](./gt/NoisyBase.png) | ![Average GT](./gt/AverageGT.png) |
 
-### Parches Generados ($512 \times 512$)
-A continuación se muestran los 12 pares coincidentes extraídos de las imágenes generadoras. 
+**Análisis Comparativo:** Al observar la imagen `AverageGT`, se evidencia el éxito rotundo del método multitemporal. Mientras que el Filtro de Lee (aplicado en el Reto 1) genera un ligero difuminado tipo "acuarela" en los bordes para reducir el ruido, el promedio multitemporal mantiene la textura real de las infraestructuras urbanas y la nitidez milimétrica de la costa, al tiempo que el océano se vuelve una superficie completamente libre de grano. Esta imagen promediada representa el objetivo ideal ("Ground Truth") que una IA debería aprender a generar a partir de una imagen ruidosa.
+
+### Parches Generados (512x512)
+
+A continuación se muestran algunos de los pares coincidentes extraídos de las imágenes generadoras, listos para ser introducidos en tensores de Machine Learning.
 
 | Coordenada Y_X | Ground Truth (Limpias) - Directorio `/gtruth/` | Noisy (Ruidosas) - Directorio `/noisy/` |
 | :---: | :---: | :---: |
@@ -183,9 +188,8 @@ A continuación se muestran los 12 pares coincidentes extraídos de las imágene
 | **1024_0** | ![GT 1024_0](./gtruth/1024_0.png) | ![N 1024_0](./noisy/1024_0.png) |
 | **1024_512** | ![GT 1024_512](./gtruth/1024_512.png) | ![N 1024_512](./noisy/1024_512.png) |
 | **1024_1024** | ![GT 1024_1024](./gtruth/1024_1024.png) | ![N 1024_1024](./noisy/1024_1024.png) |
-| **1536_0** | ![GT 1536_0](./gtruth/1536_0.png) | ![N 1536_0](./noisy/1536_0.png) |
-| **1536_512** | ![GT 1536_512](./gtruth/1536_512.png) | ![N 1536_512](./noisy/1536_512.png) |
-| **1536_1024** | ![GT 1536_1024](./gtruth/1536_1024.png) | ![N 1536_1024](./noisy/1536_1024.png) |
 
-### Conclusiones del Dataset
-El proceso automatizado ha logrado ensamblar un dataset limpio y emparejado a nivel de píxel (`dataset_resumen.csv`). El registro ECC fue vital, ya que si las capturas temporales presentaban mínimos desajustes geométricos, el promedio final habría resultado en una imagen borrosa (con "efecto fantasma"). El resultado obtenido es estructuralmente coherente, conservando los detalles espaciales del área mientras suprime exitosamente el ruido speckle, ideal para arquitecturas de aprendizaje supervisado en tareas de denoising de imágenes SAR.
+### Conclusiones de la Ingeniería de Datos
+
+* El proceso automatizado ha logrado ensamblar un dataset limpio y emparejado a nivel de píxel (`dataset_resumen.csv`). El registro ECC fue vital, ya que si las capturas temporales presentaban mínimos desajustes geométricos, el promedio final habría resultado en una imagen borrosa (con "efecto fantasma"). Al examinar parches críticos (como el `1024_512.png` que contiene la transición entre tierra y agua), se corrobora que no hay duplicación de bordes.
+* El resultado obtenido es estructuralmente coherente, conservando los detalles espaciales del área mientras suprime exitosamente el ruido speckle, ideal para arquitecturas de aprendizaje supervisado en tareas de denoising de imágenes SAR.**
