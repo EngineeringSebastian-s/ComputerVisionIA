@@ -87,18 +87,34 @@ El código ejecutado comprobó matemáticamente la efectividad del filtro al eva
 ## 3. Reto 2: Clasificación No Supervisada
 
 ### Procedimiento Implementado (basado en `exercise_two.ipynb`)
-Se aplicó el algoritmo **K-Means** sobre los arreglos de píxeles unidimensionales, configurando el algoritmo para $k=3$ y $k=4$ clústeres. 
-Una parte vital del código consistió en **ordenar los centroides** de menor a mayor intensidad (`np.argsort(centers)`) para reasignarles un valor equidistante en escala de grises (0 a 255). Esto garantiza que la clase 0 siempre corresponda a la reflexión más baja (el agua) independientemente de la iteración aleatoria de K-Means.
 
-### Resultados de Agrupamiento
-| K-Means | Imagen Sin Filtrar | Imagen Filtrada (Lee) |
+Para automatizar la identificación de coberturas terrestres sin necesidad de datos de entrenamiento, se implementó el algoritmo de agrupamiento no supervisado **K-Means**. Este algoritmo particiona la imagen agrupando los píxeles de tal forma que se minimiza la varianza intra-clúster, descrita como $\sum_{i=1}^{k} \sum_{x \in S_i} ||x - \mu_i||^2$.
+
+El procedimiento se ejecutó sobre los arreglos de píxeles unidimensionales, configurando el algoritmo para $k=3$ y $k=4$ clústeres. 
+Una parte fundamental de la implementación consistió en **ordenar los centroides** resultantes de menor a mayor intensidad matemática (`np.argsort(centers)`). Al reasignarles un valor equidistante en escala de grises (0 a 255), se garantiza que la Clase 0 (negro) siempre corresponda a la reflexión más baja (el agua) independientemente de la inicialización aleatoria intrínseca de K-Means.
+
+### Resultados de Agrupamiento y Análisis Comparativo
+
+| Configuración | Imagen Sin Filtrar | Imagen Filtrada (Lee) |
 | :---: | :---: | :---: |
-| **k = 3** | ![Unf K3](./cluster/cluster_unfiltered_k3.png) | ![Flt K3](./cluster/cluster_filtered_k3.png) |
-| **k = 4** | ![Unf K4](./cluster/cluster_unfiltered_k4.png) | ![Flt K4](./cluster/cluster_filtered_k4.png) |
+| **K-Means (k = 3)** | ![Unf K3](./cluster/cluster_unfiltered_k3.png) | ![Flt K3](./cluster/cluster_filtered_k3.png) |
+| **K-Means (k = 4)** | ![Unf K4](./cluster/cluster_unfiltered_k4.png) | ![Flt K4](./cluster/cluster_filtered_k4.png) |
+
+### Análisis Detallado de Clústeres
+Al observar los resultados sobre las imágenes filtradas, se puede realizar una clara interpretación de las coberturas:
+
+* **Modelo $k=3$ (Macro-coberturas):**
+  * **Negro:** Representa el cuerpo de agua (océano/costa).
+  * **Gris:** Representa las zonas de dispersión volumétrica y superficial, abarcando vegetación, arena y suelo desnudo.
+  * **Blanco:** Representa la infraestructura humana densa (edificios de la Base GAR, estructuras metálicas y vías principales).
+* **Modelo $k=4$ (Segmentación fina):**
+  La adición de un cuarto centroide subdivide la clase terrestre intermedia en dos tonos de gris distintos. Esto permite que el algoritmo diferencie entre distintos niveles de rugosidad del terreno, separando posiblemente áreas de vegetación más densa frente a zonas de suelo urbano mixto o infraestructura de menor tamaño.
 
 ### Conclusiones de la Clasificación
-* **El efecto del ruido en la clasificación:** Aplicar algoritmos de segmentación sobre imágenes SAR sin filtrar resulta en máscaras ruidosas sin utilidad práctica. Los píxeles afectados por speckle constructivo/destructivo se clasifican como falsos positivos en zonas terrestres y acuáticas.
-* **Identificación de clases:** Al observar los resultados filtrados, se identifica que la clase más oscura corresponde al agua (reflexión especular que aleja el pulso del sensor). Las clases grises representan la vegetación y el suelo (dispersión volumétrica). La clase blanca representa zonas de edificaciones humanas, donde ocurre el fenómeno de "doble rebote" devolviendo un retorno intenso al sensor.
+
+* **El impacto crítico del ruido en la segmentación:** Al aplicar el algoritmo de K-Means sobre la **imagen sin filtrar**, el resultado es un mapa ruidoso carente de utilidad topológica. El ruido *speckle* provoca que la varianza local sea tan alta que el algoritmo clasifica erróneamente píxeles aislados de agua como infraestructura (puntos blancos en el mar) y viceversa. En la **imagen filtrada**, los clústeres forman regiones conexas, suaves y geográficamente precisas, demostrando que el preprocesamiento espacial es un requisito ineludible en el análisis SAR.
+* **Interpretación Física (Interacción del Radar):** * *El Agua (Oscura):* Las superficies acuáticas en calma actúan como un espejo para las microondas. Se produce una *reflexión especular* que desvía el pulso del radar lejos de la antena receptora, resultando en valores de intensidad muy cercanos a cero.
+  * *Las Edificaciones (Blancas):* Las estructuras urbanas ortogonales al suelo actúan como reflectores de esquina (*corner reflectors*). El pulso de radar rebota en el suelo y posteriormente en la pared vertical del edificio, regresando casi íntegramente hacia el satélite. Este fenómeno se conoce como *doble rebote* y genera las altas intensidades que K-Means agrupa en la clase blanca. ```
 
 ---
 
@@ -117,6 +133,7 @@ Utilizando los resultados de K-Means con $k=3$, se binarizó la imagen usando la
 
 ### Conclusiones
 La medición del porcentaje de área cubierta por agua (`porcentaje_agua(mask)`) se ve severamente alterada por el ruido si no se filtra la imagen. La máscara generada a partir de la imagen filtrada con Lee permite delinear perfectamente las riberas y las costas, consolidándose como una herramienta viable para monitoreos automáticos de inundaciones o cuerpos hídricos.
+
 
 ---
 
