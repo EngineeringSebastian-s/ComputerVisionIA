@@ -127,18 +127,18 @@ los bordes de la escena original.
 Se procesaron 10 imágenes correspondientes a distintas fechas para observar el área bajo diferentes condiciones
 temporales. A continuación, se muestran las imágenes resultantes organizadas en sus respectivas carpetas:
 
-| Fecha / Archivo | Original Rescalada (`/scaled/`) | Filtrada con Lee (`/filtered/`) |
-| :--- | :---: | :---: |
-| **2025-05-01** | ![S1](./scaled/2025-05-01-00_00_2025-05-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled.png) | ![F1](./filtered/2025-05-01-00_00_2025-05-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled_lee.png) |
-| **2025-06-01** | ![S2](./scaled/2025-06-01-00_00_2025-06-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled.png) | ![F2](./filtered/2025-06-01-00_00_2025-06-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled_lee.png) |
-| **2025-07-01** | ![S3](./scaled/2025-07-01-00_00_2025-07-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled.png) | ![F3](./filtered/2025-07-01-00_00_2025-07-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled_lee.png) |
-| **2025-08-01** | ![S4](./scaled/2025-08-01-00_00_2025-08-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled.png) | ![F4](./filtered/2025-08-01-00_00_2025-08-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled_lee.png) |
-| **2025-09-01** | ![S5](./scaled/2025-09-01-00_00_2025-09-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled.png) | ![F5](./filtered/2025-09-01-00_00_2025-09-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled_lee.png) |
-| **2025-10-01** | ![S6](./scaled/2025-10-01-00_00_2025-10-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled.png) | ![F6](./filtered/2025-10-01-00_00_2025-10-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled_lee.png) |
-| **2025-11-01** | ![S7](./scaled/2025-11-01-00_00_2025-11-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled.png) | ![F7](./filtered/2025-11-01-00_00_2025-11-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled_lee.png) |
-| **2025-12-01** | ![S8](./scaled/2025-12-01-00_00_2025-12-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled.png) | ![F8](./filtered/2025-12-01-00_00_2025-12-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled_lee.png) |
-| **2026-01-01** | ![S9](./scaled/2026-01-01-00_00_2026-01-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled.png) | ![F9](./filtered/2026-01-01-00_00_2026-01-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled_lee.png) |
-| **2026-02-01** | ![S10](./scaled/2026-02-01-00_00_2026-02-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled.png) | ![F10](./filtered/2026-02-01-00_00_2026-02-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled_lee.png) |
+| Fecha / Archivo |                                Original Rescalada (`/scaled/`)                                 |                                   Filtrada con Lee (`/filtered/`)                                    |
+|:----------------|:----------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------:|
+| **2025-05-01**  | ![S1](./scaled/2025-05-01-00_00_2025-05-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled.png)  | ![F1](./filtered/2025-05-01-00_00_2025-05-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled_lee.png)  |
+| **2025-06-01**  | ![S2](./scaled/2025-06-01-00_00_2025-06-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled.png)  | ![F2](./filtered/2025-06-01-00_00_2025-06-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled_lee.png)  |
+| **2025-07-01**  | ![S3](./scaled/2025-07-01-00_00_2025-07-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled.png)  | ![F3](./filtered/2025-07-01-00_00_2025-07-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled_lee.png)  |
+| **2025-08-01**  | ![S4](./scaled/2025-08-01-00_00_2025-08-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled.png)  | ![F4](./filtered/2025-08-01-00_00_2025-08-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled_lee.png)  |
+| **2025-09-01**  | ![S5](./scaled/2025-09-01-00_00_2025-09-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled.png)  | ![F5](./filtered/2025-09-01-00_00_2025-09-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled_lee.png)  |
+| **2025-10-01**  | ![S6](./scaled/2025-10-01-00_00_2025-10-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled.png)  | ![F6](./filtered/2025-10-01-00_00_2025-10-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled_lee.png)  |
+| **2025-11-01**  | ![S7](./scaled/2025-11-01-00_00_2025-11-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled.png)  | ![F7](./filtered/2025-11-01-00_00_2025-11-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled_lee.png)  |
+| **2025-12-01**  | ![S8](./scaled/2025-12-01-00_00_2025-12-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled.png)  | ![F8](./filtered/2025-12-01-00_00_2025-12-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled_lee.png)  |
+| **2026-01-01**  | ![S9](./scaled/2026-01-01-00_00_2026-01-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled.png)  | ![F9](./filtered/2026-01-01-00_00_2026-01-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled_lee.png)  |
+| **2026-02-01**  | ![S10](./scaled/2026-02-01-00_00_2026-02-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled.png) | ![F10](./filtered/2026-02-01-00_00_2026-02-01-23_59_Sentinel-1_IW_VV_-_linear_gamma0_scaled_lee.png) |
 
 *(Nota: En la secuencia temporal se puede observar que mientras las estructuras urbanas de la Base GAR mantienen una
 firma de retrodispersión constantemente alta y brillante a lo largo de los meses, la intensidad del océano presenta
@@ -255,12 +255,18 @@ contundente:
       perfiladas, demostrando que el filtro suavizó las áreas homogéneas pero respetó las fronteras morfológicas.
 
 ### Resultados Cuantitativos (Porcentaje de Agua)
-Al ejecutar la función de medición sobre la imagen completa (un total de **6.247.500 píxeles**), se obtuvieron los siguientes resultados:
 
-* **Área de agua (Imagen sin filtrar):** **73.60%** (4.598.241 píxeles). *(Dato distorsionado inflado por falsos positivos de ruido en tierra firme).*
-* **Área de agua (Imagen filtrada con Lee):** **72.98%** (4.559.601 píxeles). *(Dato real y consolidado de la superficie hídrica).*
+Al ejecutar la función de medición sobre la imagen completa (un total de **6.247.500 píxeles**), se obtuvieron los
+siguientes resultados:
 
-Esto demuestra numéricamente cómo el ruido *speckle* infla erróneamente el cálculo de superficies en teledetección si no se mitiga adecuadamente. En este caso específico, el ruido provocó que **38.640 píxeles** de tierra firme fueran clasificados incorrectamente como agua en la imagen cruda.
+* **Área de agua (Imagen sin filtrar):** **73.60%** (4.598.241 píxeles). *(Dato distorsionado inflado por falsos
+  positivos de ruido en tierra firme).*
+* **Área de agua (Imagen filtrada con Lee):** **72.98%** (4.559.601 píxeles). *(Dato real y consolidado de la superficie
+  hídrica).*
+
+Esto demuestra numéricamente cómo el ruido *speckle* infla erróneamente el cálculo de superficies en teledetección si no
+se mitiga adecuadamente. En este caso específico, el ruido provocó que **38.640 píxeles** de tierra firme fueran
+clasificados incorrectamente como agua en la imagen cruda.
 
 ### Conclusiones de la Extracción
 
@@ -317,24 +323,26 @@ introducidos en tensores de Machine Learning.
 
 | Coordenada Y_X | Ground Truth (Limpias) - Directorio `/gtruth/` | Noisy (Ruidosas) - Directorio `/noisy/` |
 |:--------------:|:----------------------------------------------:|:---------------------------------------:|
-|    **0_0** |          ![GT 0_0](./gtruth/0_0.png)           |        ![N 0_0](./noisy/0_0.png)        |
-|   **0_512** |        ![GT 0_512](./gtruth/0_512.png)         |      ![N 0_512](./noisy/0_512.png)      |
-|   **0_1024** |       ![GT 0_1024](./gtruth/0_1024.png)        |     ![N 0_1024](./noisy/0_1024.png)     |
-|   **0_1536** |       ![GT 0_1536](./gtruth/0_1536.png)        |     ![N 0_1536](./noisy/0_1536.png)     |
-|   **512_0** |        ![GT 512_0](./gtruth/512_0.png)         |      ![N 512_0](./noisy/512_0.png)      |
-|  **512_512** |      ![GT 512_512](./gtruth/512_512.png)       |    ![N 512_512](./noisy/512_512.png)    |
-|  **512_1024** |     ![GT 512_1024](./gtruth/512_1024.png)      |   ![N 512_1024](./noisy/512_1024.png)   |
-|  **512_1536** |     ![GT 512_1536](./gtruth/512_1536.png)      |   ![N 512_1536](./noisy/512_1536.png)   |
-|   **1024_0** |       ![GT 1024_0](./gtruth/1024_0.png)        |     ![N 1024_0](./noisy/1024_0.png)     |
-|  **1024_512** |     ![GT 1024_512](./gtruth/1024_512.png)      |   ![N 1024_512](./noisy/1024_512.png)   |
-| **1024_1024** |    ![GT 1024_1024](./gtruth/1024_1024.png)     |  ![N 1024_1024](./noisy/1024_1024.png)  |
-| **1024_1536** |    ![GT 1024_1536](./gtruth/1024_1536.png)     |  ![N 1024_1536](./noisy/1024_1536.png)  |
-|   **1536_0** |       ![GT 1536_0](./gtruth/1536_0.png)        |     ![N 1536_0](./noisy/1536_0.png)     |
-|  **1536_512** |     ![GT 1536_512](./gtruth/1536_512.png)      |   ![N 1536_512](./noisy/1536_512.png)   |
-| **1536_1024** |    ![GT 1536_1024](./gtruth/1536_1024.png)     |  ![N 1536_1024](./noisy/1536_1024.png)  |
-| **1536_1536** |    ![GT 1536_1536](./gtruth/1536_1536.png)     |  ![N 1536_1536](./noisy/1536_1536.png)  |
+|    **0_0**     |          ![GT 0_0](./gtruth/0_0.png)           |        ![N 0_0](./noisy/0_0.png)        |
+|   **0_512**    |        ![GT 0_512](./gtruth/0_512.png)         |      ![N 0_512](./noisy/0_512.png)      |
+|   **0_1024**   |       ![GT 0_1024](./gtruth/0_1024.png)        |     ![N 0_1024](./noisy/0_1024.png)     |
+|   **0_1536**   |       ![GT 0_1536](./gtruth/0_1536.png)        |     ![N 0_1536](./noisy/0_1536.png)     |
+|   **512_0**    |        ![GT 512_0](./gtruth/512_0.png)         |      ![N 512_0](./noisy/512_0.png)      |
+|  **512_512**   |      ![GT 512_512](./gtruth/512_512.png)       |    ![N 512_512](./noisy/512_512.png)    |
+|  **512_1024**  |     ![GT 512_1024](./gtruth/512_1024.png)      |   ![N 512_1024](./noisy/512_1024.png)   |
+|  **512_1536**  |     ![GT 512_1536](./gtruth/512_1536.png)      |   ![N 512_1536](./noisy/512_1536.png)   |
+|   **1024_0**   |       ![GT 1024_0](./gtruth/1024_0.png)        |     ![N 1024_0](./noisy/1024_0.png)     |
+|  **1024_512**  |     ![GT 1024_512](./gtruth/1024_512.png)      |   ![N 1024_512](./noisy/1024_512.png)   |
+| **1024_1024**  |    ![GT 1024_1024](./gtruth/1024_1024.png)     |  ![N 1024_1024](./noisy/1024_1024.png)  |
+| **1024_1536**  |    ![GT 1024_1536](./gtruth/1024_1536.png)     |  ![N 1024_1536](./noisy/1024_1536.png)  |
+|   **1536_0**   |       ![GT 1536_0](./gtruth/1536_0.png)        |     ![N 1536_0](./noisy/1536_0.png)     |
+|  **1536_512**  |     ![GT 1536_512](./gtruth/1536_512.png)      |   ![N 1536_512](./noisy/1536_512.png)   |
+| **1536_1024**  |    ![GT 1536_1024](./gtruth/1536_1024.png)     |  ![N 1536_1024](./noisy/1536_1024.png)  |
+| **1536_1536**  |    ![GT 1536_1536](./gtruth/1536_1536.png)     |  ![N 1536_1536](./noisy/1536_1536.png)  |
 
-* **Validación de la Alineación:** Todo el proceso de corregistro sub-píxel quedó documentado en los archivos `registro_resumen_ecc.csv`. En ellos se evidencia la matriz de transformación y el coeficiente de correlación alcanzado para cada imagen respecto a la base, garantizando la fidelidad geométrica del "Ground Truth" promediado.
+* **Validación de la Alineación:** Todo el proceso de corregistro sub-píxel quedó documentado en los archivos
+  `registro_resumen_ecc.csv`. En ellos se evidencia la matriz de transformación y el coeficiente de correlación
+  alcanzado para cada imagen respecto a la base, garantizando la fidelidad geométrica del "Ground Truth" promediado.
 
 ### Conclusiones de la Ingeniería de Datos
 
@@ -373,14 +381,17 @@ analizada sobre la Base General Alemán Ramírez, se extraen las siguientes conc
 
 ## 7. Estructura del Repositorio e Instrucciones de Ejecución
 
-Este proyecto ha sido modularizado en cuadernos de Jupyter (*Notebooks*) para facilitar la evaluación paso a paso de cada reto.
+Este proyecto ha sido modularizado en cuadernos de Jupyter (*Notebooks*) para facilitar la evaluación paso a paso de
+cada reto.
 
 ### Estructura de Archivos Principal
+
 * `exercise_one.ipynb`: Código para el rescalizado y filtrado espacial (Filtro de Lee).
 * `exercise_two.ipynb`: Implementación del algoritmo K-Means no supervisado.
 * `exercise_three.ipynb`: Extracción de la máscara binaria y cálculo de área hídrica.
 * `exercise_four.ipynb`: Corregistro ECC multitemporal y generación del dataset de parches.
-* Directorios de Salida: Las carpetas `/filtered`, `/cluster`, `/water_mask`, `/noisy` y `/gtruth` contienen los resultados de cada etapa de procesamiento.
+* Directorios de Salida: Las carpetas `/filtered`, `/cluster`, `/water_mask`, `/noisy` y `/gtruth` contienen los
+  resultados de cada etapa de procesamiento.
 
 ### ¿Cómo ejecutar este proyecto?
 
