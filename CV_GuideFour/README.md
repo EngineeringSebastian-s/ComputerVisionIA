@@ -121,12 +121,73 @@ El desarrollo de esta guía práctica ha permitido comprobar empíricamente los 
 
 ## 7. Estructura del Repositorio e Instrucciones de Ejecución
 
-Este proyecto ha sido modularizado en *scripts* de Python para facilitar la evaluación individual de cada reto.
+El proyecto se encuentra modularizado por carpetas correspondientes a cada reto, separando claramente los *datasets*, los cuadernos de Jupyter (*Notebooks*) y las evidencias generadas (modelos entrenados y métricas).
 
-### Estructura de Archivos Principal
+### Estructura de Archivos
 
-* `reto1.py`: Código para la clasificación de 3 escenas (CNN Secuencial vs ResNet50).
-* `reto2.py`: Implementación de la clasificación de cobertura terrestre (LandUse).
-* `reto3.py`: Entrenamiento y evaluación del Autoencoder convolucional para el filtrado SAR.
-* `reto4.py`: Implementación y evaluación del modelo Transformer SwinIR para la restauración.
-* Directorios de Salida: Las subcarpetas generadas por los scripts contendrán los resultados de las métricas (`.csv`), matrices de confusión y parches procesados (`/evidencias_landuse`, `/evidencias_autoencoder`, `/evidencias_swinir`, etc.).
+```text
+CV_GuideFour/
+│
+├── RETO1/
+│   ├── 3scenes/                  # Dataset con clases: coast, forest, highway
+│   ├── evidencias_reto1/         # Modelos (.keras), reportes y matrices de confusión (.csv)
+│   └── reto1.ipynb               # Notebook: Clasificación CNN Secuencial vs ResNet50
+│
+├── RETO2/
+│   ├── evidencias_landuse/       # Modelos (.keras) y métricas comparativas (.csv)
+│   ├── landuse/                  # Dataset con clases: airplane, denseresidential, harbor
+│   └── reto2.ipynb               # Notebook: Clasificación LandUse
+│
+├── RETO3/
+│   ├── dataset/                  # Pares de parches SAR de 512x512 (gtruth/ y noisy/)
+│   ├── evidencias_autoencoder/   # Modelo entrenado (.keras) y resúmenes de métricas (.csv)
+│   ├── filtered_tiff/            # Resultados visuales: imágenes filtradas por el Autoencoder
+│   └── reto3.ipynb               # Notebook: Autoencoder para reducción de speckle
+│
+├── RETO4/
+│   ├── dataset/                  # Pares de parches SAR de 512x512 (gtruth/ y noisy/)
+│   ├── evidencias_swinir/        # Métricas (.csv) y gráfica de comparación visual (.png)
+│   ├── restored_tiff/            # Resultados visuales: imágenes restauradas por SwinIR
+│   └── reto4.ipynb               # Notebook: Restauración de imágenes con Transformer
+│
+└── dataset/
+    └── Main folder/              # Dataset SAR crudo (GTruth, GTruth_val, Noisy, Noisy_val)
+```
+
+### Manejo de Archivos Grandes (Git LFS)
+
+Debido a la naturaleza de este proyecto, los modelos exportados en formato `.keras` y las miles de imágenes en alta resolución (`.tiff` y `.png`) superan los límites de tamaño estándar permitidos por los repositorios de Git convencionales. 
+
+Para solucionar esto y mantener el historial de versiones limpio y comprimido, este repositorio implementa **Git Large File Storage (Git LFS)**. 
+
+### ¿Cómo ejecutar este proyecto?
+
+Para poder ejecutar los cuadernos y tener acceso a todos los pesos de los modelos y datasets de imágenes, sigue estos pasos:
+
+1. **Clonar el repositorio:**
+   ```bash
+   git clone <url-del-repositorio>
+   cd CV_GuideFour
+   ```
+
+2. **Descargar los archivos pesados mediante Git LFS:**
+   Es obligatorio inicializar Git LFS y forzar la descarga de los punteros reales de los archivos grandes (modelos y datasets). De lo contrario, los archivos `.tiff` y `.keras` estarán corruptos.
+   ```bash
+   git lfs install
+   git lfs pull
+   ```
+
+3. **Crear y activar el entorno virtual:**
+   ```bash
+   python -m venv .venv
+   # En Windows:
+   .venv\Scripts\activate
+   # En macOS/Linux:
+   source .venv/bin/activate
+   ```
+
+4. **Instalar las dependencias:**
+   Asegúrate de contar con TensorFlow, scikit-learn, OpenCV y las librerías de soporte instalando el archivo de requerimientos:
+   ```bash
+   pip install -r requirements.txt
+   ```
