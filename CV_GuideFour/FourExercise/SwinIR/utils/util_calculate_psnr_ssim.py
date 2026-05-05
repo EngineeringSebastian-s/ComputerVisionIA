@@ -131,31 +131,31 @@ def _blocking_effect_factor(im):
     block_vertical_positions = torch.arange(7, im.shape[2] - 1, 8)
 
     horizontal_block_difference = (
-                (im[:, :, :, block_horizontal_positions] - im[:, :, :, block_horizontal_positions + 1]) ** 2).sum(
+            (im[:, :, :, block_horizontal_positions] - im[:, :, :, block_horizontal_positions + 1]) ** 2).sum(
         3).sum(2).sum(1)
     vertical_block_difference = (
-                (im[:, :, block_vertical_positions, :] - im[:, :, block_vertical_positions + 1, :]) ** 2).sum(3).sum(
+            (im[:, :, block_vertical_positions, :] - im[:, :, block_vertical_positions + 1, :]) ** 2).sum(3).sum(
         2).sum(1)
 
     nonblock_horizontal_positions = np.setdiff1d(torch.arange(0, im.shape[3] - 1), block_horizontal_positions)
     nonblock_vertical_positions = np.setdiff1d(torch.arange(0, im.shape[2] - 1), block_vertical_positions)
 
     horizontal_nonblock_difference = (
-                (im[:, :, :, nonblock_horizontal_positions] - im[:, :, :, nonblock_horizontal_positions + 1]) ** 2).sum(
+            (im[:, :, :, nonblock_horizontal_positions] - im[:, :, :, nonblock_horizontal_positions + 1]) ** 2).sum(
         3).sum(2).sum(1)
     vertical_nonblock_difference = (
-                (im[:, :, nonblock_vertical_positions, :] - im[:, :, nonblock_vertical_positions + 1, :]) ** 2).sum(
+            (im[:, :, nonblock_vertical_positions, :] - im[:, :, nonblock_vertical_positions + 1, :]) ** 2).sum(
         3).sum(2).sum(1)
 
     n_boundary_horiz = im.shape[2] * (im.shape[3] // block_size - 1)
     n_boundary_vert = im.shape[3] * (im.shape[2] // block_size - 1)
     boundary_difference = (horizontal_block_difference + vertical_block_difference) / (
-                n_boundary_horiz + n_boundary_vert)
+            n_boundary_horiz + n_boundary_vert)
 
     n_nonboundary_horiz = im.shape[2] * (im.shape[3] - 1) - n_boundary_horiz
     n_nonboundary_vert = im.shape[3] * (im.shape[2] - 1) - n_boundary_vert
     nonboundary_difference = (horizontal_nonblock_difference + vertical_nonblock_difference) / (
-                n_nonboundary_horiz + n_nonboundary_vert)
+            n_nonboundary_horiz + n_nonboundary_vert)
 
     scaler = np.log2(block_size) / np.log2(min([im.shape[2], im.shape[3]]))
     bef = scaler * (boundary_difference - nonboundary_difference)
