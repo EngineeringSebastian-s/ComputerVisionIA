@@ -1,0 +1,8 @@
+,promedio
+PSNR_noisy,25.802322
+PSNR_autoencoder,27.930986
+SSIM_noisy,0.8591353
+SSIM_autoencoder,0.9074214
+ENL_noisy,0.6034975
+ENL_autoencoder,0.55570847
+ENL_gtruth,0.58663255
