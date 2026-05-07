@@ -39,25 +39,27 @@ Para abordar el estudio de estas arquitecturas, el informe documenta la solució
 
 ### Procedimiento Implementado
 
-[cite_start]Para la tarea de clasificar imágenes en tres escenas específicas (*coast*, *forest*,
-*highway*) [cite: 1040][cite_start], en este reto se implementaron dos enfoques: una CNN secuencial entrenada desde cero
-y una arquitectura no secuencial basada en ResNet50 con transferencia de aprendizaje[cite: 1041].
+Para la tarea de clasificar imágenes en tres escenas específicas (*coast*, *forest*,
+*highway*), en este reto se implementaron dos enfoques: una CNN secuencial entrenada desde cero
+y una arquitectura no secuencial basada en ResNet50 con transferencia de aprendizaje.
 
 ### Análisis de Resultados
 
-* [cite_start]**CNN Secuencial:** La CNN secuencial presentó problemas de generalización[cite: 1042]. [cite_start]Aunque
+* **CNN Secuencial:** La CNN secuencial presentó problemas de generalización. Aunque
   alcanzó valores cercanos al 99% en entrenamiento, su desempeño en validación fue bajo (alrededor del 52%),
-  evidenciando sobreajuste[cite: 1042]. [cite_start]Además, en algunas ejecuciones mostró colapso hacia una sola clase,
-  lo que indica inestabilidad del modelo[cite: 1043].
-* [cite_start]**ResNet50 (Transfer Learning):** En contraste, ResNet50 obtuvo resultados sobresalientes, alcanzando
-  aproximadamente 99.58% de accuracy con imágenes de 224x224[cite: 1044]. [cite_start]Esto demuestra que la
+  evidenciando sobreajuste. Además, en algunas ejecuciones mostró colapso hacia una sola clase,
+  lo que indica inestabilidad del modelo.
+* **ResNet50 (Transfer Learning):** En contraste, ResNet50 obtuvo resultados sobresalientes, alcanzando
+  aproximadamente 99.58% de accuracy con imágenes de 224x224. Esto demuestra que la
   transferencia de aprendizaje permite capturar características visuales más complejas y generalizar mejor con datasets
-  limitados[cite: 1045].
+  limitados.
+
+*(Para revisar las matrices de confusión y el reporte de clasificación exacto, dirigirse a la carpeta `./OneExercise/evidence/`)*.
 
 ### Conclusión del Reto 1
 
-[cite_start]Las arquitecturas no secuenciales preentrenadas son significativamente superiores a las CNN entrenadas desde
-cero en este tipo de problema[cite: 1046].
+Las arquitecturas no secuenciales preentrenadas son significativamente superiores a las CNN entrenadas desde
+cero en este tipo de problema.
 
 ---
 
@@ -93,6 +95,12 @@ representa la solución más robusta[cite: 1052].
 imágenes noisy como entrada y gtruth como referencia[cite: 1053, 1054]. Se calcularon métricas de calidad de imagen para
 evaluar objetivamente la capacidad de la red para restaurar la señal original.
 
+
+**Ejemplo de imagen filtrada obtenida por el Autoencoder:**
+![Filtro Autoencoder SAR](./ThreeExerciseSAR/evidence/filtered_tiff/5632_5632_filtered_filtered.png)
+
+*(Nota: Más resultados visuales disponibles en el directorio `evidence/filtered_tiff`)*.
+
 ### Resultados Cuantitativos
 
 | Métrica  | Imagen Noisy (Entrada)         | Imagen Autoencoder (Salida)    | Ground Truth (Referencia)      |
@@ -125,25 +133,34 @@ función de pérdida y proceso de entrenamiento[cite: 1063].
 comparando contra gtruth[cite: 1064, 1065]. Este enfoque busca aprovechar los mecanismos de autoatención para la
 reconstrucción de imágenes.
 
+**Comparativa Visual SwinIR (Base GAR):**
+![Comparación SwinIR Base GAR](./FourExerciseBaseGAR/evidence/comparacion_visual_swinir.png)
+
+### Caso de Estudio 2: Dataset SAR de Alta Degradación (`FourExerciseSAR`)
+En este entorno altamente ruidoso, SwinIR fue puesto a prueba bajo condiciones extremas. Las métricas indicaron una caída leve en el PSNR (de 19.91 a 19.64). Esto ocurre debido al **Domain Shift**: SwinIR fue preentrenado con imágenes naturales (ópticas), por lo que no comprende matemáticamente la naturaleza multiplicativa del ruido *speckle* en microondas.
+
+**Comparativa Visual SwinIR (Dataset SAR):**
+![Comparación SwinIR SAR](./FourExerciseSAR/evidence/comparacion_visual_swinir.png)
+
 ### Resultados Cuantitativos
 
 | Métrica  | Imagen Noisy (Entrada)         | Imagen SwinIR (Salida)         | Ground Truth (Referencia)      |
 |:---------|:-------------------------------|:-------------------------------|:-------------------------------|
-| **PSNR** | [cite_start]19.91 [cite: 1067] | [cite_start]19.64 [cite: 1067] | -                              |
-| **SSIM** | [cite_start]0.623 [cite: 1068] | [cite_start]0.611 [cite: 1068] | -                              |
-| **ENL**  | [cite_start]25.57 [cite: 1069] | [cite_start]23.61 [cite: 1069] | [cite_start]91.87 [cite: 1069] |
+| **PSNR** | 19.91                          | 19.64  | -                              |
+| **SSIM** | 0.623  | 0.611  | -                              |
+| **ENL**  | 25.57  | 23.61  | 91.87  |
 
 ### Análisis de Resultados
 
-* [cite_start]Los resultados obtenidos evidencian que SwinIR no mejoró la calidad de las imágenes, sino que las degradó
-  ligeramente[cite: 1066, 1070].
-* [cite_start]La causa principal es que el modelo fue preentrenado con imágenes naturales y no está adaptado al dominio
-  SAR ni al ruido speckle[cite: 1071].
+* Los resultados obtenidos evidencian que SwinIR no mejoró la calidad de las imágenes, sino que las degradó
+  ligeramente.
+* La causa principal es que el modelo fue preentrenado con imágenes naturales y no está adaptado al dominio
+  SAR ni al ruido speckle.
 
 ### Conclusión del Reto 4
 
-[cite_start]Aunque SwinIR cumple con el uso de modelos basados en Transformer, no generaliza adecuadamente a imágenes
-SAR sin un ajuste específico al dominio[cite: 1072].
+Aunque SwinIR cumple con el uso de modelos basados en Transformer, no generaliza adecuadamente a imágenes
+SAR sin un ajuste específico al dominio.
 
 ---
 
