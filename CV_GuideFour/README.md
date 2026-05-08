@@ -68,23 +68,23 @@ cero en este tipo de problema.
 
 ### Procedimiento Implementado
 
-[cite_start]En este reto se aplicó el mismo enfoque sobre el dataset LandUse con tres clases
-específicas [cite: 1048][cite_start]: *airplane*, *denseresidential* y *harbor*[cite: 1047]. El objetivo fue evaluar si
+En este reto se aplicó el mismo enfoque sobre el dataset LandUse con tres clases
+específicas : *airplane*, *denseresidential* y *harbor*. El objetivo fue evaluar si
 los patrones de comportamiento de los modelos observados en el Reto 1 se mantenían al cambiar el dominio a texturas de
 cobertura terrestre.
 
 ### Análisis de Resultados
 
-* [cite_start]La CNN secuencial volvió a presentar problemas importantes, incluyendo colapso hacia una sola clase (
-  *airplane*), incluso después de aplicar técnicas como reducción del learning rate y uso de pesos de clase[cite: 1049].
-* [cite_start]Esto evidencia que el modelo es inestable y sensible al dataset cuando se entrena desde cero[cite: 1050].
-* [cite_start]Las causas principales incluyen el tamaño limitado del dataset, la variabilidad entre clases y la ausencia
-  de conocimiento previo en el modelo[cite: 1051].
+* La CNN secuencial volvió a presentar problemas importantes, incluyendo colapso hacia una sola clase (
+  *airplane*), incluso después de aplicar técnicas como reducción del learning rate y uso de pesos de clase.
+* Esto evidencia que el modelo es inestable y sensible al dataset cuando se entrena desde cero.
+* Las causas principales incluyen el tamaño limitado del dataset, la variabilidad entre clases y la ausencia
+  de conocimiento previo en el modelo.
 
 ### Conclusión del Reto 2
 
-[cite_start]La CNN secuencial no es adecuada para este escenario, y nuevamente el uso de transferencia de aprendizaje
-representa la solución más robusta[cite: 1052].
+La CNN secuencial no es adecuada para este escenario, y nuevamente el uso de transferencia de aprendizaje
+representa la solución más robusta.
 
 ---
 
@@ -92,8 +92,8 @@ representa la solución más robusta[cite: 1052].
 
 ### Procedimiento Implementado
 
-[cite_start]Se implementó un autoencoder convolucional para reducir ruido speckle en imágenes SAR, utilizando pares de
-imágenes noisy como entrada y gtruth como referencia[cite: 1053, 1054]. Se calcularon métricas de calidad de imagen para
+Se implementó un autoencoder convolucional para reducir ruido speckle en imágenes SAR, utilizando pares de
+imágenes noisy como entrada y gtruth como referencia. Se calcularon métricas de calidad de imagen para
 evaluar objetivamente la capacidad de la red para restaurar la señal original.
 
 **Ejemplo de imagen filtrada obtenida por el Autoencoder:**
@@ -103,25 +103,25 @@ evaluar objetivamente la capacidad de la red para restaurar la señal original.
 
 ### Resultados Cuantitativos
 
-| Métrica  | Imagen Noisy (Entrada)         | Imagen Autoencoder (Salida)    | Ground Truth (Referencia)      |
-|:---------|:-------------------------------|:-------------------------------|:-------------------------------|
-| **PSNR** | [cite_start]25.80 [cite: 1056] | [cite_start]22.66 [cite: 1056] | -                              |
-| **SSIM** | [cite_start]0.859 [cite: 1057] | [cite_start]0.824 [cite: 1057] | -                              |
-| **ENL**  | [cite_start]0.603 [cite: 1058] | [cite_start]0.594 [cite: 1058] | [cite_start]0.586 [cite: 1058] |
+| Métrica  | Imagen Noisy (Entrada) | Imagen Autoencoder (Salida)    | Ground Truth (Referencia)      |
+|:---------|:-----------------------|:-------------------------------|:-------------------------------|
+| **PSNR** | 25.80                  | 22.66  | -                              |
+| **SSIM** | 0.859                  | 0.824  | -                              |
+| **ENL**  | 0.603                  | 0.594  | 0.586  |
 
 ### Análisis de Resultados
 
-* [cite_start]Las métricas muestran que el autoencoder no logró mejorar la calidad de las imágenes[cite: 1059].
-* [cite_start]Tanto el PSNR como el SSIM disminuyeron, lo que indica que la imagen reconstruida se alejó del ground
-  truth[cite: 1060].
-* [cite_start]El ENL tampoco presentó una mejora significativa[cite: 1061].
-* [cite_start]Este comportamiento puede explicarse por una arquitectura limitada, el uso de una función de pérdida no
-  óptima y la posible pérdida de detalles debido al suavizado excesivo[cite: 1062].
+* Las métricas muestran que el autoencoder no logró mejorar la calidad de las imágenes.
+* Tanto el PSNR como el SSIM disminuyeron, lo que indica que la imagen reconstruida se alejó del ground
+  truth.
+* El ENL tampoco presentó una mejora significativa.
+* Este comportamiento puede explicarse por una arquitectura limitada, el uso de una función de pérdida no
+  óptima y la posible pérdida de detalles debido al suavizado excesivo.
 
 ### Conclusión del Reto 3
 
-[cite_start]El autoencoder no logró eliminar el ruido speckle de manera efectiva y requiere ajustes en arquitectura,
-función de pérdida y proceso de entrenamiento[cite: 1063].
+El autoencoder no logró eliminar el ruido speckle de manera efectiva y requiere ajustes en arquitectura,
+función de pérdida y proceso de entrenamiento.
 
 ---
 
@@ -129,8 +129,8 @@ función de pérdida y proceso de entrenamiento[cite: 1063].
 
 ### Procedimiento Implementado
 
-[cite_start]En este reto se aplicó SwinIR, un modelo basado en Transformer, utilizando imágenes noisy como entrada y
-comparando contra gtruth[cite: 1064, 1065]. Este enfoque busca aprovechar los mecanismos de autoatención para la
+En este reto se aplicó SwinIR, un modelo basado en Transformer, utilizando imágenes noisy como entrada y
+comparando contra gtruth. Este enfoque busca aprovechar los mecanismos de autoatención para la
 reconstrucción de imágenes.
 
 **Comparativa Visual SwinIR (Base GAR):**
