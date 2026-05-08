@@ -54,7 +54,8 @@ y una arquitectura no secuencial basada en ResNet50 con transferencia de aprendi
   transferencia de aprendizaje permite capturar características visuales más complejas y generalizar mejor con datasets
   limitados.
 
-*(Para revisar las matrices de confusión y el reporte de clasificación exacto, dirigirse a la carpeta `./OneExercise/evidence/`)*.
+*(Para revisar las matrices de confusión y el reporte de clasificación exacto, dirigirse a la
+carpeta `./OneExercise/evidence/`)*.
 
 ### Conclusión del Reto 1
 
@@ -94,7 +95,6 @@ representa la solución más robusta[cite: 1052].
 [cite_start]Se implementó un autoencoder convolucional para reducir ruido speckle en imágenes SAR, utilizando pares de
 imágenes noisy como entrada y gtruth como referencia[cite: 1053, 1054]. Se calcularon métricas de calidad de imagen para
 evaluar objetivamente la capacidad de la red para restaurar la señal original.
-
 
 **Ejemplo de imagen filtrada obtenida por el Autoencoder:**
 ![Filtro Autoencoder SAR](./ThreeExerciseSAR/evidence/filtered_tiff/5632_5632_filtered_filtered.png)
@@ -137,18 +137,22 @@ reconstrucción de imágenes.
 ![Comparación SwinIR Base GAR](./FourExerciseBaseGAR/evidence/comparacion_visual_swinir.png)
 
 ### Caso de Estudio 2: Dataset SAR de Alta Degradación (`FourExerciseSAR`)
-En este entorno altamente ruidoso, SwinIR fue puesto a prueba bajo condiciones extremas. Las métricas indicaron una caída leve en el PSNR (de 19.91 a 19.64). Esto ocurre debido al **Domain Shift**: SwinIR fue preentrenado con imágenes naturales (ópticas), por lo que no comprende matemáticamente la naturaleza multiplicativa del ruido *speckle* en microondas.
+
+En este entorno altamente ruidoso, SwinIR fue puesto a prueba bajo condiciones extremas. Las métricas indicaron una
+caída leve en el PSNR (de 19.91 a 19.64). Esto ocurre debido al **Domain Shift**: SwinIR fue preentrenado con imágenes
+naturales (ópticas), por lo que no comprende matemáticamente la naturaleza multiplicativa del ruido *speckle* en
+microondas.
 
 **Comparativa Visual SwinIR (Dataset SAR):**
 ![Comparación SwinIR SAR](./FourExerciseSAR/evidence/comparacion_visual_swinir.png)
 
 ### Resultados Cuantitativos
 
-| Métrica  | Imagen Noisy (Entrada)         | Imagen SwinIR (Salida)         | Ground Truth (Referencia)      |
-|:---------|:-------------------------------|:-------------------------------|:-------------------------------|
-| **PSNR** | 19.91                          | 19.64  | -                              |
-| **SSIM** | 0.623  | 0.611  | -                              |
-| **ENL**  | 25.57  | 23.61  | 91.87  |
+| Métrica  | Imagen Noisy (Entrada) | Imagen SwinIR (Salida) | Ground Truth (Referencia) |
+|:---------|:-----------------------|:-----------------------|:--------------------------|
+| **PSNR** | 19.91                  | 19.64                  | -                         |
+| **SSIM** | 0.623                  | 0.611                  | -                         |
+| **ENL**  | 25.57                  | 23.61                  | 91.87                     |
 
 ### Análisis de Resultados
 
