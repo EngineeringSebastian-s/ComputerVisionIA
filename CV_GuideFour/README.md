@@ -103,11 +103,11 @@ evaluar objetivamente la capacidad de la red para restaurar la señal original.
 
 ### Resultados Cuantitativos
 
-| Métrica  | Imagen Noisy (Entrada) | Imagen Autoencoder (Salida)    | Ground Truth (Referencia)      |
-|:---------|:-----------------------|:-------------------------------|:-------------------------------|
-| **PSNR** | 25.80                  | 22.66  | -                              |
-| **SSIM** | 0.859                  | 0.824  | -                              |
-| **ENL**  | 0.603                  | 0.594  | 0.586  |
+| Métrica  | Imagen Noisy (Entrada) | Imagen Autoencoder (Salida) | Ground Truth (Referencia) |
+|:---------|:-----------------------|:----------------------------|:--------------------------|
+| **PSNR** | 25.80                  | 22.66                       | -                         |
+| **SSIM** | 0.859                  | 0.824                       | -                         |
+| **ENL**  | 0.603                  | 0.594                       | 0.586                     |
 
 ### Análisis de Resultados
 
