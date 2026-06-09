@@ -40,12 +40,56 @@ uv add --dev pytest ruff mypy
 
 ```text
 .
-├── main.py
-├── lettuce-diseases-metadata.json
-├── pyproject.toml
+├── data/
+│   ├── processed/
+│   ├── raw/
+│   │   ├── Bacterial/
+│   │   ├── Downy_mildew_on_lettuce/
+│   │   ├── Healthy/
+│   │   ├── Powdery_mildew_on_lettuce/
+│   │   ├── Septoria_blight_on_lettuce/
+│   │   ├── Shepherd_purse_weeds/
+│   │   ├── Viral/
+│   │   └── Wilt_and_leaf_blight_on_lettuce/
+│   ├── splits/
+│   └── test/
+├── models/
+│   ├── checkpoints/
+│   │   └── lettuce_mobilenetv2_best.keras
+│   └── exported/
+│       ├── class_names.json
+│       └── lettuce_mobilenetv2.keras
+├── reports/
+│   ├── figures/
+│   │   └── confusion_matrix.png
+│   └── metrics/
+│       ├── classification_report.json
+│       ├── evaluation_metrics.json
+│       └── training_history.json
 ├── scripts/
-├── src/smartpot_lettuce_ai/
-└── tests/
+│   ├── evaluate.py
+│   ├── predict.py
+│   └── train.py
+├── src/
+│   └── smartpot_lettuce_ai/
+│       ├── cli.py
+│       ├── config.py
+│       ├── dataset.py
+│       ├── evaluate.py
+│       ├── model.py
+│       ├── predict.py
+│       ├── preprocessing.py
+│       ├── train.py
+│       ├── utils.py
+│       └── __init__.py
+├── tests/
+│   ├── test_config.py
+│   └── test_dataset.py
+├── .env.example
+├── lettuce-diseases-metadata.json
+├── main.py
+├── pyproject.toml
+└── README.md
 ```
 
 ## Uso rápido
