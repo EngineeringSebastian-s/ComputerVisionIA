@@ -1,0 +1,29 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+*.egg-info/
+build/
+dist/
+wheels/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+.coverage.*
+.DS_Store
+
+# Project artifacts
+data/raw/
+data/processed/
+data/splits/
+models/
+reports/
+logs/
+*.keras
+*.h5
+*.ckpt
+*.tflite
+
+# Virtual environments
+.venv
+.env
