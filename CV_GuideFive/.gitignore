@@ -13,16 +13,16 @@ wheels/
 .DS_Store
 
 # Project artifacts
-data/raw/
-data/processed/
-data/splits/
-models/
-reports/
-logs/
-*.keras
-*.h5
-*.ckpt
-*.tflite
+# data/raw/
+# data/processed/
+# data/splits/
+# models/
+# reports/
+# logs/
+# *.keras
+# *.h5
+# *.ckpt
+# *.tflite
 
 # Virtual environments
 .venv
