@@ -1,0 +1,63 @@
+{
+  "Healthy": {
+    "precision": 0.9816272965879265,
+    "recall": 0.9991095280498664,
+    "f1-score": 0.9902912621359223,
+    "support": 1123.0
+  },
+  "Bacterial": {
+    "precision": 0.8461538461538461,
+    "recall": 0.55,
+    "f1-score": 0.6666666666666666,
+    "support": 20.0
+  },
+  "Downy_mildew_on_lettuce": {
+    "precision": 0.9333333333333333,
+    "recall": 0.4666666666666667,
+    "f1-score": 0.6222222222222222,
+    "support": 30.0
+  },
+  "Powdery_mildew_on_lettuce": {
+    "precision": 0.7857142857142857,
+    "recall": 0.6111111111111112,
+    "f1-score": 0.6875,
+    "support": 18.0
+  },
+  "Septoria_blight_on_lettuce": {
+    "precision": 0.631578947368421,
+    "recall": 0.631578947368421,
+    "f1-score": 0.631578947368421,
+    "support": 19.0
+  },
+  "Shepherd_purse_weeds": {
+    "precision": 0.992818671454219,
+    "recall": 1.0,
+    "f1-score": 0.9963963963963964,
+    "support": 1106.0
+  },
+  "Viral": {
+    "precision": 0.5882352941176471,
+    "recall": 0.6666666666666666,
+    "f1-score": 0.625,
+    "support": 15.0
+  },
+  "Wilt_and_leaf_blight_on_lettuce": {
+    "precision": 1.0,
+    "recall": 0.3333333333333333,
+    "f1-score": 0.5,
+    "support": 6.0
+  },
+  "accuracy": 0.979032948224219,
+  "macro avg": {
+    "precision": 0.8449327093412098,
+    "recall": 0.6573082816495082,
+    "f1-score": 0.7149569368487037,
+    "support": 2337.0
+  },
+  "weighted avg": {
+    "precision": 0.9783116680249492,
+    "recall": 0.979032948224219,
+    "f1-score": 0.9768341898986115,
+    "support": 2337.0
+  }
+}
