@@ -1,0 +1,6035 @@
+Directory structure:
+└── ComputerVisionIA/
+    ├── CV_GuideFive/
+    │   ├── README.md
+    │   ├── lettuce-diseases-metadata.json
+    │   ├── main.py
+    │   ├── pyproject.toml
+    │   ├── .env.example
+    │   ├── .python-version
+    │   ├── data/
+    │   │   └── raw/
+    │   │       └── Healthy/
+    │   │           ├── h (10).JPG
+    │   │           ├── h (100).JPG
+    │   │           ├── h (1000).JPG
+    │   │           ├── h (1001).JPG
+    │   │           ├── h (1002).JPG
+    │   │           ├── h (1003).JPG
+    │   │           ├── h (1004).JPG
+    │   │           ├── h (1005).JPG
+    │   │           ├── h (1006).JPG
+    │   │           ├── h (1007).JPG
+    │   │           ├── h (1008).JPG
+    │   │           ├── h (1009).JPG
+    │   │           ├── h (101).JPG
+    │   │           ├── h (1010).JPG
+    │   │           ├── h (1011).JPG
+    │   │           ├── h (1012).JPG
+    │   │           ├── h (1013).JPG
+    │   │           ├── h (1014).JPG
+    │   │           ├── h (1015).JPG
+    │   │           ├── h (1016).JPG
+    │   │           ├── h (1017).JPG
+    │   │           ├── h (1018).JPG
+    │   │           ├── h (1019).JPG
+    │   │           ├── h (102).JPG
+    │   │           ├── h (1020).JPG
+    │   │           ├── h (1021).JPG
+    │   │           ├── h (1022).JPG
+    │   │           ├── h (1023).JPG
+    │   │           ├── h (1024).JPG
+    │   │           ├── h (1025).JPG
+    │   │           ├── h (1026).JPG
+    │   │           ├── h (1027).JPG
+    │   │           ├── h (1028).JPG
+    │   │           ├── h (1029).JPG
+    │   │           ├── h (103).JPG
+    │   │           ├── h (1030).JPG
+    │   │           ├── h (1031).JPG
+    │   │           ├── h (1032).JPG
+    │   │           ├── h (1033).JPG
+    │   │           ├── h (1034).JPG
+    │   │           ├── h (1035).JPG
+    │   │           ├── h (1036).JPG
+    │   │           ├── h (1037).JPG
+    │   │           ├── h (1038).JPG
+    │   │           ├── h (1039).JPG
+    │   │           ├── h (104).JPG
+    │   │           ├── h (1040).JPG
+    │   │           ├── h (1041).JPG
+    │   │           ├── h (1042).JPG
+    │   │           ├── h (1043).JPG
+    │   │           ├── h (1044).JPG
+    │   │           ├── h (1045).JPG
+    │   │           ├── h (1046).JPG
+    │   │           ├── h (1047).JPG
+    │   │           ├── h (1048).JPG
+    │   │           ├── h (1049).JPG
+    │   │           ├── h (105).JPG
+    │   │           ├── h (1050).JPG
+    │   │           ├── h (1051).JPG
+    │   │           ├── h (1052).JPG
+    │   │           ├── h (1053).JPG
+    │   │           ├── h (1054).JPG
+    │   │           ├── h (1055).JPG
+    │   │           ├── h (1056).JPG
+    │   │           ├── h (1057).JPG
+    │   │           ├── h (1058).JPG
+    │   │           ├── h (1059).JPG
+    │   │           ├── h (106).JPG
+    │   │           ├── h (1060).JPG
+    │   │           ├── h (1061).JPG
+    │   │           ├── h (1062).JPG
+    │   │           ├── h (1063).JPG
+    │   │           ├── h (1064).JPG
+    │   │           ├── h (1065).JPG
+    │   │           ├── h (1066).JPG
+    │   │           ├── h (1067).JPG
+    │   │           ├── h (1068).JPG
+    │   │           ├── h (1069).JPG
+    │   │           ├── h (107).JPG
+    │   │           ├── h (1070).JPG
+    │   │           ├── h (1071).JPG
+    │   │           ├── h (108).JPG
+    │   │           ├── h (109).JPG
+    │   │           ├── h (1098).JPG
+    │   │           ├── h (11).JPG
+    │   │           ├── h (110).JPG
+    │   │           ├── h (111).JPG
+    │   │           ├── h (112).JPG
+    │   │           ├── h (113).JPG
+    │   │           ├── h (114).JPG
+    │   │           ├── h (115).JPG
+    │   │           ├── h (116).JPG
+    │   │           ├── h (117).JPG
+    │   │           ├── h (118).JPG
+    │   │           ├── h (119).JPG
+    │   │           ├── h (12).JPG
+    │   │           ├── h (120).JPG
+    │   │           ├── h (121).JPG
+    │   │           ├── h (122).JPG
+    │   │           ├── h (123).JPG
+    │   │           ├── h (124).JPG
+    │   │           ├── h (125).JPG
+    │   │           ├── h (126).JPG
+    │   │           ├── h (127).JPG
+    │   │           ├── h (128).JPG
+    │   │           ├── h (129).JPG
+    │   │           ├── h (13).JPG
+    │   │           ├── h (130).JPG
+    │   │           ├── h (131).JPG
+    │   │           ├── h (132).JPG
+    │   │           ├── h (133).JPG
+    │   │           ├── h (134).JPG
+    │   │           ├── h (135).JPG
+    │   │           ├── h (136).JPG
+    │   │           ├── h (137).JPG
+    │   │           ├── h (138).JPG
+    │   │           ├── h (139).JPG
+    │   │           ├── h (14).JPG
+    │   │           ├── h (140).JPG
+    │   │           ├── h (141).JPG
+    │   │           ├── h (142).JPG
+    │   │           ├── h (143).JPG
+    │   │           ├── h (144).JPG
+    │   │           ├── h (145).JPG
+    │   │           ├── h (146).JPG
+    │   │           ├── h (147).JPG
+    │   │           ├── h (148).JPG
+    │   │           ├── h (149).JPG
+    │   │           ├── h (15).JPG
+    │   │           ├── h (150).JPG
+    │   │           ├── h (151).JPG
+    │   │           ├── h (152).JPG
+    │   │           ├── h (153).JPG
+    │   │           ├── h (154).JPG
+    │   │           ├── h (155).JPG
+    │   │           ├── h (156).JPG
+    │   │           ├── h (157).JPG
+    │   │           ├── h (158).JPG
+    │   │           ├── h (159).JPG
+    │   │           ├── h (16).JPG
+    │   │           ├── h (160).JPG
+    │   │           ├── h (161).JPG
+    │   │           ├── h (162).JPG
+    │   │           ├── h (163).JPG
+    │   │           ├── h (164).JPG
+    │   │           ├── h (165).JPG
+    │   │           ├── h (166).JPG
+    │   │           ├── h (167).JPG
+    │   │           ├── h (168).JPG
+    │   │           ├── h (169).JPG
+    │   │           ├── h (17).JPG
+    │   │           ├── h (170).JPG
+    │   │           ├── h (171).JPG
+    │   │           ├── h (172).JPG
+    │   │           ├── h (173).JPG
+    │   │           ├── h (174).JPG
+    │   │           ├── h (175).JPG
+    │   │           ├── h (176).JPG
+    │   │           ├── h (177).JPG
+    │   │           ├── h (178).JPG
+    │   │           ├── h (179).JPG
+    │   │           ├── h (18).JPG
+    │   │           ├── h (180).JPG
+    │   │           ├── h (181).JPG
+    │   │           ├── h (182).JPG
+    │   │           ├── h (183).JPG
+    │   │           ├── h (184).JPG
+    │   │           ├── h (185).JPG
+    │   │           ├── h (186).JPG
+    │   │           ├── h (187).JPG
+    │   │           ├── h (188).JPG
+    │   │           ├── h (189).JPG
+    │   │           ├── h (19).JPG
+    │   │           ├── h (190).JPG
+    │   │           ├── h (191).JPG
+    │   │           ├── h (192).JPG
+    │   │           ├── h (193).JPG
+    │   │           ├── h (194).JPG
+    │   │           ├── h (195).JPG
+    │   │           ├── h (196).JPG
+    │   │           ├── h (197).JPG
+    │   │           ├── h (198).JPG
+    │   │           ├── h (199).JPG
+    │   │           ├── h (20).JPG
+    │   │           ├── h (200).JPG
+    │   │           ├── h (201).JPG
+    │   │           ├── h (202).JPG
+    │   │           ├── h (203).JPG
+    │   │           ├── h (204).JPG
+    │   │           ├── h (205).JPG
+    │   │           ├── h (206).JPG
+    │   │           ├── h (207).JPG
+    │   │           ├── h (208).JPG
+    │   │           ├── h (209).JPG
+    │   │           ├── h (21).JPG
+    │   │           ├── h (210).JPG
+    │   │           ├── h (211).JPG
+    │   │           ├── h (212).JPG
+    │   │           ├── h (213).JPG
+    │   │           ├── h (214).JPG
+    │   │           ├── h (215).JPG
+    │   │           ├── h (216).JPG
+    │   │           ├── h (217).JPG
+    │   │           ├── h (218).JPG
+    │   │           ├── h (219).JPG
+    │   │           ├── h (22).JPG
+    │   │           ├── h (220).JPG
+    │   │           ├── h (221).JPG
+    │   │           ├── h (222).JPG
+    │   │           ├── h (223).JPG
+    │   │           ├── h (224).JPG
+    │   │           ├── h (225).JPG
+    │   │           ├── h (226).JPG
+    │   │           ├── h (227).JPG
+    │   │           ├── h (228).JPG
+    │   │           ├── h (229).JPG
+    │   │           ├── h (23).JPG
+    │   │           ├── h (230).JPG
+    │   │           ├── h (231).JPG
+    │   │           ├── h (232).JPG
+    │   │           ├── h (233).JPG
+    │   │           ├── h (234).JPG
+    │   │           ├── h (235).JPG
+    │   │           ├── h (236).JPG
+    │   │           ├── h (237).JPG
+    │   │           ├── h (238).JPG
+    │   │           ├── h (239).JPG
+    │   │           ├── h (24).JPG
+    │   │           ├── h (240).JPG
+    │   │           ├── h (241).JPG
+    │   │           ├── h (242).JPG
+    │   │           ├── h (243).JPG
+    │   │           ├── h (244).JPG
+    │   │           ├── h (245).JPG
+    │   │           ├── h (246).JPG
+    │   │           ├── h (247).JPG
+    │   │           ├── h (248).JPG
+    │   │           ├── h (249).JPG
+    │   │           ├── h (25).JPG
+    │   │           ├── h (250).JPG
+    │   │           ├── h (251).JPG
+    │   │           ├── h (252).JPG
+    │   │           ├── h (253).JPG
+    │   │           ├── h (254).JPG
+    │   │           ├── h (255).JPG
+    │   │           ├── h (256).JPG
+    │   │           ├── h (257).JPG
+    │   │           ├── h (258).JPG
+    │   │           ├── h (259).JPG
+    │   │           ├── h (26).JPG
+    │   │           ├── h (260).JPG
+    │   │           ├── h (261).JPG
+    │   │           ├── h (262).JPG
+    │   │           ├── h (263).JPG
+    │   │           ├── h (264).JPG
+    │   │           ├── h (265).JPG
+    │   │           ├── h (266).JPG
+    │   │           ├── h (267).JPG
+    │   │           ├── h (268).JPG
+    │   │           ├── h (269).JPG
+    │   │           ├── h (27).JPG
+    │   │           ├── h (270).JPG
+    │   │           ├── h (271).JPG
+    │   │           ├── h (272).JPG
+    │   │           ├── h (273).JPG
+    │   │           ├── h (274).JPG
+    │   │           ├── h (275).JPG
+    │   │           ├── h (276).JPG
+    │   │           ├── h (277).JPG
+    │   │           ├── h (278).JPG
+    │   │           ├── h (279).JPG
+    │   │           ├── h (28).JPG
+    │   │           ├── h (280).JPG
+    │   │           ├── h (281).JPG
+    │   │           ├── h (282).JPG
+    │   │           ├── h (283).JPG
+    │   │           ├── h (284).JPG
+    │   │           ├── h (285).JPG
+    │   │           ├── h (286).JPG
+    │   │           ├── h (287).JPG
+    │   │           ├── h (288).JPG
+    │   │           ├── h (289).JPG
+    │   │           ├── h (29).JPG
+    │   │           ├── h (290).JPG
+    │   │           ├── h (291).JPG
+    │   │           ├── h (292).JPG
+    │   │           ├── h (293).JPG
+    │   │           ├── h (294).JPG
+    │   │           ├── h (295).JPG
+    │   │           ├── h (296).JPG
+    │   │           ├── h (297).JPG
+    │   │           ├── h (298).JPG
+    │   │           ├── h (299).JPG
+    │   │           ├── h (30).JPG
+    │   │           ├── h (300).JPG
+    │   │           ├── h (301).JPG
+    │   │           ├── h (302).JPG
+    │   │           ├── h (303).JPG
+    │   │           ├── h (304).JPG
+    │   │           ├── h (305).JPG
+    │   │           ├── h (306).JPG
+    │   │           ├── h (307).JPG
+    │   │           ├── h (308).JPG
+    │   │           ├── h (309).JPG
+    │   │           ├── h (31).JPG
+    │   │           ├── h (310).JPG
+    │   │           ├── h (311).JPG
+    │   │           ├── h (312).JPG
+    │   │           ├── h (313).JPG
+    │   │           ├── h (314).JPG
+    │   │           ├── h (315).JPG
+    │   │           ├── h (316).JPG
+    │   │           ├── h (317).JPG
+    │   │           ├── h (318).JPG
+    │   │           ├── h (319).JPG
+    │   │           ├── h (32).JPG
+    │   │           ├── h (320).JPG
+    │   │           ├── h (321).JPG
+    │   │           ├── h (322).JPG
+    │   │           ├── h (323).JPG
+    │   │           ├── h (324).JPG
+    │   │           ├── h (325).JPG
+    │   │           ├── h (326).JPG
+    │   │           ├── h (327).JPG
+    │   │           ├── h (328).JPG
+    │   │           ├── h (329).JPG
+    │   │           ├── h (33).JPG
+    │   │           ├── h (330).JPG
+    │   │           ├── h (331).JPG
+    │   │           ├── h (332).JPG
+    │   │           ├── h (333).JPG
+    │   │           ├── h (334).JPG
+    │   │           ├── h (335).JPG
+    │   │           ├── h (336).JPG
+    │   │           ├── h (337).JPG
+    │   │           ├── h (338).JPG
+    │   │           ├── h (339).JPG
+    │   │           ├── h (34).JPG
+    │   │           ├── h (340).JPG
+    │   │           ├── h (341).JPG
+    │   │           ├── h (342).JPG
+    │   │           ├── h (343).JPG
+    │   │           ├── h (344).JPG
+    │   │           ├── h (345).JPG
+    │   │           ├── h (346).JPG
+    │   │           ├── h (347).JPG
+    │   │           ├── h (348).JPG
+    │   │           ├── h (349).JPG
+    │   │           ├── h (35).JPG
+    │   │           ├── h (350).JPG
+    │   │           ├── h (351).JPG
+    │   │           ├── h (352).JPG
+    │   │           ├── h (353).JPG
+    │   │           ├── h (354).JPG
+    │   │           ├── h (355).JPG
+    │   │           ├── h (356).JPG
+    │   │           ├── h (357).JPG
+    │   │           ├── h (358).JPG
+    │   │           ├── h (359).JPG
+    │   │           ├── h (36).JPG
+    │   │           ├── h (360).JPG
+    │   │           ├── h (361).JPG
+    │   │           ├── h (362).JPG
+    │   │           ├── h (363).JPG
+    │   │           ├── h (364).JPG
+    │   │           ├── h (365).JPG
+    │   │           ├── h (366).JPG
+    │   │           ├── h (367).JPG
+    │   │           ├── h (368).JPG
+    │   │           ├── h (369).JPG
+    │   │           ├── h (37).JPG
+    │   │           ├── h (370).JPG
+    │   │           ├── h (371).JPG
+    │   │           ├── h (372).JPG
+    │   │           ├── h (373).JPG
+    │   │           ├── h (374).JPG
+    │   │           ├── h (375).JPG
+    │   │           ├── h (376).JPG
+    │   │           ├── h (377).JPG
+    │   │           ├── h (378).JPG
+    │   │           ├── h (379).JPG
+    │   │           ├── h (38).JPG
+    │   │           ├── h (380).JPG
+    │   │           ├── h (381).JPG
+    │   │           ├── h (382).JPG
+    │   │           ├── h (383).JPG
+    │   │           ├── h (384).JPG
+    │   │           ├── h (385).JPG
+    │   │           ├── h (386).JPG
+    │   │           ├── h (387).JPG
+    │   │           ├── h (388).JPG
+    │   │           ├── h (389).JPG
+    │   │           ├── h (39).JPG
+    │   │           ├── h (390).JPG
+    │   │           ├── h (391).JPG
+    │   │           ├── h (392).JPG
+    │   │           ├── h (393).JPG
+    │   │           ├── h (394).JPG
+    │   │           ├── h (395).JPG
+    │   │           ├── h (396).JPG
+    │   │           ├── h (397).JPG
+    │   │           ├── h (398).JPG
+    │   │           ├── h (399).JPG
+    │   │           ├── h (40).JPG
+    │   │           ├── h (400).JPG
+    │   │           ├── h (401).JPG
+    │   │           ├── h (402).JPG
+    │   │           ├── h (403).JPG
+    │   │           ├── h (404).JPG
+    │   │           ├── h (405).JPG
+    │   │           ├── h (406).JPG
+    │   │           ├── h (407).JPG
+    │   │           ├── h (408).JPG
+    │   │           ├── h (409).JPG
+    │   │           ├── h (41).JPG
+    │   │           ├── h (410).JPG
+    │   │           └── h (414).JPG
+    │   ├── models/
+    │   │   └── exported/
+    │   │       └── class_names.json
+    │   ├── reports/
+    │   │   └── metrics/
+    │   │       ├── classification_report.json
+    │   │       ├── evaluation_metrics.json
+    │   │       └── training_history.json
+    │   ├── scripts/
+    │   │   ├── evaluate.py
+    │   │   ├── predict.py
+    │   │   └── train.py
+    │   ├── src/
+    │   │   └── smartpot_lettuce_ai/
+    │   │       ├── __init__.py
+    │   │       ├── cli.py
+    │   │       ├── config.py
+    │   │       ├── dataset.py
+    │   │       ├── evaluate.py
+    │   │       ├── model.py
+    │   │       ├── predict.py
+    │   │       ├── preprocessing.py
+    │   │       ├── train.py
+    │   │       └── utils.py
+    │   └── tests/
+    │       ├── test_config.py
+    │       └── test_dataset.py
+    ├── CV_GuideFour/
+    │   ├── requirements.txt
+    │   ├── FourExerciseBaseGAR/
+    │   │   ├── evidence/
+    │   │   │   ├── metricas_swinir.csv
+    │   │   │   └── resumen_metricas_swinir.csv
+    │   │   └── SwinIR/
+    │   │       └── utils/
+    │   │           └── util_calculate_psnr_ssim.py
+    │   ├── FourExerciseSAR/
+    │   │   └── evidence/
+    │   │       ├── metricas_swinir.csv
+    │   │       └── resumen_metricas_swinir.csv
+    │   ├── OneExercise/
+    │   │   └── evidence/
+    │   │       ├── matriz_confusion_cnn_secuencial.csv
+    │   │       ├── matriz_confusion_resnet50.csv
+    │   │       ├── reporte_cnn_secuencial.csv
+    │   │       └── reporte_resnet50.csv
+    │   ├── ThreeExerciseBaseGAR/
+    │   │   └── evidence/
+    │   │       ├── metricas_autoencoder.csv
+    │   │       └── resumen_metricas_autoencoder.csv
+    │   ├── ThreeExerciseSAR/
+    │   │   └── evidence/
+    │   │       ├── metricas_autoencoder.csv
+    │   │       └── resumen_metricas_autoencoder.csv
+    │   └── TwoExercise/
+    │       └── evidence/
+    │           ├── matriz_confusion_cnn_secuencial.csv
+    │           ├── matriz_confusion_resnet50.csv
+    │           ├── reporte_cnn_secuencial.csv
+    │           └── reporte_resnet50.csv
+    ├── CV_GuideOne/
+    │   ├── README.md
+    │   └── requirements.txt
+    ├── CV_GuideThree/
+    │   ├── dataset_resumen.csv
+    │   └── requirements.txt
+    └── CV_GuideTwo/
+        ├── docker-compose.yml
+        ├── guia2-vision-ia-api/
+        │   ├── .dockerignore
+        │   └── app/
+        │       ├── __init__.py
+        │       ├── contracts/
+        │       │   ├── __init__.py
+        │       │   └── exercise_contract.py
+        │       ├── controllers/
+        │       │   └── __init__.py
+        │       ├── output/
+        │       │   └── ejercicio5/
+        │       │       └── RGB_best_report.txt
+        │       ├── schemas/
+        │       │   └── __init__.py
+        │       ├── services/
+        │       │   └── __init__.py
+        │       └── utils/
+        │           └── __init__.py
+        ├── guia2-vision-ia-desktop/
+        │   └── app/
+        │       ├── __init__.py
+        │       ├── exercise1/
+        │       │   └── __init__.py
+        │       ├── exercise2/
+        │       │   └── __init__.py
+        │       ├── exercise3/
+        │       │   └── __init__.py
+        │       ├── exercise4/
+        │       │   └── __init__.py
+        │       ├── exercise5/
+        │       │   └── __init__.py
+        │       ├── exercise6/
+        │       │   └── __init__.py
+        │       └── exercise6_plus/
+        │           └── __init__.py
+        └── guia2-vision-ia-web/
+            ├── src/
+            │   └── environments/
+            │       └── environment.development.ts
+            └── .angular/
+                └── cache/
+                    └── 21.2.0/
+                        └── guia2-vision-ia/
+                            └── vite/
+                                └── deps/
+                                    └── package.json
+
+================================================
+FILE: CV_GuideFive/README.md
+================================================
+# SmartPot Lettuce AI
+
+Base profesional para el proyecto de visiÃ³n por computadora orientado a detectar el estado de salud de cultivos de lechuga hidropÃ³nica dentro del ecosistema SmartPot.
+
+El repositorio estÃ¡ preparado para:
+
+- Analizar el dataset de `Lettuce Diseases` de Kaggle.
+- Entrenar un clasificador de imÃ¡genes con `MobileNetV2` y transfer learning.
+- Evaluar el modelo con matriz de confusiÃ³n, precisiÃ³n, recall, F1-score y exactitud.
+- Exportar artefactos listos para una futura integraciÃ³n con SmartPot.
+
+## Requisitos
+
+- Python 3.14
+- `uv`
+
+## InstalaciÃ³n
+
+```bash
+uv sync
+```
+
+Para usar entrenamiento/evaluaciÃ³n/inferencia con TensorFlow, instala el extra ML en un entorno compatible con TensorFlow:
+
+```bash
+uv sync --extra ml
+```
+
+Nota importante: en este momento TensorFlow estable no publica wheels para Python 3.14 en todos los casos, asÃ­ que si vas a entrenar con el stack completo, lo mÃ¡s seguro es usar Python 3.13 o un entorno compatible con los wheels oficiales de TensorFlow.
+
+Si quieres crear el entorno desde cero:
+
+```bash
+uv init
+uv add tensorflow numpy pandas matplotlib scikit-learn pillow
+uv add --dev pytest ruff mypy
+```
+
+## Estructura
+
+```text
+.
+â”œâ”€â”€ data/
+â”‚   â”œâ”€â”€ processed/
+â”‚   â”œâ”€â”€ raw/
+â”‚   â”‚   â”œâ”€â”€ Bacterial/
+â”‚   â”‚   â”œâ”€â”€ Downy_mildew_on_lettuce/
+â”‚   â”‚   â”œâ”€â”€ Healthy/
+â”‚   â”‚   â”œâ”€â”€ Powdery_mildew_on_lettuce/
+â”‚   â”‚   â”œâ”€â”€ Septoria_blight_on_lettuce/
+â”‚   â”‚   â”œâ”€â”€ Shepherd_purse_weeds/
+â”‚   â”‚   â”œâ”€â”€ Viral/
+â”‚   â”‚   â””â”€â”€ Wilt_and_leaf_blight_on_lettuce/
+â”‚   â”œâ”€â”€ splits/
+â”‚   â””â”€â”€ test/
+â”œâ”€â”€ models/
+â”‚   â”œâ”€â”€ checkpoints/
+â”‚   â”‚   â””â”€â”€ lettuce_mobilenetv2_best.keras
+â”‚   â””â”€â”€ exported/
+â”‚       â”œâ”€â”€ class_names.json
+â”‚       â””â”€â”€ lettuce_mobilenetv2.keras
+â”œâ”€â”€ reports/
+â”‚   â”œâ”€â”€ figures/
+â”‚   â”‚   â””â”€â”€ confusion_matrix.png
+â”‚   â””â”€â”€ metrics/
+â”‚       â”œâ”€â”€ classification_report.json
+â”‚       â”œâ”€â”€ evaluation_metrics.json
+â”‚       â””â”€â”€ training_history.json
+â”œâ”€â”€ scripts/
+â”‚   â”œâ”€â”€ evaluate.py
+â”‚   â”œâ”€â”€ predict.py
+â”‚   â””â”€â”€ train.py
+â”œâ”€â”€ src/
+â”‚   â””â”€â”€ smartpot_lettuce_ai/
+â”‚       â”œâ”€â”€ cli.py
+â”‚       â”œâ”€â”€ config.py
+â”‚       â”œâ”€â”€ dataset.py
+â”‚       â”œâ”€â”€ evaluate.py
+â”‚       â”œâ”€â”€ model.py
+â”‚       â”œâ”€â”€ predict.py
+â”‚       â”œâ”€â”€ preprocessing.py
+â”‚       â”œâ”€â”€ train.py
+â”‚       â”œâ”€â”€ utils.py
+â”‚       â””â”€â”€ __init__.py
+â”œâ”€â”€ tests/
+â”‚   â”œâ”€â”€ test_config.py
+â”‚   â””â”€â”€ test_dataset.py
+â”œâ”€â”€ .env.example
+â”œâ”€â”€ lettuce-diseases-metadata.json
+â”œâ”€â”€ main.py
+â”œâ”€â”€ pyproject.toml
+â””â”€â”€ README.md
+```
+
+## Uso rÃ¡pido
+
+Inspeccionar el metadata del dataset:
+
+```bash
+uv run python main.py
+```
+
+Entrenar el modelo cuando tengas el dataset organizado por carpetas de clase:
+
+```bash
+uv run python scripts/train.py --data-dir data/raw
+```
+
+Evaluar un modelo exportado:
+
+```bash
+uv run python scripts/evaluate.py --model-path models/exported/lettuce_mobilenetv2.keras --test-dir data/splits/test
+```
+
+Predecir una imagen:
+
+```bash
+uv run python scripts/predict.py --model-path models/exported/lettuce_mobilenetv2.keras --image path/to/image.jpg
+```
+
+## Dataset
+
+El archivo `lettuce-diseases-metadata.json` incluye el metadata del dataset de Kaggle y sirve como referencia para extraer las clases y documentar la procedencia de los datos.
+
+## Notas
+
+- El proyecto estÃ¡ pensado como base modular, no como notebook monolÃ­tico.
+- La lÃ³gica importante vive en `src/smartpot_lettuce_ai/`.
+- Los artefactos generados por entrenamiento y evaluaciÃ³n quedan fuera del control de versiones.
+
+
+
+================================================
+FILE: CV_GuideFive/lettuce-diseases-metadata.json
+================================================
+{
+  "@context": {
+    "@language": "en",
+    "@vocab": "https://schema.org/",
+    "citeAs": "cr:citeAs",
+    "column": "cr:column",
+    "conformsTo": "dct:conformsTo",
+    "cr": "http://mlcommons.org/croissant/",
+    "data": {
+      "@id": "cr:data",
+      "@type": "@json"
+    },
+    "dataBiases": "cr:dataBiases",
+    "dataCollection": "cr:dataCollection",
+    "dataType": {
+      "@id": "cr:dataType",
+      "@type": "@vocab"
+    },
+    "dct": "http://purl.org/dc/terms/",
+    "extract": "cr:extract",
+    "field": "cr:field",
+    "fileProperty": "cr:fileProperty",
+    "fileObject": "cr:fileObject",
+    "fileSet": "cr:fileSet",
+    "format": "cr:format",
+    "includes": "cr:includes",
+    "isEnumeration": "cr:isEnumeration",
+    "isLiveDataset": "cr:isLiveDataset",
+    "jsonPath": "cr:jsonPath",
+    "key": "cr:key",
+    "md5": "cr:md5",
+    "parentField": "cr:parentField",
+    "path": "cr:path",
+    "personalSensitiveInformation": "cr:personalSensitiveInformation",
+    "recordSet": "cr:recordSet",
+    "references": "cr:references",
+    "regex": "cr:regex",
+    "repeated": "cr:repeated",
+    "replace": "cr:replace",
+    "sc": "https://schema.org/",
+    "separator": "cr:separator",
+    "source": "cr:source",
+    "subField": "cr:subField",
+    "transform": "cr:transform",
+    "wd": "https://www.wikidata.org/wiki/"
+  },
+  "alternateName": "Lettuce Leaf Diagnosia: Cultivating Insights for Crop Health",
+  "conformsTo": "http://mlcommons.org/croissant/1.0",
+  "license": {
+    "@type": "sc:CreativeWork",
+    "name": "Apache 2.0",
+    "url": "https://www.apache.org/licenses/LICENSE-2.0"
+  },
+  "distribution": [
+    {
+      "contentUrl": "https://www.kaggle.com/api/v1/datasets/download/ashishjstar/lettuce-diseases",
+      "contentSize": "1.255 GB",
+      "encodingFormat": "application/zip",
+      "@id": "archive.zip",
+      "@type": "cr:FileObject",
+      "name": "archive.zip",
+      "description": "Archive containing all the contents of the Lettuce Diseases dataset"
+    },
+    {
+      "includes": "*.jpg",
+      "containedIn": {
+        "@id": "archive.zip"
+      },
+      "encodingFormat": "image/jpeg",
+      "@id": "image-jpeg_fileset",
+      "@type": "cr:FileSet",
+      "name": "image/jpeg files",
+      "description": "image/jpeg files contained in archive.zip"
+    },
+    {
+      "includes": "*.png",
+      "containedIn": {
+        "@id": "archive.zip"
+      },
+      "encodingFormat": "image/png",
+      "@id": "image-png_fileset",
+      "@type": "cr:FileSet",
+      "name": "image/png files",
+      "description": "image/png files contained in archive.zip"
+    }
+  ],
+  "keywords": [
+    "subject \u003E people and society \u003E business"
+  ],
+  "isAccessibleForFree": true,
+  "isLiveDataset": true,
+  "includedInDataCatalog": {
+    "@type": "sc:DataCatalog",
+    "name": "Kaggle",
+    "url": "https://www.kaggle.com"
+  },
+  "creator": {
+    "@type": "sc:Person",
+    "name": "Ashish Jena",
+    "url": "/ashishjstar",
+    "image": "https://storage.googleapis.com/kaggle-avatars/thumbnails/7459254-kg.png?t=2024-03-09-09-02-05"
+  },
+  "publisher": {
+    "@type": "sc:Organization",
+    "name": "Kaggle",
+    "url": "https://www.kaggle.com/organizations/kaggle",
+    "image": "https://storage.googleapis.com/kaggle-organizations/4/thumbnail.png"
+  },
+  "thumbnailUrl": "https://storage.googleapis.com/kaggle-datasets-images/4779032/8094349/36844f4fef32a50933e4b630d537d969/dataset-card.jpg?t=2024-04-13-06-57-41",
+  "dateModified": "2024-04-11T19:37:31.84",
+  "datePublished": "2024-04-11T19:37:31.84",
+  "@type": "sc:Dataset",
+  "name": "Lettuce Diseases",
+  "url": "https://www.kaggle.com/datasets/ashishjstar/lettuce-diseases",
+  "description": "This dataset contains images of lettuce leaf diseases, captured in JPG format. The dataset aims to facilitate research and development in the field of agricultural disease detection and plant health monitoring.\n\n**Classes:**\n1. Healthy: Images of healthy lettuce leaves.\n2. Bacterial: Images of lettuce leaves affected by bacterial diseases.\n3. Downy mildew on lettuce: Images of lettuce leaves with downy mildew infection.\n4. Powdery mildew on lettuce: Images of lettuce leaves showing symptoms of powdery mildew.\n5. Septoria blight on lettuce: Images of lettuce leaves afflicted by Septoria blight.\n6. Shepherd purse weeds: Images of Shepherd purse weeds, which can be found alongside lettuce crops.\n7. Viral: Images of lettuce leaves affected by viral diseases.\n8. Wilt and leaf blight on lettuce: Images of lettuce leaves with symptoms of wilt and leaf blight.\n\nBy compiling a diverse dataset of lettuce leaf diseases, researchers and practitioners in agriculture and plant pathology can develop and evaluate machine learning algorithms and other technological solutions for early disease detection, accurate classification, and timely intervention.\n\n**Usage:**\nThis dataset can be utilized for various tasks including but not limited to:\n- Disease detection and classification in lettuce crops.\n- Development and evaluation of machine learning models for agricultural disease recognition.\n- Research in the field of plant pathology and crop health management."
+}
+
+
+================================================
+FILE: CV_GuideFive/main.py
+================================================
+from __future__ import annotations
+
+import sys
+from pathlib import Path
+
+
+def _bootstrap_src_path() -> None:
+    """Make the local `src/` package importable when running from the repo root."""
+
+    src_dir = Path(__file__).resolve().parent / "src"
+    src_path = str(src_dir)
+    if src_path not in sys.path:
+        sys.path.insert(0, src_path)
+
+
+def main(argv: list[str] | None = None) -> int:
+    _bootstrap_src_path()
+
+    from smartpot_lettuce_ai.cli import main as cli_main
+
+    return cli_main(argv)
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
+
+
+
+================================================
+FILE: CV_GuideFive/pyproject.toml
+================================================
+[project]
+name = "cv-guidefive"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "matplotlib>=3.10.9",
+    "numpy>=2.4.6",
+    "pandas>=3.0.3",
+    "pillow>=12.2.0",
+    "scikit-learn>=1.8.0",
+    "tensorflow>=2.21.0",
+]
+
+[dependency-groups]
+dev = [
+    "mypy>=2.1.0",
+    "pytest>=9.0.3",
+    "ruff>=0.15.16",
+]
+
+
+
+================================================
+FILE: CV_GuideFive/.env.example
+================================================
+SMARTPOT_PROJECT_ROOT=.
+SMARTPOT_DATA_DIR=data/raw
+SMARTPOT_PROCESSED_DIR=data/processed
+SMARTPOT_SPLITS_DIR=data/splits
+SMARTPOT_MODELS_DIR=models/exported
+SMARTPOT_REPORTS_DIR=reports
+SMARTPOT_SEED=42
+SMARTPOT_BATCH_SIZE=32
+SMARTPOT_IMAGE_SIZE=224
+
+
+
+================================================
+FILE: CV_GuideFive/.python-version
+================================================
+3.13
+
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (10).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (100).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1000).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1001).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1002).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1003).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1004).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1005).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1006).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1007).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1008).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1009).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (101).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1010).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1011).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1012).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1013).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1014).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1015).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1016).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1017).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1018).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1019).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (102).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1020).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1021).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1022).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1023).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1024).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1025).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1026).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1027).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1028).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1029).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (103).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1030).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1031).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1032).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1033).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1034).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1035).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1036).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1037).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1038).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1039).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (104).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1040).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1041).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1042).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1043).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1044).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1045).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1046).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1047).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1048).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1049).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (105).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1050).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1051).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1052).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1053).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1054).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1055).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1056).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1057).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1058).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1059).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (106).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1060).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1061).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1062).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1063).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1064).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1065).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1066).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1067).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1068).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1069).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (107).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1070).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1071).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (108).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (109).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (1098).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (11).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (110).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (111).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (112).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (113).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (114).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (115).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (116).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (117).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (118).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (119).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (12).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (120).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (121).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (122).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (123).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (124).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (125).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (126).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (127).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (128).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (129).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (13).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (130).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (131).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (132).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (133).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (134).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (135).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (136).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (137).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (138).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (139).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (14).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (140).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (141).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (142).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (143).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (144).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (145).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (146).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (147).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (148).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (149).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (15).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (150).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (151).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (152).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (153).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (154).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (155).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (156).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (157).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (158).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (159).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (16).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (160).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (161).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (162).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (163).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (164).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (165).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (166).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (167).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (168).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (169).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (17).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (170).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (171).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (172).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (173).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (174).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (175).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (176).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (177).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (178).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (179).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (18).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (180).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (181).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (182).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (183).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (184).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (185).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (186).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (187).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (188).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (189).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (19).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (190).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (191).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (192).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (193).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (194).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (195).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (196).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (197).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (198).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (199).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (20).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (200).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (201).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (202).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (203).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (204).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (205).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (206).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (207).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (208).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (209).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (21).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (210).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (211).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (212).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (213).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (214).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (215).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (216).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (217).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (218).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (219).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (22).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (220).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (221).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (222).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (223).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (224).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (225).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (226).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (227).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (228).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (229).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (23).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (230).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (231).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (232).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (233).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (234).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (235).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (236).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (237).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (238).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (239).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (24).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (240).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (241).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (242).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (243).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (244).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (245).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (246).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (247).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (248).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (249).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (25).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (250).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (251).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (252).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (253).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (254).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (255).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (256).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (257).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (258).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (259).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (26).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (260).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (261).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (262).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (263).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (264).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (265).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (266).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (267).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (268).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (269).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (27).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (270).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (271).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (272).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (273).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (274).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (275).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (276).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (277).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (278).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (279).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (28).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (280).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (281).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (282).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (283).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (284).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (285).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (286).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (287).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (288).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (289).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (29).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (290).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (291).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (292).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (293).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (294).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (295).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (296).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (297).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (298).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (299).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (30).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (300).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (301).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (302).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (303).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (304).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (305).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (306).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (307).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (308).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (309).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (31).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (310).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (311).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (312).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (313).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (314).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (315).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (316).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (317).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (318).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (319).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (32).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (320).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (321).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (322).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (323).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (324).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (325).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (326).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (327).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (328).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (329).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (33).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (330).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (331).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (332).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (333).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (334).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (335).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (336).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (337).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (338).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (339).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (34).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (340).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (341).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (342).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (343).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (344).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (345).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (346).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (347).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (348).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (349).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (35).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (350).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (351).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (352).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (353).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (354).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (355).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (356).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (357).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (358).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (359).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (36).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (360).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (361).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (362).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (363).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (364).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (365).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (366).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (367).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (368).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (369).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (37).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (370).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (371).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (372).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (373).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (374).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (375).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (376).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (377).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (378).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (379).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (38).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (380).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (381).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (382).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (383).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (384).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (385).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (386).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (387).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (388).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (389).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (39).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (390).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (391).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (392).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (393).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (394).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (395).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (396).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (397).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (398).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (399).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (40).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (400).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (401).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (402).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (403).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (404).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (405).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (406).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (407).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (408).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (409).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (41).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (410).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/data/raw/Healthy/h (414).JPG
+================================================
+[Binary file]
+
+
+================================================
+FILE: CV_GuideFive/models/exported/class_names.json
+================================================
+[
+  "Healthy",
+  "Bacterial",
+  "Downy mildew on lettuce",
+  "Powdery mildew on lettuce",
+  "Septoria blight on lettuce",
+  "Shepherd purse weeds",
+  "Viral",
+  "Wilt and leaf blight on lettuce"
+]
+
+
+================================================
+FILE: CV_GuideFive/reports/metrics/classification_report.json
+================================================
+{
+  "Healthy": {
+    "precision": 0.9816272965879265,
+    "recall": 0.9991095280498664,
+    "f1-score": 0.9902912621359223,
+    "support": 1123.0
+  },
+  "Bacterial": {
+    "precision": 0.8461538461538461,
+    "recall": 0.55,
+    "f1-score": 0.6666666666666666,
+    "support": 20.0
+  },
+  "Downy_mildew_on_lettuce": {
+    "precision": 0.9333333333333333,
+    "recall": 0.4666666666666667,
+    "f1-score": 0.6222222222222222,
+    "support": 30.0
+  },
+  "Powdery_mildew_on_lettuce": {
+    "precision": 0.7857142857142857,
+    "recall": 0.6111111111111112,
+    "f1-score": 0.6875,
+    "support": 18.0
+  },
+  "Septoria_blight_on_lettuce": {
+    "precision": 0.631578947368421,
+    "recall": 0.631578947368421,
+    "f1-score": 0.631578947368421,
+    "support": 19.0
+  },
+  "Shepherd_purse_weeds": {
+    "precision": 0.992818671454219,
+    "recall": 1.0,
+    "f1-score": 0.9963963963963964,
+    "support": 1106.0
+  },
+  "Viral": {
+    "precision": 0.5882352941176471,
+    "recall": 0.6666666666666666,
+    "f1-score": 0.625,
+    "support": 15.0
+  },
+  "Wilt_and_leaf_blight_on_lettuce": {
+    "precision": 1.0,
+    "recall": 0.3333333333333333,
+    "f1-score": 0.5,
+    "support": 6.0
+  },
+  "accuracy": 0.979032948224219,
+  "macro avg": {
+    "precision": 0.8449327093412098,
+    "recall": 0.6573082816495082,
+    "f1-score": 0.7149569368487037,
+    "support": 2337.0
+  },
+  "weighted avg": {
+    "precision": 0.9783116680249492,
+    "recall": 0.979032948224219,
+    "f1-score": 0.9768341898986115,
+    "support": 2337.0
+  }
+}
+
+
+================================================
+FILE: CV_GuideFive/reports/metrics/evaluation_metrics.json
+================================================
+{
+  "accuracy": 0.979032948224219,
+  "precision": 0.9783116680249492,
+  "recall": 0.979032948224219,
+  "f1_score": 0.9768341898986115,
+  "num_samples": 2337
+}
+
+
+================================================
+FILE: CV_GuideFive/reports/metrics/training_history.json
+================================================
+{
+  "accuracy": [
+    0.37754011154174805,
+    0.8433154821395874,
+    0.9288769960403442,
+    0.9427807331085205,
+    0.9513369202613831,
+    0.9518716335296631,
+    0.9529411792755127,
+    0.9529411792755127,
+    0.9550802111625671,
+    0.9577540159225464,
+    0.9572192430496216,
+    0.9620320796966553,
+    0.9620320796966553,
+    0.9652406573295593,
+    0.9657754302024841,
+    0.970053493976593,
+    0.9695187211036682,
+    0.970588207244873,
+    0.9711229801177979,
+    0.9754010438919067,
+    0.8903743028640747,
+    0.9652406573295593,
+    0.9716577529907227,
+    0.98128342628479,
+    0.9877005219459534,
+    0.9898395538330078,
+    0.9962567090988159,
+    0.996791422367096
+  ],
+  "loss": [
+    1.707338809967041,
+    0.6327982544898987,
+    0.38801565766334534,
+    0.3097294569015503,
+    0.25584954023361206,
+    0.2382735162973404,
+    0.21313050389289856,
+    0.19473041594028473,
+    0.17625929415225983,
+    0.1635412573814392,
+    0.15620382130146027,
+    0.141312837600708,
+    0.1398969292640686,
+    0.1321626752614975,
+    0.12233903259038925,
+    0.10794214904308319,
+    0.10895869880914688,
+    0.10165596008300781,
+    0.10265595465898514,
+    0.0960162803530693,
+    0.4640444219112396,
+    0.187277153134346,
+    0.1263900250196457,
+    0.09386230260133743,
+    0.07500892132520676,
+    0.061462871730327606,
+    0.04676748439669609,
+    0.03836139291524887
+  ],
+  "val_accuracy": [
+    0.7237687110900879,
+    0.91862952709198,
+    0.9443255066871643,
+    0.9486081600189209,
+    0.9486081600189209,
+    0.9486081600189209,
+    0.9486081600189209,
+    0.9486081600189209,
+    0.9486081600189209,
+    0.9486081600189209,
+    0.9486081600189209,
+    0.9486081600189209,
+    0.9486081600189209,
+    0.9486081600189209,
+    0.9486081600189209,
+    0.9486081600189209,
+    0.9486081600189209,
+    0.9486081600189209,
+    0.9486081600189209,
+    0.9486081600189209,
+    0.9486081600189209,
+    0.9486081600189209,
+    0.9486081600189209,
+    0.9486081600189209,
+    0.9486081600189209,
+    0.9486081600189209,
+    0.9507494568824768,
+    0.9507494568824768
+  ],
+  "val_loss": [
+    0.8861759305000305,
+    0.47659027576446533,
+    0.36445993185043335,
+    0.31538212299346924,
+    0.2857683300971985,
+    0.26397132873535156,
+    0.2484358549118042,
+    0.23512829840183258,
+    0.222979336977005,
+    0.21294061839580536,
+    0.20642322301864624,
+    0.1999463587999344,
+    0.19270415604114532,
+    0.18667839467525482,
+    0.1819392293691635,
+    0.17964884638786316,
+    0.1744801104068756,
+    0.17184360325336456,
+    0.16831055283546448,
+    0.16460825502872467,
+    0.15730373561382294,
+    0.15711639821529388,
+    0.15574534237384796,
+    0.15584483742713928,
+    0.1551312357187271,
+    0.15457125008106232,
+    0.15364152193069458,
+    0.15222635865211487
+  ],
+  "learning_rate": [
+    9.999999747378752e-05,
+    9.999999747378752e-05,
+    9.999999747378752e-05,
+    9.999999747378752e-05,
+    9.999999747378752e-05,
+    9.999999747378752e-05,
+    9.999999747378752e-05,
+    9.999999747378752e-05,
+    9.999999747378752e-05,
+    9.999999747378752e-05,
+    9.999999747378752e-05,
+    9.999999747378752e-05,
+    9.999999747378752e-05,
+    9.999999747378752e-05,
+    9.999999747378752e-05,
+    9.999999747378752e-05,
+    9.999999747378752e-05,
+    9.999999747378752e-05,
+    9.999999747378752e-05,
+    9.999999747378752e-05,
+    9.999999747378752e-06,
+    9.999999747378752e-06,
+    9.999999747378752e-06,
+    9.999999747378752e-06,
+    9.999999747378752e-06,
+    9.999999747378752e-06,
+    9.999999747378752e-06,
+    9.999999747378752e-06
+  ]
+}
+
+
+================================================
+FILE: CV_GuideFive/scripts/evaluate.py
+================================================
+from __future__ import annotations
+
+import sys
+from pathlib import Path
+
+
+def _bootstrap_src_path() -> None:
+    src_dir = Path(__file__).resolve().parents[1] / "src"
+    src_path = str(src_dir)
+    if src_path not in sys.path:
+        sys.path.insert(0, src_path)
+
+
+def main() -> int:
+    _bootstrap_src_path()
+
+    from smartpot_lettuce_ai.cli import main as cli_main
+
+    return cli_main(["evaluate", *sys.argv[1:]])
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
+
+
+
+================================================
+FILE: CV_GuideFive/scripts/predict.py
+================================================
+from __future__ import annotations
+
+import sys
+from pathlib import Path
+
+
+def _bootstrap_src_path() -> None:
+    src_dir = Path(__file__).resolve().parents[1] / "src"
+    src_path = str(src_dir)
+    if src_path not in sys.path:
+        sys.path.insert(0, src_path)
+
+
+def main() -> int:
+    _bootstrap_src_path()
+
+    from smartpot_lettuce_ai.cli import main as cli_main
+
+    return cli_main(["predict", *sys.argv[1:]])
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
+
+
+
+================================================
+FILE: CV_GuideFive/scripts/train.py
+================================================
+from __future__ import annotations
+
+import sys
+from pathlib import Path
+
+
+def _bootstrap_src_path() -> None:
+    src_dir = Path(__file__).resolve().parents[1] / "src"
+    src_path = str(src_dir)
+    if src_path not in sys.path:
+        sys.path.insert(0, src_path)
+
+
+def main() -> int:
+    _bootstrap_src_path()
+
+    from smartpot_lettuce_ai.cli import main as cli_main
+
+    return cli_main(["train", *sys.argv[1:]])
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
+
+
+
+================================================
+FILE: CV_GuideFive/src/smartpot_lettuce_ai/__init__.py
+================================================
+"""SmartPot lettuce disease classification toolkit."""
+
+from importlib.metadata import PackageNotFoundError, version
+
+try:
+    __version__ = version("final-vision-computadora")
+except PackageNotFoundError:  # pragma: no cover - fallback for editable/local runs
+    __version__ = "0.1.0"
+
+__all__ = ["__version__"]
+
+
+
+================================================
+FILE: CV_GuideFive/src/smartpot_lettuce_ai/cli.py
+================================================
+"""Command line interface for the project."""
+
+from __future__ import annotations
+
+import argparse
+import json
+from pathlib import Path
+from typing import Sequence
+
+from .config import ProjectConfig, TrainingConfig
+from .dataset import load_dataset_metadata, to_folder_class_names
+from .evaluate import evaluate_model
+from .predict import predict_image
+from .train import train_from_directory
+
+
+def build_parser() -> argparse.ArgumentParser:
+    """Build the project CLI parser."""
+
+    parser = argparse.ArgumentParser(
+        prog="smartpot-lettuce-ai",
+        description="Herramientas para el proyecto de visiÃ³n por computadora de lechuga.",
+    )
+    parser.add_argument(
+        "--root",
+        type=Path,
+        default=None,
+        help="RaÃ­z del proyecto. Por defecto se autodetecta a partir de pyproject.toml.",
+    )
+
+    subparsers = parser.add_subparsers(dest="command")
+
+    inspect_parser = subparsers.add_parser(
+        "inspect-metadata",
+        help="Mostrar un resumen del metadata del dataset de Kaggle.",
+    )
+    inspect_parser.add_argument(
+        "--metadata",
+        type=Path,
+        default=None,
+        help="Ruta al archivo lettuce-diseases-metadata.json.",
+    )
+    inspect_parser.set_defaults(func=_cmd_inspect_metadata)
+
+    train_parser = subparsers.add_parser(
+        "train",
+        help="Entrenar MobileNetV2 con el dataset organizado por carpetas de clase.",
+    )
+    train_parser.add_argument("--data-dir", type=Path, default=None, help="Directorio con imÃ¡genes.")
+    train_parser.add_argument("--epochs", type=int, default=None, help="NÃºmero de Ã©pocas.")
+    train_parser.add_argument(
+        "--fine-tune-epochs",
+        type=int,
+        default=None,
+        help="NÃºmero de Ã©pocas para fine-tuning.",
+    )
+    train_parser.add_argument(
+        "--validation-split",
+        type=float,
+        default=None,
+        help="Porcentaje de validaciÃ³n.",
+    )
+    train_parser.add_argument(
+        "--batch-size",
+        type=int,
+        default=None,
+        help="TamaÃ±o del batch.",
+    )
+    train_parser.add_argument("--seed", type=int, default=None, help="Semilla aleatoria.")
+    train_parser.set_defaults(func=_cmd_train)
+
+    evaluate_parser = subparsers.add_parser(
+        "evaluate",
+        help="Evaluar un modelo exportado sobre un directorio de prueba.",
+    )
+    evaluate_parser.add_argument(
+        "--model-path",
+        type=Path,
+        required=True,
+        help="Ruta al archivo .keras del modelo.",
+    )
+    evaluate_parser.add_argument(
+        "--test-dir",
+        type=Path,
+        required=True,
+        help="Directorio de prueba organizado por clases.",
+    )
+    evaluate_parser.add_argument(
+        "--class-names-path",
+        type=Path,
+        default=None,
+        help="Archivo JSON con el orden de las clases.",
+    )
+    evaluate_parser.set_defaults(func=_cmd_evaluate)
+
+    predict_parser = subparsers.add_parser(
+        "predict",
+        help="Predecir la clase de una sola imagen.",
+    )
+    predict_parser.add_argument(
+        "--model-path",
+        type=Path,
+        required=True,
+        help="Ruta al archivo .keras del modelo.",
+    )
+    predict_parser.add_argument(
+        "--image",
+        type=Path,
+        required=True,
+        help="Imagen a clasificar.",
+    )
+    predict_parser.add_argument(
+        "--class-names-path",
+        type=Path,
+        default=None,
+        help="Archivo JSON con el orden de las clases.",
+    )
+    predict_parser.set_defaults(func=_cmd_predict)
+
+    return parser
+
+
+def main(argv: Sequence[str] | None = None) -> int:
+    """Run the CLI."""
+
+    parser = build_parser()
+    args = parser.parse_args(list(argv) if argv is not None else None)
+    if getattr(args, "command", None) is None:
+        return _cmd_inspect_metadata(argparse.Namespace(root=args.root, metadata=None))
+
+    return int(args.func(args))
+
+
+def _cmd_inspect_metadata(args: argparse.Namespace) -> int:
+    project = ProjectConfig.from_root(args.root, ensure_directories=False)
+    metadata_path = args.metadata or project.metadata_path
+    metadata = load_dataset_metadata(metadata_path)
+
+    summary = {
+        "name": metadata.name,
+        "source_url": metadata.source_url,
+        "class_names": list(metadata.class_names),
+        "folder_class_names": list(to_folder_class_names(metadata.class_names)),
+        "num_classes": len(metadata.class_names),
+        "distribution": metadata.distribution,
+    }
+    print(json.dumps(summary, indent=2, ensure_ascii=False))
+    return 0
+
+
+def _build_project_and_training(args: argparse.Namespace) -> tuple[ProjectConfig, TrainingConfig]:
+    project = ProjectConfig.from_root(args.root, ensure_directories=False)
+    if args.batch_size is not None:
+        project.batch_size = args.batch_size
+    if args.seed is not None:
+        project.seed = args.seed
+
+    training = TrainingConfig(
+        epochs=args.epochs if args.epochs is not None else project.training.epochs,
+        fine_tune_epochs=(
+            args.fine_tune_epochs
+            if args.fine_tune_epochs is not None
+            else project.training.fine_tune_epochs
+        ),
+        validation_split=(
+            args.validation_split
+            if args.validation_split is not None
+            else project.training.validation_split
+        ),
+    )
+    project.training = training
+    return project, training
+
+
+def _cmd_train(args: argparse.Namespace) -> int:
+    project, training = _build_project_and_training(args)
+    data_dir = args.data_dir or project.paths.data_raw
+
+    artifacts = train_from_directory(
+        data_dir,
+        project,
+        training,
+        class_names=project.class_names,
+    )
+    print(
+        json.dumps(
+            {
+                "model_path": str(artifacts.model_path),
+                "history_path": str(artifacts.history_path),
+                "class_names_path": str(artifacts.class_names_path),
+            },
+            indent=2,
+            ensure_ascii=False,
+        )
+    )
+    return 0
+
+
+def _cmd_evaluate(args: argparse.Namespace) -> int:
+    project = ProjectConfig.from_root(args.root, ensure_directories=False)
+    class_names = None
+    if args.class_names_path is not None:
+        class_names = json.loads(Path(args.class_names_path).read_text(encoding="utf-8"))
+
+    artifacts = evaluate_model(
+        args.model_path,
+        args.test_dir,
+        project,
+        class_names=class_names,
+    )
+    print(
+        json.dumps(
+            {
+                "metrics_path": str(artifacts.metrics_path),
+                "report_path": str(artifacts.report_path),
+                "confusion_matrix_path": str(artifacts.confusion_matrix_path),
+            },
+            indent=2,
+            ensure_ascii=False,
+        )
+    )
+    return 0
+
+
+def _cmd_predict(args: argparse.Namespace) -> int:
+    project = ProjectConfig.from_root(args.root, ensure_directories=False)
+    class_names = None
+    if args.class_names_path is not None:
+        class_names = json.loads(Path(args.class_names_path).read_text(encoding="utf-8"))
+
+    result = predict_image(
+        args.model_path,
+        args.image,
+        project,
+        class_names=class_names,
+        class_names_path=args.class_names_path,
+    )
+    print(
+        json.dumps(
+            {
+                "predicted_class": result.predicted_class,
+                "confidence": result.confidence,
+                "probabilities": list(result.probabilities),
+            },
+            indent=2,
+            ensure_ascii=False,
+        )
+    )
+    return 0
+
+
+
+================================================
+FILE: CV_GuideFive/src/smartpot_lettuce_ai/config.py
+================================================
+"""Configuration objects for the SmartPot lettuce AI project."""
+
+from __future__ import annotations
+
+from dataclasses import asdict, dataclass, field
+from pathlib import Path
+from typing import Sequence
+
+from .utils import ensure_directory, find_project_root
+
+DEFAULT_IMAGE_SIZE: tuple[int, int] = (224, 224)
+DEFAULT_BATCH_SIZE = 32
+DEFAULT_SEED = 42
+DEFAULT_EPOCHS = 20
+DEFAULT_FINE_TUNE_EPOCHS = 8
+DEFAULT_LEARNING_RATE = 1e-4
+DEFAULT_FINE_TUNE_LEARNING_RATE = 1e-5
+DEFAULT_VALIDATION_SPLIT = 0.2
+DEFAULT_TEST_SPLIT = 0.15
+DEFAULT_DROPOUT_RATE = 0.2
+DEFAULT_FINE_TUNE_AT = 100
+
+DEFAULT_LETTUCE_CLASS_NAMES: tuple[str, ...] = (
+    "Healthy",
+    "Bacterial",
+    "Downy mildew on lettuce",
+    "Powdery mildew on lettuce",
+    "Septoria blight on lettuce",
+    "Shepherd purse weeds",
+    "Viral",
+    "Wilt and leaf blight on lettuce",
+)
+
+
+@dataclass(slots=True)
+class ProjectPaths:
+    """Canonical filesystem locations used by the project."""
+
+    root: Path
+    data_raw: Path
+    data_processed: Path
+    data_splits: Path
+    models_checkpoints: Path
+    models_exported: Path
+    reports_figures: Path
+    reports_metrics: Path
+
+    @classmethod
+    def from_root(cls, root: Path) -> "ProjectPaths":
+        root = root.resolve()
+        return cls(
+            root=root,
+            data_raw=root / "data" / "raw",
+            data_processed=root / "data" / "processed",
+            data_splits=root / "data" / "splits",
+            models_checkpoints=root / "models" / "checkpoints",
+            models_exported=root / "models" / "exported",
+            reports_figures=root / "reports" / "figures",
+            reports_metrics=root / "reports" / "metrics",
+        )
+
+    def ensure(self) -> "ProjectPaths":
+        """Create every configured directory."""
+
+        for path in (
+            self.data_raw,
+            self.data_processed,
+            self.data_splits,
+            self.models_checkpoints,
+            self.models_exported,
+            self.reports_figures,
+            self.reports_metrics,
+        ):
+            ensure_directory(path)
+        return self
+
+    def to_dict(self) -> dict[str, str]:
+        return {
+            "root": str(self.root),
+            "data_raw": str(self.data_raw),
+            "data_processed": str(self.data_processed),
+            "data_splits": str(self.data_splits),
+            "models_checkpoints": str(self.models_checkpoints),
+            "models_exported": str(self.models_exported),
+            "reports_figures": str(self.reports_figures),
+            "reports_metrics": str(self.reports_metrics),
+        }
+
+
+@dataclass(slots=True)
+class TrainingConfig:
+    """Training hyperparameters for the MobileNetV2 workflow."""
+
+    epochs: int = DEFAULT_EPOCHS
+    fine_tune_epochs: int = DEFAULT_FINE_TUNE_EPOCHS
+    learning_rate: float = DEFAULT_LEARNING_RATE
+    fine_tune_learning_rate: float = DEFAULT_FINE_TUNE_LEARNING_RATE
+    dropout_rate: float = DEFAULT_DROPOUT_RATE
+    validation_split: float = DEFAULT_VALIDATION_SPLIT
+    test_split: float = DEFAULT_TEST_SPLIT
+    fine_tune_at: int = DEFAULT_FINE_TUNE_AT
+    early_stopping_patience: int = 5
+
+    def to_dict(self) -> dict[str, float | int]:
+        return asdict(self)
+
+
+@dataclass(slots=True)
+class ProjectConfig:
+    """Top-level configuration for the project."""
+
+    paths: ProjectPaths
+    metadata_path: Path
+    image_size: tuple[int, int] = DEFAULT_IMAGE_SIZE
+    batch_size: int = DEFAULT_BATCH_SIZE
+    seed: int = DEFAULT_SEED
+    class_names: tuple[str, ...] = DEFAULT_LETTUCE_CLASS_NAMES
+    training: TrainingConfig = field(default_factory=TrainingConfig)
+
+    @classmethod
+    def from_root(
+        cls,
+        root: Path | None = None,
+        *,
+        image_size: tuple[int, int] = DEFAULT_IMAGE_SIZE,
+        batch_size: int = DEFAULT_BATCH_SIZE,
+        seed: int = DEFAULT_SEED,
+        class_names: Sequence[str] = DEFAULT_LETTUCE_CLASS_NAMES,
+        training: TrainingConfig | None = None,
+        ensure_directories: bool = True,
+    ) -> "ProjectConfig":
+        """Build a config from a repository root."""
+
+        project_root = find_project_root(root or Path(__file__))
+        paths = ProjectPaths.from_root(project_root)
+        if ensure_directories:
+            paths.ensure()
+
+        return cls(
+            paths=paths,
+            metadata_path=project_root / "lettuce-diseases-metadata.json",
+            image_size=image_size,
+            batch_size=batch_size,
+            seed=seed,
+            class_names=tuple(class_names),
+            training=training or TrainingConfig(),
+        )
+
+    def ensure_directories(self) -> "ProjectConfig":
+        """Create the filesystem layout used by the project."""
+
+        self.paths.ensure()
+        return self
+
+    def to_dict(self) -> dict[str, object]:
+        return {
+            "paths": self.paths.to_dict(),
+            "metadata_path": str(self.metadata_path),
+            "image_size": list(self.image_size),
+            "batch_size": self.batch_size,
+            "seed": self.seed,
+            "class_names": list(self.class_names),
+            "training": self.training.to_dict(),
+        }
+
+
+
+================================================
+FILE: CV_GuideFive/src/smartpot_lettuce_ai/dataset.py
+================================================
+"""Dataset helpers for the lettuce disease classification workflow."""
+
+from __future__ import annotations
+
+import math
+import random
+import re
+from collections import Counter, defaultdict
+from dataclasses import dataclass, field
+from pathlib import Path
+from typing import Any, Sequence
+
+from .config import DEFAULT_LETTUCE_CLASS_NAMES
+from .utils import folderify_label, load_json
+
+SUPPORTED_IMAGE_EXTENSIONS: tuple[str, ...] = (".jpg", ".jpeg", ".png")
+CLASS_NAME_PATTERN = re.compile(r"^\s*\d+\.\s*(?P<label>[^:\n]+?)\s*:", re.MULTILINE)
+
+
+@dataclass(slots=True, frozen=True)
+class ImageSample:
+    """A single image path and its class label."""
+
+    path: Path
+    label: str
+
+
+@dataclass(slots=True)
+class DatasetMetadata:
+    """Parsed metadata from the Kaggle dataset card."""
+
+    name: str
+    description: str
+    class_names: tuple[str, ...]
+    source_url: str | None = None
+    distribution: list[dict[str, Any]] = field(default_factory=list)
+    raw: dict[str, Any] = field(default_factory=dict)
+
+
+@dataclass(slots=True, frozen=True)
+class DatasetSplit:
+    """Stratified train/validation/test split."""
+
+    train: tuple[ImageSample, ...]
+    validation: tuple[ImageSample, ...]
+    test: tuple[ImageSample, ...]
+
+    def counts(self) -> dict[str, int]:
+        return {
+            "train": len(self.train),
+            "validation": len(self.validation),
+            "test": len(self.test),
+        }
+
+
+def extract_class_names_from_description(description: str) -> tuple[str, ...]:
+    """Extract the class names enumerated in the dataset description."""
+
+    matches = [match.strip() for match in CLASS_NAME_PATTERN.findall(description)]
+    if matches:
+        # Preserve order and remove accidental duplicates.
+        return tuple(dict.fromkeys(matches))
+    return DEFAULT_LETTUCE_CLASS_NAMES
+
+
+def to_folder_class_names(class_names: Sequence[str]) -> tuple[str, ...]:
+    """Convert human-readable class names to the folder naming convention used on disk."""
+
+    return tuple(folderify_label(name) for name in class_names)
+
+
+def load_dataset_metadata(metadata_path: Path | str) -> DatasetMetadata:
+    """Load and normalize the dataset metadata file."""
+
+    path = Path(metadata_path)
+    raw = load_json(path)
+    description = str(raw.get("description", ""))
+    return DatasetMetadata(
+        name=str(raw.get("name", path.stem)),
+        description=description,
+        class_names=extract_class_names_from_description(description),
+        source_url=str(raw.get("url")) if raw.get("url") else None,
+        distribution=list(raw.get("distribution", [])),
+        raw=dict(raw),
+    )
+
+
+def collect_image_samples(
+    data_dir: Path | str,
+    *,
+    class_names: Sequence[str] | None = None,
+    allowed_extensions: Sequence[str] = SUPPORTED_IMAGE_EXTENSIONS,
+) -> list[ImageSample]:
+    """Collect image files from a directory tree organized by class name."""
+
+    root = Path(data_dir)
+    if not root.exists():
+        raise FileNotFoundError(f"Dataset directory not found: {root}")
+
+    labels = list(class_names) if class_names is not None else sorted(
+        entry.name for entry in root.iterdir() if entry.is_dir()
+    )
+    extensions = {extension.lower() for extension in allowed_extensions}
+    samples: list[ImageSample] = []
+
+    for label in labels:
+        class_dir = root / folderify_label(label)
+        if not class_dir.exists():
+            continue
+
+        for image_path in sorted(class_dir.rglob("*")):
+            if image_path.is_file() and image_path.suffix.lower() in extensions:
+                samples.append(ImageSample(path=image_path, label=label))
+
+    return samples
+
+
+def count_samples_by_class(samples: Sequence[ImageSample]) -> dict[str, int]:
+    """Count how many images belong to each class."""
+
+    return dict(sorted(Counter(sample.label for sample in samples).items()))
+
+
+def split_samples(
+    samples: Sequence[ImageSample],
+    *,
+    train_ratio: float = 0.7,
+    validation_ratio: float = 0.15,
+    test_ratio: float = 0.15,
+    seed: int = 42,
+) -> DatasetSplit:
+    """Split samples into stratified train/validation/test subsets."""
+
+    if not math.isclose(train_ratio + validation_ratio + test_ratio, 1.0, rel_tol=1e-6):
+        raise ValueError("The split ratios must add up to 1.0.")
+
+    groups: dict[str, list[ImageSample]] = defaultdict(list)
+    for sample in samples:
+        groups[sample.label].append(sample)
+
+    rng = random.Random(seed)
+    train: list[ImageSample] = []
+    validation: list[ImageSample] = []
+    test: list[ImageSample] = []
+
+    for label in sorted(groups):
+        group = groups[label]
+        rng.shuffle(group)
+        total = len(group)
+
+        train_count = int(round(total * train_ratio))
+        validation_count = int(round(total * validation_ratio))
+        if train_count + validation_count > total:
+            overflow = train_count + validation_count - total
+            validation_count = max(0, validation_count - overflow)
+            overflow = max(0, train_count + validation_count - total)
+            if overflow:
+                train_count = max(0, train_count - overflow)
+
+        split_point = train_count + validation_count
+        train.extend(group[:train_count])
+        validation.extend(group[train_count:split_point])
+        test.extend(group[split_point:])
+
+    return DatasetSplit(
+        train=tuple(train),
+        validation=tuple(validation),
+        test=tuple(test),
+    )
+
+
+def build_class_index_map(class_names: Sequence[str]) -> dict[str, int]:
+    """Map class names to their numeric index."""
+
+    return {label: index for index, label in enumerate(class_names)}
+
+
+
+================================================
+FILE: CV_GuideFive/src/smartpot_lettuce_ai/evaluate.py
+================================================
+"""Model evaluation utilities."""
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Sequence
+
+from .config import ProjectConfig
+from .preprocessing import create_test_dataset
+from .utils import ensure_directory, save_json
+
+
+@dataclass(slots=True)
+class EvaluationArtifacts:
+    """Files generated during evaluation."""
+
+    metrics_path: Path
+    report_path: Path
+    confusion_matrix_path: Path
+
+
+def _tensorflow():
+    try:
+        import tensorflow as tf
+    except ImportError as exc:  # pragma: no cover - depends on environment
+        raise RuntimeError("TensorFlow is required to evaluate the model.") from exc
+
+    return tf
+
+
+def evaluate_model(
+    model_path: Path | str,
+    test_dir: Path | str,
+    project: ProjectConfig,
+    *,
+    class_names: Sequence[str] | None = None,
+) -> EvaluationArtifacts:
+    """Evaluate a saved model against a test directory."""
+
+    import numpy as np
+
+    tf = _tensorflow()
+    project.ensure_directories()
+
+    loaded_model = tf.keras.models.load_model(model_path)
+    test_ds, inferred_class_names = create_test_dataset(
+        test_dir,
+        image_size=project.image_size,
+        batch_size=project.batch_size,
+        class_names=class_names or project.class_names,
+    )
+    resolved_class_names = list(class_names or inferred_class_names)
+
+    output_classes = loaded_model.output_shape[-1]
+    if output_classes is not None and int(output_classes) != len(resolved_class_names):
+        raise ValueError(
+            "The loaded model and the class-name list do not match: "
+            f"model outputs {int(output_classes)} classes but received "
+            f"{len(resolved_class_names)} names."
+        )
+
+    probabilities = loaded_model.predict(test_ds, verbose=0)
+    y_pred = np.argmax(probabilities, axis=1)
+    y_true = np.concatenate([labels.numpy() for _, labels in test_ds], axis=0)
+
+    from sklearn.metrics import (
+        accuracy_score,
+        classification_report,
+        confusion_matrix,
+        f1_score,
+        precision_score,
+        recall_score,
+    )
+
+    metrics = {
+        "accuracy": float(accuracy_score(y_true, y_pred)),
+        "precision": float(precision_score(y_true, y_pred, average="weighted", zero_division=0)),
+        "recall": float(recall_score(y_true, y_pred, average="weighted", zero_division=0)),
+        "f1_score": float(f1_score(y_true, y_pred, average="weighted", zero_division=0)),
+        "num_samples": int(len(y_true)),
+    }
+    report = classification_report(
+        y_true,
+        y_pred,
+        target_names=resolved_class_names,
+        zero_division=0,
+        output_dict=True,
+    )
+    matrix = confusion_matrix(y_true, y_pred)
+
+    metrics_path = project.paths.reports_metrics / "evaluation_metrics.json"
+    report_path = project.paths.reports_metrics / "classification_report.json"
+    confusion_matrix_path = project.paths.reports_figures / "confusion_matrix.png"
+    ensure_directory(metrics_path.parent)
+    ensure_directory(confusion_matrix_path.parent)
+
+    save_json(metrics, metrics_path)
+    save_json(report, report_path)
+
+    _save_confusion_matrix(matrix, resolved_class_names, confusion_matrix_path)
+
+    return EvaluationArtifacts(
+        metrics_path=metrics_path,
+        report_path=report_path,
+        confusion_matrix_path=confusion_matrix_path,
+    )
+
+
+def _save_confusion_matrix(matrix: np.ndarray, class_names: Sequence[str], output_path: Path) -> None:
+    """Render the confusion matrix as a heatmap image."""
+
+    import numpy as np
+    import matplotlib.pyplot as plt
+
+    fig, ax = plt.subplots(figsize=(10, 8))
+    image = ax.imshow(matrix, interpolation="nearest", cmap="Blues")
+    ax.figure.colorbar(image, ax=ax)
+    ax.set(
+        xticks=np.arange(len(class_names)),
+        yticks=np.arange(len(class_names)),
+        xticklabels=class_names,
+        yticklabels=class_names,
+        ylabel="True label",
+        xlabel="Predicted label",
+        title="Confusion Matrix",
+    )
+    plt.setp(ax.get_xticklabels(), rotation=45, ha="right", rotation_mode="anchor")
+
+    threshold = matrix.max() / 2 if matrix.size else 0
+    for row_index in range(matrix.shape[0]):
+        for column_index in range(matrix.shape[1]):
+            value = matrix[row_index, column_index]
+            ax.text(
+                column_index,
+                row_index,
+                format(value, "d"),
+                ha="center",
+                va="center",
+                color="white" if value > threshold else "black",
+            )
+
+    fig.tight_layout()
+    fig.savefig(output_path, dpi=200, bbox_inches="tight")
+    plt.close(fig)
+
+
+
+================================================
+FILE: CV_GuideFive/src/smartpot_lettuce_ai/model.py
+================================================
+"""Model factories for the lettuce disease classifier."""
+
+from __future__ import annotations
+
+from typing import Any
+
+from .config import DEFAULT_IMAGE_SIZE
+
+
+def _tensorflow():
+    try:
+        import tensorflow as tf
+    except ImportError as exc:  # pragma: no cover - depends on environment
+        raise RuntimeError("TensorFlow is required to build and train the model.") from exc
+
+    return tf
+
+
+def build_mobilenetv2_classifier(
+    *,
+    num_classes: int,
+    input_shape: tuple[int, int, int] = (*DEFAULT_IMAGE_SIZE, 3),
+    dropout_rate: float = 0.2,
+    base_trainable: bool = False,
+):
+    """Build a MobileNetV2 transfer-learning classifier."""
+
+    tf = _tensorflow()
+    inputs = tf.keras.Input(shape=input_shape, name="image")
+    x = tf.keras.layers.Rescaling(1.0 / 127.5, offset=-1.0, name="rescaling")(inputs)
+    base_model = tf.keras.applications.MobileNetV2(
+        include_top=False,
+        weights="imagenet",
+        input_shape=input_shape,
+    )
+    base_model.trainable = base_trainable
+    x = base_model(x, training=False)
+    x = tf.keras.layers.GlobalAveragePooling2D(name="global_average_pooling")(x)
+    x = tf.keras.layers.Dropout(dropout_rate, name="dropout")(x)
+    outputs = tf.keras.layers.Dense(num_classes, activation="softmax", name="classifier")(x)
+    model = tf.keras.Model(inputs=inputs, outputs=outputs, name="smartpot_lettuce_mobilenetv2")
+    return model
+
+
+def compile_model(model: Any, *, learning_rate: float = 1e-4) -> None:
+    """Compile the classifier with an optimizer and loss for sparse labels."""
+
+    tf = _tensorflow()
+    model.compile(
+        optimizer=tf.keras.optimizers.Adam(learning_rate=learning_rate),
+        loss="sparse_categorical_crossentropy",
+        metrics=["accuracy"],
+    )
+
+
+def set_fine_tuning(model: Any, *, fine_tune_at: int) -> None:
+    """Unfreeze the last layers of the nested MobileNetV2 base model."""
+
+    tf = _tensorflow()
+    base_model = next(
+        (
+            layer
+            for layer in model.layers
+            if isinstance(layer, tf.keras.Model) and layer.name != model.name
+        ),
+        None,
+    )
+    if base_model is None:
+        raise ValueError("The model does not contain a nested base model to fine-tune.")
+
+    base_model.trainable = True
+    for layer in base_model.layers[:fine_tune_at]:
+        layer.trainable = False
+
+
+
+================================================
+FILE: CV_GuideFive/src/smartpot_lettuce_ai/predict.py
+================================================
+"""Single-image inference helpers."""
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Sequence
+
+from .config import ProjectConfig
+from .preprocessing import load_image_for_prediction
+from .utils import load_json
+
+
+@dataclass(slots=True)
+class PredictionResult:
+    """Prediction output for a single image."""
+
+    predicted_class: str
+    confidence: float
+    probabilities: tuple[float, ...]
+
+
+def _tensorflow():
+    try:
+        import tensorflow as tf
+    except ImportError as exc:  # pragma: no cover - depends on environment
+        raise RuntimeError("TensorFlow is required to run inference.") from exc
+
+    return tf
+
+
+def predict_image(
+    model_path: Path | str,
+    image_path: Path | str,
+    project: ProjectConfig,
+    *,
+    class_names: Sequence[str] | None = None,
+    class_names_path: Path | str | None = None,
+) -> PredictionResult:
+    """Run inference for a single image."""
+
+    import numpy as np
+
+    tf = _tensorflow()
+    loaded_model = tf.keras.models.load_model(model_path)
+    resolved_class_names = list(class_names or project.class_names)
+
+    if class_names_path is not None:
+        resolved_class_names = list(load_json(class_names_path))
+
+    image = load_image_for_prediction(image_path, image_size=project.image_size)
+    probabilities = loaded_model.predict(image, verbose=0)[0]
+    output_classes = loaded_model.output_shape[-1]
+    if output_classes is not None and int(output_classes) != len(resolved_class_names):
+        raise ValueError(
+            "The loaded model and the class-name list do not match: "
+            f"model outputs {int(output_classes)} classes but received "
+            f"{len(resolved_class_names)} names."
+        )
+
+    index = int(np.argmax(probabilities))
+    predicted_class = resolved_class_names[index]
+    confidence = float(probabilities[index])
+
+    return PredictionResult(
+        predicted_class=predicted_class,
+        confidence=confidence,
+        probabilities=tuple(float(value) for value in probabilities),
+    )
+
+
+
+================================================
+FILE: CV_GuideFive/src/smartpot_lettuce_ai/preprocessing.py
+================================================
+"""TensorFlow preprocessing helpers."""
+
+from __future__ import annotations
+
+from pathlib import Path
+from typing import Sequence
+
+from .config import DEFAULT_IMAGE_SIZE
+from .utils import folderify_label
+
+
+def _tensorflow():
+    try:
+        import tensorflow as tf
+    except ImportError as exc:  # pragma: no cover - depends on environment
+        raise RuntimeError(
+            "TensorFlow is required for preprocessing, training and inference."
+        ) from exc
+
+    return tf
+
+
+def build_augmentation_model(seed: int = 42):
+    """Create a small augmentation stack for image training."""
+
+    tf = _tensorflow()
+    return tf.keras.Sequential(
+        [
+            tf.keras.layers.RandomFlip("horizontal", seed=seed),
+            tf.keras.layers.RandomRotation(0.08, seed=seed),
+            tf.keras.layers.RandomZoom(0.1, seed=seed),
+            tf.keras.layers.RandomContrast(0.1, seed=seed),
+        ],
+        name="augmentation",
+    )
+
+
+def configure_dataset(
+    dataset,
+    *,
+    training: bool,
+    shuffle_buffer_size: int = 1000,
+    seed: int = 42,
+):
+    """Apply caching, shuffling and prefetching to a TensorFlow dataset."""
+
+    tf = _tensorflow()
+    result = dataset.cache()
+    if training:
+        result = result.shuffle(shuffle_buffer_size, seed=seed, reshuffle_each_iteration=True)
+    return result.prefetch(tf.data.AUTOTUNE)
+
+
+def create_train_validation_datasets(
+    data_dir: Path | str,
+    *,
+    image_size: tuple[int, int] = DEFAULT_IMAGE_SIZE,
+    batch_size: int = 32,
+    validation_split: float = 0.2,
+    seed: int = 42,
+    class_names: Sequence[str] | None = None,
+    label_mode: str = "int",
+):
+    """Build training and validation datasets from a directory tree."""
+
+    tf = _tensorflow()
+    directory = Path(data_dir)
+    dataset_kwargs = {
+        "directory": str(directory),
+        "validation_split": validation_split,
+        "seed": seed,
+        "image_size": image_size,
+        "batch_size": batch_size,
+        "label_mode": label_mode,
+    }
+    if class_names is not None:
+        dataset_kwargs["class_names"] = [folderify_label(name) for name in class_names]
+
+    train_ds = tf.keras.utils.image_dataset_from_directory(
+        subset="training",
+        **dataset_kwargs,
+    )
+    validation_ds = tf.keras.utils.image_dataset_from_directory(
+        subset="validation",
+        **dataset_kwargs,
+    )
+
+    inferred_class_names = (
+        [folderify_label(name) for name in class_names]
+        if class_names is not None
+        else list(train_ds.class_names)
+    )
+    return (
+        configure_dataset(train_ds, training=True, seed=seed),
+        configure_dataset(validation_ds, training=False, seed=seed),
+        inferred_class_names,
+    )
+
+
+def create_test_dataset(
+    data_dir: Path | str,
+    *,
+    image_size: tuple[int, int] = DEFAULT_IMAGE_SIZE,
+    batch_size: int = 32,
+    class_names: Sequence[str] | None = None,
+    label_mode: str = "int",
+):
+    """Build an evaluation dataset from a directory tree."""
+
+    tf = _tensorflow()
+    directory = Path(data_dir)
+    dataset_kwargs = {
+        "directory": str(directory),
+        "image_size": image_size,
+        "batch_size": batch_size,
+        "label_mode": label_mode,
+        "shuffle": False,
+    }
+    if class_names is not None:
+        dataset_kwargs["class_names"] = [folderify_label(name) for name in class_names]
+
+    dataset = tf.keras.utils.image_dataset_from_directory(**dataset_kwargs)
+    inferred_class_names = (
+        [folderify_label(name) for name in class_names]
+        if class_names is not None
+        else list(dataset.class_names)
+    )
+    return configure_dataset(dataset, training=False), inferred_class_names
+
+
+def load_image_for_prediction(
+    image_path: Path | str,
+    *,
+    image_size: tuple[int, int] = DEFAULT_IMAGE_SIZE,
+) -> "np.ndarray":
+    """Load and resize a single image ready for model inference."""
+
+    import numpy as np
+    from PIL import Image
+
+    image = Image.open(image_path).convert("RGB").resize(image_size)
+    array = np.asarray(image, dtype=np.float32)
+    return np.expand_dims(array, axis=0)
+
+
+
+================================================
+FILE: CV_GuideFive/src/smartpot_lettuce_ai/train.py
+================================================
+"""Training workflow for the lettuce disease classifier."""
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Sequence
+
+from .config import ProjectConfig, TrainingConfig
+from .dataset import load_dataset_metadata, to_folder_class_names
+from .model import build_mobilenetv2_classifier, compile_model, set_fine_tuning
+from .preprocessing import create_train_validation_datasets
+from .utils import ensure_directory, save_json, set_global_seed
+
+
+@dataclass(slots=True)
+class TrainingArtifacts:
+    """Important files produced by the training process."""
+
+    model_path: Path
+    history_path: Path
+    class_names_path: Path
+
+
+def _tensorflow():
+    try:
+        import tensorflow as tf
+    except ImportError as exc:  # pragma: no cover - depends on environment
+        raise RuntimeError("TensorFlow is required to train the model.") from exc
+
+    return tf
+
+
+def _merge_histories(*histories: object) -> dict[str, list[float]]:
+    merged: dict[str, list[float]] = {}
+    for history in histories:
+        if history is None:
+            continue
+        history_dict = getattr(history, "history", {})
+        for key, values in history_dict.items():
+            merged.setdefault(key, []).extend(list(values))
+    return merged
+
+
+def _create_callbacks(checkpoint_path: Path, *, patience: int):
+    tf = _tensorflow()
+    ensure_directory(checkpoint_path.parent)
+    return [
+        tf.keras.callbacks.EarlyStopping(
+            monitor="val_loss",
+            patience=patience,
+            restore_best_weights=True,
+        ),
+        tf.keras.callbacks.ModelCheckpoint(
+            filepath=str(checkpoint_path),
+            monitor="val_loss",
+            save_best_only=True,
+        ),
+        tf.keras.callbacks.ReduceLROnPlateau(
+            monitor="val_loss",
+            factor=0.2,
+            patience=max(1, patience // 2),
+            verbose=1,
+        ),
+    ]
+
+
+def train_from_directory(
+    data_dir: Path | str,
+    project: ProjectConfig,
+    training: TrainingConfig | None = None,
+    *,
+    class_names: Sequence[str] | None = None,
+) -> TrainingArtifacts:
+    """Train the lettuce classifier from a directory of class subfolders."""
+
+    set_global_seed(project.seed)
+    training = training or project.training
+    project.ensure_directories()
+
+    if class_names is None and project.metadata_path.exists():
+        class_names = to_folder_class_names(load_dataset_metadata(project.metadata_path).class_names)
+
+    train_ds, validation_ds, inferred_class_names = create_train_validation_datasets(
+        data_dir,
+        image_size=project.image_size,
+        batch_size=project.batch_size,
+        validation_split=training.validation_split,
+        seed=project.seed,
+        class_names=class_names or project.class_names,
+    )
+    resolved_class_names = tuple(class_names or inferred_class_names)
+
+    input_shape = (*project.image_size, 3)
+    model = build_mobilenetv2_classifier(
+        num_classes=len(resolved_class_names),
+        input_shape=input_shape,
+        dropout_rate=training.dropout_rate,
+    )
+    compile_model(model, learning_rate=training.learning_rate)
+
+    checkpoint_path = project.paths.models_checkpoints / "lettuce_mobilenetv2_best.keras"
+    callbacks = _create_callbacks(checkpoint_path, patience=training.early_stopping_patience)
+
+    history = model.fit(
+        train_ds,
+        validation_data=validation_ds,
+        epochs=training.epochs,
+        callbacks=callbacks,
+        verbose=1,
+    )
+
+    if training.fine_tune_epochs > 0:
+        set_fine_tuning(model, fine_tune_at=training.fine_tune_at)
+        compile_model(model, learning_rate=training.fine_tune_learning_rate)
+        fine_tune_history = model.fit(
+            train_ds,
+            validation_data=validation_ds,
+            epochs=training.fine_tune_epochs,
+            callbacks=callbacks,
+            verbose=1,
+        )
+        history_data = _merge_histories(history, fine_tune_history)
+    else:
+        history_data = _merge_histories(history)
+
+    model_path = project.paths.models_exported / "lettuce_mobilenetv2.keras"
+    class_names_path = project.paths.models_exported / "class_names.json"
+    history_path = project.paths.reports_metrics / "training_history.json"
+
+    ensure_directory(model_path.parent)
+    ensure_directory(history_path.parent)
+
+    model.save(model_path)
+    save_json(list(resolved_class_names), class_names_path)
+    save_json(history_data, history_path)
+
+    return TrainingArtifacts(
+        model_path=model_path,
+        history_path=history_path,
+        class_names_path=class_names_path,
+    )
+
+
+
+================================================
+FILE: CV_GuideFive/src/smartpot_lettuce_ai/utils.py
+================================================
+"""Shared utility helpers for the project."""
+
+from __future__ import annotations
+
+import json
+import random
+import re
+import unicodedata
+from pathlib import Path
+from typing import Any
+
+
+def ensure_directory(path: Path | str) -> Path:
+    """Create a directory if it does not exist and return it."""
+
+    directory = Path(path)
+    directory.mkdir(parents=True, exist_ok=True)
+    return directory
+
+
+def load_json(path: Path | str) -> Any:
+    """Load JSON data from disk."""
+
+    with Path(path).open("r", encoding="utf-8") as handle:
+        return json.load(handle)
+
+
+def save_json(data: Any, path: Path | str, *, indent: int = 2) -> None:
+    """Persist JSON data to disk using UTF-8 encoding."""
+
+    target = Path(path)
+    ensure_directory(target.parent)
+    target.write_text(
+        json.dumps(data, indent=indent, ensure_ascii=False),
+        encoding="utf-8",
+    )
+
+
+def slugify_label(value: str) -> str:
+    """Convert a label into a filesystem-friendly slug."""
+
+    normalized = unicodedata.normalize("NFKD", value).encode("ascii", "ignore").decode("ascii")
+    slug = re.sub(r"[^a-zA-Z0-9]+", "-", normalized).strip("-").lower()
+    return slug or "item"
+
+
+def folderify_label(value: str) -> str:
+    """Convert a human-readable class name into the folder name used by the dataset."""
+
+    folder_name = re.sub(r"[\s-]+", "_", value.strip())
+    folder_name = re.sub(r"_+", "_", folder_name)
+    return folder_name
+
+
+def find_project_root(start: Path | str | None = None) -> Path:
+    """Find the repository root by walking up until `pyproject.toml` is found."""
+
+    current = Path(start or Path.cwd()).resolve()
+    if current.is_file():
+        current = current.parent
+
+    for candidate in (current, *current.parents):
+        if (candidate / "pyproject.toml").exists():
+            return candidate
+
+    return current
+
+
+def set_global_seed(seed: int) -> None:
+    """Seed the common random generators used by the project."""
+
+    random.seed(seed)
+
+    try:
+        import numpy as np
+    except ImportError:  # pragma: no cover - numpy is a project dependency
+        np = None
+    else:
+        np.random.seed(seed)
+
+    try:
+        import tensorflow as tf
+    except Exception:  # pragma: no cover - optional until training time
+        return
+
+    tf.random.set_seed(seed)
+
+
+
+================================================
+FILE: CV_GuideFive/tests/test_config.py
+================================================
+from __future__ import annotations
+
+from pathlib import Path
+
+from smartpot_lettuce_ai.config import ProjectConfig, TrainingConfig
+
+
+def test_project_config_builds_expected_paths() -> None:
+    root = Path("/tmp/smartpot-lettuce-ai")
+    project = ProjectConfig.from_root(
+        root,
+        ensure_directories=False,
+        training=TrainingConfig(epochs=3, fine_tune_epochs=1),
+    )
+
+    assert project.paths.root == root.resolve()
+    assert project.paths.data_raw == root.resolve() / "data" / "raw"
+    assert project.paths.models_exported == root.resolve() / "models" / "exported"
+    assert project.training.epochs == 3
+    assert project.training.fine_tune_epochs == 1
+
+
+
+================================================
+FILE: CV_GuideFive/tests/test_dataset.py
+================================================
+from __future__ import annotations
+
+from pathlib import Path
+
+from smartpot_lettuce_ai.dataset import (
+    ImageSample,
+    collect_image_samples,
+    extract_class_names_from_description,
+    load_dataset_metadata,
+    split_samples,
+)
+
+
+def test_extract_class_names_from_real_metadata() -> None:
+    metadata_path = Path(__file__).resolve().parents[1] / "lettuce-diseases-metadata.json"
+    metadata = load_dataset_metadata(metadata_path)
+
+    assert metadata.name == "Lettuce Diseases"
+    assert len(metadata.class_names) == 8
+    assert metadata.class_names[0] == "Healthy"
+    assert "Powdery mildew on lettuce" in metadata.class_names
+
+
+def test_extract_class_names_from_description_falls_back_to_defaults() -> None:
+    class_names = extract_class_names_from_description("This description does not list classes.")
+
+    assert len(class_names) == 8
+    assert class_names[0] == "Healthy"
+
+
+def test_split_samples_preserves_labels_across_subsets() -> None:
+    samples = [
+        ImageSample(Path(f"/tmp/healthy_{index}.jpg"), "Healthy")
+        for index in range(6)
+    ] + [
+        ImageSample(Path(f"/tmp/bacterial_{index}.jpg"), "Bacterial")
+        for index in range(6)
+    ]
+
+    split = split_samples(samples, train_ratio=0.5, validation_ratio=0.25, test_ratio=0.25, seed=7)
+
+    assert len(split.train) + len(split.validation) + len(split.test) == len(samples)
+    assert {sample.label for sample in split.train} == {"Healthy", "Bacterial"}
+    assert {sample.label for sample in split.validation} == {"Healthy", "Bacterial"}
+    assert {sample.label for sample in split.test} == {"Healthy", "Bacterial"}
+
+
+def test_collect_image_samples_ignores_non_image_files(tmp_path: Path) -> None:
+    healthy_dir = tmp_path / "Healthy"
+    healthy_dir.mkdir()
+    (healthy_dir / "leaf.jpg").write_bytes(b"fake")
+    (healthy_dir / "notes.txt").write_text("ignore me", encoding="utf-8")
+
+    samples = collect_image_samples(tmp_path, class_names=["Healthy"])
+
+    assert len(samples) == 1
+    assert samples[0].path.name == "leaf.jpg"
+
+
+
+================================================
+FILE: CV_GuideFour/requirements.txt
+================================================
+opencv-python
+scikit-image
+numpy
+pandas
+matplotlib
+seaborn
+scikit-learn
+tensorflow
+torch
+timm
+einops
+
+
+================================================
+FILE: CV_GuideFour/FourExerciseBaseGAR/evidence/metricas_swinir.csv
+================================================
+archivo,PSNR_noisy,PSNR_swinir,SSIM_noisy,SSIM_swinir,ENL_noisy,ENL_swinir,ENL_gtruth
+0_0.tiff,37.269197748958334,39.662891888517336,0.9195443058943152,0.9812170501445295,41.06046,89.71934,217.09055
+0_1024.tiff,38.493053304298314,40.540518769619936,0.9273859119396985,0.9812957084747743,76.413635,2097.686,245.99495
+0_1536.tiff,38.356985613389384,40.34645176658225,0.9242520361759462,0.9804180512696057,78.04714,2356.367,214.68927
+0_512.tiff,33.08124560852657,33.72895546972212,0.9259885137659153,0.9809648824142189,13.422096,17.043417,204.76315
+1024_0.tiff,29.66276037928899,30.125191703062292,0.912588557978808,0.9636221013116163,0.5845555,0.6053829,0.552263
+1024_1024.tiff,32.26028331489946,31.963231132547406,0.9298609111164109,0.9662796515144038,0.5167985,0.5339315,0.4820521
+1024_1536.tiff,22.50043230576089,22.56014738296349,0.8465391934666725,0.8899166796202567,0.73730487,0.75454426,0.6709783
+1024_512.tiff,30.16749984921793,30.25901468235476,0.9172111281231168,0.9616938740157605,0.5664913,0.58180916,0.5364436
+1536_0.tiff,21.255905475221336,21.583870613413403,0.8246787616523997,0.8046522773599021,12.61173,14.483263,18.970179
+1536_1024.tiff,23.67799284224915,23.694800756996788,0.8872061842736989,0.864350181404169,5.1915607,5.4096165,5.997777
+1536_1536.tiff,17.57671469463114,17.65566522844512,0.7081924556457518,0.7329832779924723,0.65944594,0.6748217,0.67119104
+1536_512.tiff,22.047732684216335,22.345514974059327,0.8398250096262291,0.8173240488145819,11.674637,12.989321,16.937063
+512_0.tiff,37.803411954954804,40.44586909848857,0.9250357948031422,0.9828609528432106,40.087837,87.92912,153.82997
+512_1024.tiff,30.72743996416413,30.954164791855234,0.9131323961476226,0.9659442169639899,9.560251,11.511205,126.70833
+512_1536.tiff,35.78561947783806,36.725843678749925,0.9117715352587618,0.969834034142533,49.59558,178.05347,94.7581
+512_512.tiff,38.53159189818874,40.32455319614061,0.9302518381280088,0.9801554929554508,68.5007,557.2667,167.26932
+
+
+
+================================================
+FILE: CV_GuideFour/FourExerciseBaseGAR/evidence/resumen_metricas_swinir.csv
+================================================
+,promedio
+PSNR_noisy,30.574866694737725
+PSNR_swinir,31.432292820844907
+SSIM_noisy,0.8902165333747811
+SSIM_swinir,0.9264695300775923
+ENL_noisy,25.576889038085938
+ENL_swinir,339.4755859375
+ENL_gtruth,91.87010192871094
+
+
+
+================================================
+FILE: CV_GuideFour/FourExerciseBaseGAR/SwinIR/utils/util_calculate_psnr_ssim.py
+================================================
+import cv2
+import numpy as np
+import torch
+
+
+def calculate_psnr(img1, img2, crop_border, input_order='HWC', test_y_channel=False):
+    """Calculate PSNR (Peak Signal-to-Noise Ratio).
+
+    Ref: https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio
+
+    Args:
+        img1 (ndarray): Images with range [0, 255].
+        img2 (ndarray): Images with range [0, 255].
+        crop_border (int): Cropped pixels in each edge of an image. These
+            pixels are not involved in the PSNR calculation.
+        input_order (str): Whether the input order is 'HWC' or 'CHW'.
+            Default: 'HWC'.
+        test_y_channel (bool): Test on Y channel of YCbCr. Default: False.
+
+    Returns:
+        float: psnr result.
+    """
+
+    assert img1.shape == img2.shape, (f'Image shapes are differnet: {img1.shape}, {img2.shape}.')
+    if input_order not in ['HWC', 'CHW']:
+        raise ValueError(f'Wrong input_order {input_order}. Supported input_orders are ' '"HWC" and "CHW"')
+    img1 = reorder_image(img1, input_order=input_order)
+    img2 = reorder_image(img2, input_order=input_order)
+    img1 = img1.astype(np.float64)
+    img2 = img2.astype(np.float64)
+
+    if crop_border != 0:
+        img1 = img1[crop_border:-crop_border, crop_border:-crop_border, ...]
+        img2 = img2[crop_border:-crop_border, crop_border:-crop_border, ...]
+
+    if test_y_channel:
+        img1 = to_y_channel(img1)
+        img2 = to_y_channel(img2)
+
+    mse = np.mean((img1 - img2) ** 2)
+    if mse == 0:
+        return float('inf')
+    return 20. * np.log10(255. / np.sqrt(mse))
+
+
+def _ssim(img1, img2):
+    """Calculate SSIM (structural similarity) for one channel images.
+
+    It is called by func:`calculate_ssim`.
+
+    Args:
+        img1 (ndarray): Images with range [0, 255] with order 'HWC'.
+        img2 (ndarray): Images with range [0, 255] with order 'HWC'.
+
+    Returns:
+        float: ssim result.
+    """
+
+    C1 = (0.01 * 255) ** 2
+    C2 = (0.03 * 255) ** 2
+
+    img1 = img1.astype(np.float64)
+    img2 = img2.astype(np.float64)
+    kernel = cv2.getGaussianKernel(11, 1.5)
+    window = np.outer(kernel, kernel.transpose())
+
+    mu1 = cv2.filter2D(img1, -1, window)[5:-5, 5:-5]
+    mu2 = cv2.filter2D(img2, -1, window)[5:-5, 5:-5]
+    mu1_sq = mu1 ** 2
+    mu2_sq = mu2 ** 2
+    mu1_mu2 = mu1 * mu2
+    sigma1_sq = cv2.filter2D(img1 ** 2, -1, window)[5:-5, 5:-5] - mu1_sq
+    sigma2_sq = cv2.filter2D(img2 ** 2, -1, window)[5:-5, 5:-5] - mu2_sq
+    sigma12 = cv2.filter2D(img1 * img2, -1, window)[5:-5, 5:-5] - mu1_mu2
+
+    ssim_map = ((2 * mu1_mu2 + C1) * (2 * sigma12 + C2)) / ((mu1_sq + mu2_sq + C1) * (sigma1_sq + sigma2_sq + C2))
+    return ssim_map.mean()
+
+
+def calculate_ssim(img1, img2, crop_border, input_order='HWC', test_y_channel=False):
+    """Calculate SSIM (structural similarity).
+
+    Ref:
+    Image quality assessment: From error visibility to structural similarity
+
+    The results are the same as that of the official released MATLAB code in
+    https://ece.uwaterloo.ca/~z70wang/research/ssim/.
+
+    For three-channel images, SSIM is calculated for each channel and then
+    averaged.
+
+    Args:
+        img1 (ndarray): Images with range [0, 255].
+        img2 (ndarray): Images with range [0, 255].
+        crop_border (int): Cropped pixels in each edge of an image. These
+            pixels are not involved in the SSIM calculation.
+        input_order (str): Whether the input order is 'HWC' or 'CHW'.
+            Default: 'HWC'.
+        test_y_channel (bool): Test on Y channel of YCbCr. Default: False.
+
+    Returns:
+        float: ssim result.
+    """
+
+    assert img1.shape == img2.shape, (f'Image shapes are differnet: {img1.shape}, {img2.shape}.')
+    if input_order not in ['HWC', 'CHW']:
+        raise ValueError(f'Wrong input_order {input_order}. Supported input_orders are ' '"HWC" and "CHW"')
+    img1 = reorder_image(img1, input_order=input_order)
+    img2 = reorder_image(img2, input_order=input_order)
+    img1 = img1.astype(np.float64)
+    img2 = img2.astype(np.float64)
+
+    if crop_border != 0:
+        img1 = img1[crop_border:-crop_border, crop_border:-crop_border, ...]
+        img2 = img2[crop_border:-crop_border, crop_border:-crop_border, ...]
+
+    if test_y_channel:
+        img1 = to_y_channel(img1)
+        img2 = to_y_channel(img2)
+
+    ssims = []
+    for i in range(img1.shape[2]):
+        ssims.append(_ssim(img1[..., i], img2[..., i]))
+    return np.array(ssims).mean()
+
+
+def _blocking_effect_factor(im):
+    block_size = 8
+
+    block_horizontal_positions = torch.arange(7, im.shape[3] - 1, 8)
+    block_vertical_positions = torch.arange(7, im.shape[2] - 1, 8)
+
+    horizontal_block_difference = (
+            (im[:, :, :, block_horizontal_positions] - im[:, :, :, block_horizontal_positions + 1]) ** 2).sum(
+        3).sum(2).sum(1)
+    vertical_block_difference = (
+            (im[:, :, block_vertical_positions, :] - im[:, :, block_vertical_positions + 1, :]) ** 2).sum(3).sum(
+        2).sum(1)
+
+    nonblock_horizontal_positions = np.setdiff1d(torch.arange(0, im.shape[3] - 1), block_horizontal_positions)
+    nonblock_vertical_positions = np.setdiff1d(torch.arange(0, im.shape[2] - 1), block_vertical_positions)
+
+    horizontal_nonblock_difference = (
+            (im[:, :, :, nonblock_horizontal_positions] - im[:, :, :, nonblock_horizontal_positions + 1]) ** 2).sum(
+        3).sum(2).sum(1)
+    vertical_nonblock_difference = (
+            (im[:, :, nonblock_vertical_positions, :] - im[:, :, nonblock_vertical_positions + 1, :]) ** 2).sum(
+        3).sum(2).sum(1)
+
+    n_boundary_horiz = im.shape[2] * (im.shape[3] // block_size - 1)
+    n_boundary_vert = im.shape[3] * (im.shape[2] // block_size - 1)
+    boundary_difference = (horizontal_block_difference + vertical_block_difference) / (
+            n_boundary_horiz + n_boundary_vert)
+
+    n_nonboundary_horiz = im.shape[2] * (im.shape[3] - 1) - n_boundary_horiz
+    n_nonboundary_vert = im.shape[3] * (im.shape[2] - 1) - n_boundary_vert
+    nonboundary_difference = (horizontal_nonblock_difference + vertical_nonblock_difference) / (
+            n_nonboundary_horiz + n_nonboundary_vert)
+
+    scaler = np.log2(block_size) / np.log2(min([im.shape[2], im.shape[3]]))
+    bef = scaler * (boundary_difference - nonboundary_difference)
+
+    bef[boundary_difference <= nonboundary_difference] = 0
+    return bef
+
+
+def calculate_psnrb(img1, img2, crop_border, input_order='HWC', test_y_channel=False):
+    """Calculate PSNR-B (Peak Signal-to-Noise Ratio).
+
+    Ref: Quality assessment of deblocked images, for JPEG image deblocking evaluation
+    # https://gitlab.com/Queuecumber/quantization-guided-ac/-/blob/master/metrics/psnrb.py
+
+    Args:
+        img1 (ndarray): Images with range [0, 255].
+        img2 (ndarray): Images with range [0, 255].
+        crop_border (int): Cropped pixels in each edge of an image. These
+            pixels are not involved in the PSNR calculation.
+        input_order (str): Whether the input order is 'HWC' or 'CHW'.
+            Default: 'HWC'.
+        test_y_channel (bool): Test on Y channel of YCbCr. Default: False.
+
+    Returns:
+        float: psnr result.
+    """
+
+    assert img1.shape == img2.shape, (f'Image shapes are differnet: {img1.shape}, {img2.shape}.')
+    if input_order not in ['HWC', 'CHW']:
+        raise ValueError(f'Wrong input_order {input_order}. Supported input_orders are ' '"HWC" and "CHW"')
+    img1 = reorder_image(img1, input_order=input_order)
+    img2 = reorder_image(img2, input_order=input_order)
+    img1 = img1.astype(np.float64)
+    img2 = img2.astype(np.float64)
+
+    if crop_border != 0:
+        img1 = img1[crop_border:-crop_border, crop_border:-crop_border, ...]
+        img2 = img2[crop_border:-crop_border, crop_border:-crop_border, ...]
+
+    if test_y_channel:
+        img1 = to_y_channel(img1)
+        img2 = to_y_channel(img2)
+
+    # follow https://gitlab.com/Queuecumber/quantization-guided-ac/-/blob/master/metrics/psnrb.py
+    img1 = torch.from_numpy(img1).permute(2, 0, 1).unsqueeze(0) / 255.
+    img2 = torch.from_numpy(img2).permute(2, 0, 1).unsqueeze(0) / 255.
+
+    total = 0
+    for c in range(img1.shape[1]):
+        mse = torch.nn.functional.mse_loss(img1[:, c:c + 1, :, :], img2[:, c:c + 1, :, :], reduction='none')
+        bef = _blocking_effect_factor(img1[:, c:c + 1, :, :])
+
+        mse = mse.view(mse.shape[0], -1).mean(1)
+        total += 10 * torch.log10(1 / (mse + bef))
+
+    return float(total) / img1.shape[1]
+
+
+def reorder_image(img, input_order='HWC'):
+    """Reorder images to 'HWC' order.
+
+    If the input_order is (h, w), return (h, w, 1);
+    If the input_order is (c, h, w), return (h, w, c);
+    If the input_order is (h, w, c), return as it is.
+
+    Args:
+        img (ndarray): Input image.
+        input_order (str): Whether the input order is 'HWC' or 'CHW'.
+            If the input image shape is (h, w), input_order will not have
+            effects. Default: 'HWC'.
+
+    Returns:
+        ndarray: reordered image.
+    """
+
+    if input_order not in ['HWC', 'CHW']:
+        raise ValueError(f'Wrong input_order {input_order}. Supported input_orders are ' "'HWC' and 'CHW'")
+    if len(img.shape) == 2:
+        img = img[..., None]
+    if input_order == 'CHW':
+        img = img.transpose(1, 2, 0)
+    return img
+
+
+def to_y_channel(img):
+    """Change to Y channel of YCbCr.
+
+    Args:
+        img (ndarray): Images with range [0, 255].
+
+    Returns:
+        (ndarray): Images with range [0, 255] (float type) without round.
+    """
+    img = img.astype(np.float32) / 255.
+    if img.ndim == 3 and img.shape[2] == 3:
+        img = bgr2ycbcr(img, y_only=True)
+        img = img[..., None]
+    return img * 255.
+
+
+def _convert_input_type_range(img):
+    """Convert the type and range of the input image.
+
+    It converts the input image to np.float32 type and range of [0, 1].
+    It is mainly used for pre-processing the input image in colorspace
+    convertion functions such as rgb2ycbcr and ycbcr2rgb.
+
+    Args:
+        img (ndarray): The input image. It accepts:
+            1. np.uint8 type with range [0, 255];
+            2. np.float32 type with range [0, 1].
+
+    Returns:
+        (ndarray): The converted image with type of np.float32 and range of
+            [0, 1].
+    """
+    img_type = img.dtype
+    img = img.astype(np.float32)
+    if img_type == np.float32:
+        pass
+    elif img_type == np.uint8:
+        img /= 255.
+    else:
+        raise TypeError('The img type should be np.float32 or np.uint8, ' f'but got {img_type}')
+    return img
+
+
+def _convert_output_type_range(img, dst_type):
+    """Convert the type and range of the image according to dst_type.
+
+    It converts the image to desired type and range. If `dst_type` is np.uint8,
+    images will be converted to np.uint8 type with range [0, 255]. If
+    `dst_type` is np.float32, it converts the image to np.float32 type with
+    range [0, 1].
+    It is mainly used for post-processing images in colorspace convertion
+    functions such as rgb2ycbcr and ycbcr2rgb.
+
+    Args:
+        img (ndarray): The image to be converted with np.float32 type and
+            range [0, 255].
+        dst_type (np.uint8 | np.float32): If dst_type is np.uint8, it
+            converts the image to np.uint8 type with range [0, 255]. If
+            dst_type is np.float32, it converts the image to np.float32 type
+            with range [0, 1].
+
+    Returns:
+        (ndarray): The converted image with desired type and range.
+    """
+    if dst_type not in (np.uint8, np.float32):
+        raise TypeError('The dst_type should be np.float32 or np.uint8, ' f'but got {dst_type}')
+    if dst_type == np.uint8:
+        img = img.round()
+    else:
+        img /= 255.
+    return img.astype(dst_type)
+
+
+def bgr2ycbcr(img, y_only=False):
+    """Convert a BGR image to YCbCr image.
+
+    The bgr version of rgb2ycbcr.
+    It implements the ITU-R BT.601 conversion for standard-definition
+    television. See more details in
+    https://en.wikipedia.org/wiki/YCbCr#ITU-R_BT.601_conversion.
+
+    It differs from a similar function in cv2.cvtColor: `BGR <-> YCrCb`.
+    In OpenCV, it implements a JPEG conversion. See more details in
+    https://en.wikipedia.org/wiki/YCbCr#JPEG_conversion.
+
+    Args:
+        img (ndarray): The input image. It accepts:
+            1. np.uint8 type with range [0, 255];
+            2. np.float32 type with range [0, 1].
+        y_only (bool): Whether to only return Y channel. Default: False.
+
+    Returns:
+        ndarray: The converted YCbCr image. The output image has the same type
+            and range as input image.
+    """
+    img_type = img.dtype
+    img = _convert_input_type_range(img)
+    if y_only:
+        out_img = np.dot(img, [24.966, 128.553, 65.481]) + 16.0
+    else:
+        out_img = np.matmul(
+            img, [[24.966, 112.0, -18.214], [128.553, -74.203, -93.786], [65.481, -37.797, 112.0]]) + [16, 128, 128]
+    out_img = _convert_output_type_range(out_img, img_type)
+    return out_img
+
+
+
+================================================
+FILE: CV_GuideFour/FourExerciseSAR/evidence/metricas_swinir.csv
+================================================
+archivo,PSNR_noisy,PSNR_swinir,SSIM_noisy,SSIM_swinir,ENL_noisy,ENL_swinir,ENL_gtruth
+5120_0.tiff,26.457188982369303,26.7966985506694,0.9433228641351402,0.8989141710710703,0.041637138,0.051910542,0.052717935
+5120_1024.tiff,19.860275937047028,21.40484452304854,0.4210354660932517,0.5043690920138735,13.804265,18.262722,31.315302
+5120_10240.tiff,20.264295740028576,21.309745048184396,0.742203554751284,0.7806091164282439,6.7889643,7.514139,8.334278
+5120_10752.tiff,20.072349930668327,21.24925221985539,0.6799842929961868,0.7375516900182051,6.1222396,6.9049025,8.736448
+5120_11264.tiff,20.449038542471477,22.115082793038052,0.5258269101149587,0.6251283169541225,8.713431,10.82813,13.849981
+5120_11776.tiff,20.398601819003005,21.96797960979319,0.6183167448218388,0.6977147550451377,6.527755,7.64142,9.693762
+5120_12288.tiff,20.895457992989677,22.841107583207766,0.49786666466320756,0.6165073070093953,4.874813,5.6719623,8.55879
+5120_12800.tiff,20.212911074689114,22.193743206639457,0.504570825833459,0.6049299114105595,8.464452,10.897858,16.082687
+5120_13312.tiff,20.72577497885504,23.054292844858374,0.45666650242780527,0.5812873947716487,10.678371,15.373216,23.12079
+5120_13824.tiff,21.151348350891013,23.703129954143115,0.4735102340818707,0.6061417989823259,9.824936,13.976209,21.807474
+5120_14336.tiff,21.420377233358998,23.769093935761127,0.5035518864387512,0.6493047587121552,5.2108507,6.350491,9.519403
+5120_14848.tiff,21.73820312936986,23.850746249262432,0.5851833284184947,0.7217667221641297,3.1086996,3.526293,5.18008
+5120_1536.tiff,19.982993160494292,21.593841760818343,0.420481217574707,0.502003726561399,14.117402,18.591787,30.80488
+5120_15360.tiff,22.52746946740334,24.953861346930086,0.5569607012637853,0.7326944160858526,2.6450078,2.9654748,4.097195
+5120_15872.tiff,21.623511785451637,23.617771518184412,0.6099291980605811,0.743046229915244,3.1141891,3.4804592,4.545022
+5120_16384.tiff,21.88758925274273,24.07171075210062,0.5576512124292771,0.6922527193264567,4.6637754,5.496571,6.96697
+5120_16896.tiff,22.711169926342237,25.1877783458632,0.5548008326590533,0.6920775596857782,4.7133975,5.596344,6.8549976
+5120_17408.tiff,22.438310041810638,24.823538624642364,0.5595965197844346,0.6733114738747709,6.9780703,8.836108,10.945074
+5120_17920.tiff,22.110634606272836,24.49331203642221,0.4975874801708011,0.6177406063091911,9.674768,13.135119,17.44629
+5120_18432.tiff,22.54419840925231,24.654520657856438,0.5826142733362943,0.6838165869515612,6.5010424,7.9717946,9.949435
+5120_18944.tiff,23.57468346921501,25.78643438472938,0.5993635358250174,0.7281279617024187,3.845123,4.3830585,4.519024
+5120_19456.tiff,22.993906635899847,24.899051422811308,0.5991571978230958,0.7224441524841451,4.1905966,4.7917247,4.9099846
+5120_19968.tiff,23.84181288312266,25.93016322553815,0.6188815783006983,0.7538739559703299,3.0501103,3.411559,3.4808385
+5120_2048.tiff,19.645801696642785,21.121947838927774,0.3922159450666936,0.48744579411923994,14.537439,19.316706,34.67449
+5120_20480.tiff,23.527724080842862,25.575455703613073,0.594788743093643,0.7330542346250879,3.7753365,4.2977505,4.1185713
+5120_20992.tiff,22.843361476574565,25.02103655006867,0.5475908296343608,0.6520492452819391,8.33791,10.741569,12.114268
+5120_21504.tiff,22.84693633790406,25.34098770604398,0.48605006464168454,0.6098206779388606,12.903793,19.207071,23.219017
+5120_22016.tiff,22.848154282295518,25.232952153267057,0.5033936185020775,0.6398861316638931,10.080953,13.759218,17.039452
+5120_22528.tiff,22.787262210070814,25.191581935237277,0.48300241607572353,0.6319492272803688,11.620765,16.672718,23.427614
+5120_23040.tiff,23.828809691667846,26.207028435663897,0.5726109359314911,0.7199135727686311,4.6800346,5.4956884,6.4085855
+5120_23552.tiff,22.623447973053064,24.81774694738627,0.4893439950745491,0.6498811017806826,8.043285,10.425875,13.665512
+5120_24064.tiff,22.268007695475966,24.485363588572152,0.46232848941692645,0.6194942839149975,9.52715,12.90075,16.837873
+5120_24576.tiff,23.32378987445749,26.181244905821014,0.4694505131633296,0.6425720359623763,11.085805,16.262497,20.321762
+5120_25088.tiff,23.494556738210015,25.39858831913697,0.5717674623965697,0.7487448035642532,3.268922,3.7437458,4.380672
+5120_2560.tiff,19.761412757307607,21.118881030637915,0.49860148498383,0.5781875571801833,10.171932,12.320827,16.66024
+5120_3072.tiff,19.627472261414656,20.826517401100798,0.6062214943666644,0.6677110548343936,8.750928,10.213904,11.936608
+5120_3584.tiff,19.85975993796249,21.039947532591174,0.6297978186361222,0.6880129724246983,7.792711,8.948207,9.989486
+5120_4096.tiff,19.260160384509774,20.19250049919258,0.6653015437612126,0.7124720131852105,6.826416,7.4747086,7.439898
+5120_4608.tiff,19.816799700244694,20.715648295666572,0.7261979261696558,0.7589488133908672,7.2439075,7.880736,8.0053
+5120_512.tiff,18.93585504330556,20.205181569453252,0.40465480058950454,0.48366297284268406,12.437747,15.706008,30.36852
+5120_5120.tiff,19.60253559264149,20.345595007183196,0.7340951559741691,0.7620633261968622,7.745617,8.323143,7.838345
+5120_5632.tiff,19.93106345797717,20.705065974815867,0.7531480531660144,0.7788314501494139,8.327688,9.190751,8.98184
+5120_6144.tiff,20.305899007528083,21.201450088582725,0.7306025558178434,0.7611346933472434,8.6212,9.7681675,9.967508
+5120_6656.tiff,20.121616065754544,20.740811137942057,0.7867317199841639,0.806541489096282,7.48479,8.19406,7.650915
+5120_7168.tiff,20.139885845927207,20.742331522967994,0.7816243359526939,0.8008506064137815,7.505479,8.262624,7.8157835
+5120_7680.tiff,20.190699634480506,21.33302166547718,0.5757699766859982,0.6389354563752717,10.26064,12.490597,14.638323
+5120_8192.tiff,20.566877115783665,21.789857165951535,0.5837441074037737,0.6447559493395275,10.466788,12.691114,13.012021
+5120_8704.tiff,20.87659900883913,21.94720294453173,0.7060497413434368,0.7466528496607829,7.959696,9.067618,9.560157
+5120_9216.tiff,20.517250444655872,21.557026272283046,0.6880122238755861,0.7388789662109211,6.543586,7.252078,7.619745
+5120_9728.tiff,20.832504884254007,22.058639948521424,0.6905685420839831,0.7453524473330786,6.6649785,7.5075755,8.721774
+5632_0.tiff,26.634413816797434,26.975689209093204,0.9423175923214357,0.8984633825192139,0.041492276,0.052323468,0.054725304
+5632_1024.tiff,19.03585525458397,20.281677533364185,0.42238127671790554,0.49590246021927076,12.083002,15.205773,26.616438
+5632_10240.tiff,20.67809603191109,21.89472357288,0.6882400711876461,0.7378010766872612,7.6165056,8.743376,10.13637
+5632_10752.tiff,20.37184804583179,21.639132749636598,0.6582888651803899,0.7152543752260134,8.123182,9.490456,11.014041
+5632_11264.tiff,20.430590410453217,22.040467647663974,0.5217485830982174,0.622383431099313,9.413979,11.969441,15.397264
+5632_11776.tiff,20.88960128415377,22.724104854303135,0.5629984157936048,0.6600134940341172,8.202095,10.186787,12.588345
+5632_12288.tiff,20.827324793880507,22.956562409672244,0.461993847719839,0.5801959067786693,10.248405,13.947546,18.815325
+5632_12800.tiff,20.498801309891277,22.572443638412047,0.47117399117045056,0.5958483494575902,10.518793,14.68014,20.621695
+5632_13312.tiff,20.952229702591417,23.271703251543666,0.4910017662714826,0.6149462668499438,9.732502,13.430194,18.32568
+5632_13824.tiff,20.723332544933392,22.984621453794944,0.46722126335947667,0.589668198194315,10.756769,15.571952,22.608204
+5632_14336.tiff,20.602790602652608,22.80047437145234,0.4643547971824433,0.5885216391063786,11.3994665,17.142603,24.85189
+5632_14848.tiff,20.174815617838156,22.204959155696,0.464569127963315,0.5888101834232892,10.947422,16.1776,25.458086
+5632_1536.tiff,20.29390659390816,21.970394829189175,0.42150207834861125,0.5081090624999706,13.107678,17.204275,25.96344
+5632_15360.tiff,21.005979926339293,23.372943931375172,0.47297968202225715,0.6101313540207909,10.550796,15.753579,22.124405
+5632_15872.tiff,21.38283652627694,23.756840204075335,0.521619467264569,0.6445719271691165,9.736467,13.949373,19.282774
+5632_16384.tiff,21.48299789229563,23.820432841062072,0.5454432443959477,0.6605809125845484,9.11884,12.557055,17.736498
+5632_16896.tiff,22.309802328914515,24.93269735642673,0.5094608791418366,0.6630693696355644,9.6055565,13.822651,18.030695
+5632_17408.tiff,22.36636899362779,24.92187165764042,0.5356825182629591,0.6604040197895117,9.913661,14.132168,19.977215
+5632_17920.tiff,22.055974969187634,24.414522424861037,0.5184231886809884,0.6384212041563392,10.593855,15.097074,21.587753
+5632_18432.tiff,22.066896043814772,24.370218343488332,0.5048119404020408,0.6283350849467755,10.740744,15.223528,23.334856
+5632_18944.tiff,22.542855425408895,24.875369876537935,0.5374118597142882,0.6528093278379458,9.406595,12.785977,17.848696
+5632_19456.tiff,22.336460148015675,24.664704495394712,0.5178681467131884,0.6227337155695694,11.764791,16.960155,23.651993
+5632_19968.tiff,22.552936870730417,24.852843174512845,0.5483639209705486,0.6487747496297621,11.4632,16.449272,22.698526
+5632_2048.tiff,19.438140810967933,20.777916902109453,0.4126476963487995,0.5062873685066446,13.063561,16.92501,28.550774
+5632_20480.tiff,22.30688389480516,24.57956321523735,0.49209122344487216,0.6175269817264547,12.16533,17.87222,22.3638
+5632_20992.tiff,23.901950019994587,25.487520179026856,0.6716316008120067,0.8063970918764167,2.2976058,2.5008073,2.4339154
+5632_21504.tiff,23.37636799491846,25.13104441483047,0.5979960565829033,0.7522068560255147,3.1546643,3.5206199,3.2059999
+5632_22016.tiff,22.952953845603634,25.140112227475303,0.5309172380670097,0.6738549538757,5.2268314,6.1749945,6.559887
+5632_22528.tiff,21.43108074729807,23.150502901049833,0.4729606638670481,0.6067315248997311,8.634626,11.246052,19.153782
+5632_23040.tiff,24.058228997203607,26.28307756313471,0.5811448789549141,0.7436070988643934,3.3323522,3.7972374,4.355752
+5632_23552.tiff,23.76490835031495,25.800503199600907,0.5617486948617189,0.7502816308159277,3.184212,3.5990212,3.7036698
+5632_24064.tiff,23.801206126664177,26.184378927732155,0.5587383751088089,0.7160398484200293,3.9233305,4.543911,5.156008
+5632_24576.tiff,23.230891178179043,25.93514888051555,0.498901992495962,0.660290218902467,7.2293887,9.201117,10.07679
+5632_25088.tiff,22.968726741730976,25.383126333423206,0.5000088423230348,0.6502278043660251,5.360904,6.467539,7.924292
+5632_2560.tiff,20.00541906921068,21.594827993293634,0.3898813244547148,0.4908867709694279,15.3757925,21.25271,36.63887
+5632_3072.tiff,19.775971582799677,21.20860134160317,0.4350998815425646,0.5296502126734821,11.994147,15.141902,21.76432
+5632_3584.tiff,18.935134058184378,20.10487047559126,0.46019181308727003,0.5378588398853574,12.446745,15.792095,20.587511
+5632_4096.tiff,19.112596519792532,20.19994485566015,0.5660093960976083,0.6246151795199114,8.220361,9.215957,9.492769
+5632_4608.tiff,20.041754894705754,21.17791304499331,0.6511043890493265,0.6970038800443343,7.730178,8.452749,8.5508795
+5632_512.tiff,18.626266426652744,19.804209445585258,0.4113477240414912,0.4880268343594417,11.384611,14.173497,26.973759
+5632_5120.tiff,19.23914898399636,20.00173918851899,0.7231446775262105,0.7511779699306016,8.48702,9.243524,9.354077
+5632_5632.tiff,19.956886335981373,20.815751381476296,0.7204340262013197,0.7512031284660698,8.186497,8.996475,8.755261
+5632_6144.tiff,19.98201569416185,20.69822626419103,0.7548595076530662,0.7776353362841502,7.7837787,8.508154,7.6719747
+5632_6656.tiff,20.21744758171461,20.963700029335133,0.7423437984323584,0.766329610370221,7.6349425,8.394305,7.7455735
+5632_7168.tiff,20.53243132639945,21.314275935895157,0.7367823895006583,0.761464912938755,7.6921673,8.4806795,8.036184
+5632_7680.tiff,19.846430681009455,20.791022222865916,0.599660680791569,0.649384941479565,7.376923,8.188533,7.207338
+5632_8192.tiff,20.083490505177238,21.34286157061951,0.5103222481442747,0.5938735343553517,13.014596,17.285984,21.332125
+5632_8704.tiff,21.518895950505296,23.131211182070984,0.5781627293402322,0.6483680307638064,11.010838,14.075272,16.503208
+5632_9216.tiff,21.607546409976734,23.13815179446265,0.6116598216749658,0.6789638491354082,7.993539,9.438823,10.591945
+5632_9728.tiff,20.558533046444847,21.756527914219248,0.6634007891042711,0.7098482040020555,8.500163,9.818019,11.182336
+
+
+
+================================================
+FILE: CV_GuideFour/FourExerciseSAR/evidence/resumen_metricas_swinir.csv
+================================================
+,promedio
+PSNR_noisy,21.33754369457963
+PSNR_swinir,23.055574411015886
+SSIM_noisy,0.5692577649918812
+SSIM_swinir,0.6657891025522207
+ENL_noisy,8.27810287475586
+ENL_swinir,10.566154479980469
+ENL_gtruth,14.017834663391113
+
+
+
+================================================
+FILE: CV_GuideFour/OneExercise/evidence/matriz_confusion_cnn_secuencial.csv
+================================================
+,coast,forest,highway
+coast,84,2,4
+forest,0,82,0
+highway,4,1,63
+
+
+
+================================================
+FILE: CV_GuideFour/OneExercise/evidence/matriz_confusion_resnet50.csv
+================================================
+,coast,forest,highway
+coast,89,1,0
+forest,0,82,0
+highway,1,0,67
+
+
+
+================================================
+FILE: CV_GuideFour/OneExercise/evidence/reporte_cnn_secuencial.csv
+================================================
+,precision,recall,f1-score,support
+coast,0.9545454545454546,0.9333333333333333,0.9438202247191011,90.0
+forest,0.9647058823529412,1.0,0.9820359281437125,82.0
+highway,0.9402985074626866,0.9264705882352942,0.9333333333333333,68.0
+accuracy,0.9541666666666667,0.9541666666666667,0.9541666666666667,0.9541666666666667
+macro avg,0.9531832814536942,0.9532679738562092,0.9530631620653823,240.0
+weighted avg,0.9539802990395615,0.9541666666666667,0.9539059708298758,240.0
+
+
+
+================================================
+FILE: CV_GuideFour/OneExercise/evidence/reporte_resnet50.csv
+================================================
+,precision,recall,f1-score,support
+coast,0.9888888888888889,0.9888888888888889,0.9888888888888889,90.0
+forest,0.9879518072289156,1.0,0.9939393939393939,82.0
+highway,1.0,0.9852941176470589,0.9925925925925926,68.0
+accuracy,0.9916666666666667,0.9916666666666667,0.9916666666666667,0.9916666666666667
+macro avg,0.9922802320392682,0.9913943355119826,0.9918069584736252,240.0
+weighted avg,0.9917168674698795,0.9916666666666667,0.9916638608305275,240.0
+
+
+
+================================================
+FILE: CV_GuideFour/ThreeExerciseBaseGAR/evidence/metricas_autoencoder.csv
+================================================
+archivo,PSNR_noisy,PSNR_autoencoder,SSIM_noisy,SSIM_autoencoder,ENL_noisy,ENL_autoencoder,ENL_gtruth
+1024_512.tiff,30.1675,23.65933,0.9251285,0.87109685,0.5664913,0.57965106,0.5364436
+1536_1536.tiff,17.576715,19.719765,0.7309158,0.7059321,0.65944594,0.6654239,0.67119104
+1024_0.tiff,29.662758,24.937204,0.9213609,0.8982338,0.5845555,0.58543146,0.552263
+
+
+
+================================================
+FILE: CV_GuideFour/ThreeExerciseBaseGAR/evidence/resumen_metricas_autoencoder.csv
+================================================
+,promedio
+PSNR_noisy,25.802324
+PSNR_autoencoder,22.7721
+SSIM_noisy,0.8591351
+SSIM_autoencoder,0.82508755
+ENL_noisy,0.60349756
+ENL_autoencoder,0.6101688
+ENL_gtruth,0.58663255
+
+
+
+================================================
+FILE: CV_GuideFour/ThreeExerciseSAR/evidence/metricas_autoencoder.csv
+================================================
+archivo,PSNR_noisy,PSNR_autoencoder,SSIM_noisy,SSIM_autoencoder,ENL_noisy,ENL_autoencoder,ENL_gtruth
+5632_5632.tiff,19.956886,22.782995,0.7028272,0.7710513,8.186497,8.913492,8.755261
+5632_7168.tiff,20.53243,23.288498,0.7209088,0.7660378,7.6921673,8.59034,8.036184
+5632_4096.tiff,19.112595,23.072401,0.55090195,0.68403095,8.220361,9.146809,9.492769
+
+
+
+================================================
+FILE: CV_GuideFour/ThreeExerciseSAR/evidence/resumen_metricas_autoencoder.csv
+================================================
+,promedio
+PSNR_noisy,19.867304
+PSNR_autoencoder,23.047966
+SSIM_noisy,0.65821266
+SSIM_autoencoder,0.7403734
+ENL_noisy,8.033009
+ENL_autoencoder,8.883547
+ENL_gtruth,8.761405
+
+
+
+================================================
+FILE: CV_GuideFour/TwoExercise/evidence/matriz_confusion_cnn_secuencial.csv
+================================================
+,airplane,denseresidential,harbor
+airplane,117,8,0
+denseresidential,4,120,1
+harbor,3,12,110
+
+
+
+================================================
+FILE: CV_GuideFour/TwoExercise/evidence/matriz_confusion_resnet50.csv
+================================================
+,airplane,denseresidential,harbor
+airplane,125,0,0
+denseresidential,0,125,0
+harbor,0,0,125
+
+
+
+================================================
+FILE: CV_GuideFour/TwoExercise/evidence/reporte_cnn_secuencial.csv
+================================================
+,precision,recall,f1-score,support
+airplane,0.9435483870967742,0.936,0.9397590361445783,125.0
+denseresidential,0.8571428571428571,0.96,0.9056603773584906,125.0
+harbor,0.990990990990991,0.88,0.9322033898305084,125.0
+accuracy,0.9253333333333333,0.9253333333333333,0.9253333333333333,0.9253333333333333
+macro avg,0.9305607450768741,0.9253333333333332,0.9258742677778592,375.0
+weighted avg,0.9305607450768743,0.9253333333333333,0.9258742677778591,375.0
+
+
+
+================================================
+FILE: CV_GuideFour/TwoExercise/evidence/reporte_resnet50.csv
+================================================
+,precision,recall,f1-score,support
+airplane,1.0,1.0,1.0,125.0
+denseresidential,1.0,1.0,1.0,125.0
+harbor,1.0,1.0,1.0,125.0
+accuracy,1.0,1.0,1.0,1.0
+macro avg,1.0,1.0,1.0,375.0
+weighted avg,1.0,1.0,1.0,375.0
+
+
+
+================================================
+FILE: CV_GuideOne/README.md
+================================================
+[Empty file]
+
+
+================================================
+FILE: CV_GuideOne/requirements.txt
+================================================
+numpy
+opencv-python
+matplotlib
+jupyter
+pygrabber
+requests
+
+
+================================================
+FILE: CV_GuideThree/dataset_resumen.csv
+================================================
+archivo_noisy,archivo_gtruth
+0_0.tiff,0_0.tiff
+0_1024.tiff,0_1024.tiff
+0_1536.tiff,0_1536.tiff
+0_512.tiff,0_512.tiff
+1024_0.tiff,1024_0.tiff
+1024_1024.tiff,1024_1024.tiff
+1024_1536.tiff,1024_1536.tiff
+1024_512.tiff,1024_512.tiff
+1536_0.tiff,1536_0.tiff
+1536_1024.tiff,1536_1024.tiff
+1536_1536.tiff,1536_1536.tiff
+1536_512.tiff,1536_512.tiff
+512_0.tiff,512_0.tiff
+512_1024.tiff,512_1024.tiff
+512_1536.tiff,512_1536.tiff
+512_512.tiff,512_512.tiff
+
+
+
+================================================
+FILE: CV_GuideThree/requirements.txt
+================================================
+opencv-python==4.8.0.76
+numpy==1.24.3
+pandas==2.0.3
+scipy==1.11.1
+scikit-learn==1.3.0
+matplotlib==3.7.2
+
+
+================================================
+FILE: CV_GuideTwo/docker-compose.yml
+================================================
+services:
+  api:
+    build:
+      context: ./guia2-vision-ia-api
+      dockerfile: Dockerfile
+    container_name: guia2-vision-ia-api
+    ports:
+      - "8006:8000"
+    volumes:
+      - ./guia2-vision-ia-api/app/output:/app/app/output
+    restart: unless-stopped
+    networks:
+      - guia2-ia-network
+
+  web:
+    build:
+      context: ./guia2-vision-ia-web
+      dockerfile: Dockerfile
+    container_name: guia2-vision-ia-web
+    ports:
+      - "8007:80" 
+    depends_on:
+      - api
+    restart: unless-stopped
+    networks:
+      - guia2-ia-network
+
+networks:
+  guia2-ia-network:
+    driver: bridge
+
+
+================================================
+FILE: CV_GuideTwo/guia2-vision-ia-api/.dockerignore
+================================================
+.git
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.venv
+venv
+.env
+app/output
+
+
+
+================================================
+FILE: CV_GuideTwo/guia2-vision-ia-api/app/__init__.py
+================================================
+[Empty file]
+
+
+================================================
+FILE: CV_GuideTwo/guia2-vision-ia-api/app/contracts/__init__.py
+================================================
+[Empty file]
+
+
+================================================
+FILE: CV_GuideTwo/guia2-vision-ia-api/app/contracts/exercise_contract.py
+================================================
+from __future__ import annotations
+
+from abc import ABC, abstractmethod
+
+from app.schemas.execution import ExerciseRequest, ExerciseResponse
+
+
+class ExerciseContract(ABC):
+    @property
+    @abstractmethod
+    def exercise_type(self) -> str:
+        raise NotImplementedError
+
+    @abstractmethod
+    def execute(self, request: ExerciseRequest) -> ExerciseResponse:
+        raise NotImplementedError
+
+
+
+================================================
+FILE: CV_GuideTwo/guia2-vision-ia-api/app/controllers/__init__.py
+================================================
+[Empty file]
+
+
+================================================
+FILE: CV_GuideTwo/guia2-vision-ia-api/app/output/ejercicio5/RGB_best_report.txt
+================================================
+FEATURE SET: RGB
+Mejor modelo: SVM-RBF
+
+              precision    recall  f1-score   support
+
+       coast       0.79      0.82      0.81       108
+      forest       0.87      0.87      0.87        99
+     highway       0.78      0.73      0.75        81
+
+    accuracy                           0.81       288
+   macro avg       0.81      0.81      0.81       288
+weighted avg       0.81      0.81      0.81       288
+
+
+
+================================================
+FILE: CV_GuideTwo/guia2-vision-ia-api/app/schemas/__init__.py
+================================================
+[Empty file]
+
+
+================================================
+FILE: CV_GuideTwo/guia2-vision-ia-api/app/services/__init__.py
+================================================
+[Empty file]
+
+
+================================================
+FILE: CV_GuideTwo/guia2-vision-ia-api/app/utils/__init__.py
+================================================
+[Empty file]
+
+
+================================================
+FILE: CV_GuideTwo/guia2-vision-ia-desktop/app/__init__.py
+================================================
+[Empty file]
+
+
+================================================
+FILE: CV_GuideTwo/guia2-vision-ia-desktop/app/exercise1/__init__.py
+================================================
+[Empty file]
+
+
+================================================
+FILE: CV_GuideTwo/guia2-vision-ia-desktop/app/exercise2/__init__.py
+================================================
+[Empty file]
+
+
+================================================
+FILE: CV_GuideTwo/guia2-vision-ia-desktop/app/exercise3/__init__.py
+================================================
+[Empty file]
+
+
+================================================
+FILE: CV_GuideTwo/guia2-vision-ia-desktop/app/exercise4/__init__.py
+================================================
+[Empty file]
+
+
+================================================
+FILE: CV_GuideTwo/guia2-vision-ia-desktop/app/exercise5/__init__.py
+================================================
+[Empty file]
+
+
+================================================
+FILE: CV_GuideTwo/guia2-vision-ia-desktop/app/exercise6/__init__.py
+================================================
+[Empty file]
+
+
+================================================
+FILE: CV_GuideTwo/guia2-vision-ia-desktop/app/exercise6_plus/__init__.py
+================================================
+[Empty file]
+
+
+================================================
+FILE: CV_GuideTwo/guia2-vision-ia-web/src/environments/environment.development.ts
+================================================
+export const environment = {
+  production: false,
+  apiUrl: 'http://72.60.68.22:8006'
+};
+
+
+
+================================================
+FILE: CV_GuideTwo/guia2-vision-ia-web/.angular/cache/21.2.0/guia2-vision-ia/vite/deps/package.json
+================================================
+{
+  "type": "module"
+}
+
+
